@@ -36,7 +36,7 @@ h1,.h-display{font-size:clamp(2.75rem,6.2vw,5rem); font-weight:800; line-height:
 h2{font-size:clamp(2rem,3.4vw,2.9rem); font-weight:700; line-height:1.06; letter-spacing:-.026em; max-width:24ch}
 /* Keep "go-to-market" on one line in headings (from 360px up). */
 @media(min-width:360px){.nb{white-space:nowrap}}
-/* Second sentence of the home H1 in Cozelo gold (Teague and Chris, 5 Oct). */
+/* Second sentence of the home H1 in Cozelo gold. */
 .h1-accent{color:var(--gold)}
 h3{font-size:clamp(1.2rem,1.6vw,1.45rem); font-weight:700; line-height:1.15; letter-spacing:-.02em}
 .lede{font-family:var(--serif); font-size:1.26rem; line-height:1.45; color:var(--on-dark-soft); max-width:38rem}
@@ -159,7 +159,7 @@ h3{font-size:clamp(1.2rem,1.6vw,1.45rem); font-weight:700; line-height:1.15; let
 
 /* ---------- contact form. Netlify Forms: static markup is the whole
    backend — no JS, no endpoint to stand up. Lives inside each page's own
-   closing band, under that page's own approved eyebrow/H2/lede. ---------- */
+   closing band, under that page's heading and lede. ---------- */
 .cform{margin-top:2.4rem; max-width:44rem}
 .cform__grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(16rem,100%),1fr)); gap:1rem}
 .cform label{display:block; font-family:var(--sans); font-weight:700;
@@ -262,8 +262,7 @@ h3{font-size:clamp(1.2rem,1.6vw,1.45rem); font-weight:700; line-height:1.15; let
   .mnav.up{transform:none}
 }
 
-/* ---------- reveal: removed sitewide 18 Aug per Teague's instruction —
-   content renders visible on load, no scroll-triggered fade/slide. ---------- */
+/* ---------- reveal: content renders visible on load, with no scroll-triggered fade or slide. ---------- */
 @media(prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
 
 /* ============================================================
