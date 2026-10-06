@@ -49,9 +49,10 @@
 @media(max-width:900px){
   /* small enough that "Your go-to-market" fits on one line on phones, so "Your" never sits alone */
   .home-hero h1{font-size:clamp(2.1rem,9vw,2.5rem)}
-  .home-hero{padding-bottom:0}
-  .jx-hero{height:130px; margin:1.5rem calc(-1 * var(--gutter)) 0;
-    -webkit-mask-image:linear-gradient(180deg, transparent, #000 50%); mask-image:linear-gradient(180deg, transparent, #000 50%)}
+  /* The field straddles the line between the hero and the next section, half in each one's padding. */
+  .home-hero{overflow:visible; padding-bottom:4.25rem}
+  .jx-hero{position:absolute; left:0; right:0; bottom:0; z-index:1; transform:translateY(50%)}
+  #problem{padding-top:4.25rem; border-top:0}
 }
 
 /* Pillars: three gold pillars standing on one base, rising from behind the navy heading. */
@@ -65,8 +66,12 @@
     mask-composite:intersect}
 }
 @media(max-width:900px){
-  .jx-pillars{height:230px; margin:1.5rem calc(-1 * var(--gutter)) 0;
-    -webkit-mask-image:linear-gradient(90deg, transparent, #000 30%); mask-image:linear-gradient(90deg, transparent, #000 30%)}
+  /* Beside the heading at the right edge, fading in from behind it. */
+  .jx-pillars{position:absolute; z-index:0; right:calc(-1 * var(--gutter)); bottom:-1.25rem; width:46%; height:143px;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.35) 30%, #000 60%), linear-gradient(180deg, transparent 0, #000 12%);
+    -webkit-mask-composite:source-in;
+    mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.35) 30%, #000 60%), linear-gradient(180deg, transparent 0, #000 12%);
+    mask-composite:intersect}
 }
 
 #engagement .lay-split .leave{margin-top:0}
@@ -160,7 +165,7 @@
   </div>
   <div class="jx jx-hero" data-motif="junctions" data-surface="white" data-seed="23" data-narrow-media="(max-width: 900px)"
        data-opts='{"tile":29,"fluid":870,"anchor":"right","shapes":[{"type":"chain","points":[[13,14],[9,10],[8,7],[4,5]]},{"type":"blob","x":11,"y":12,"n":6,"seed":3},{"type":"blob","x":6,"y":6,"n":6,"seed":5},{"type":"dot","x":13,"y":4},{"type":"dot","x":4,"y":12}]}'
-       data-opts-narrow='{"tile":22,"fluid":0,"shapes":[{"type":"chain","points":[[9,5],[6,3],[3,1]]},{"type":"blob","x":5,"y":2,"n":4,"seed":5},{"type":"dot","x":12,"y":2},{"type":"dot","x":2,"y":4}]}'></div>
+       data-opts-narrow='{"tile":22,"fluid":0,"fit":true,"rows":4,"shapes":[{"type":"chain","points":[[10,3],[7,2],[5,1]]},{"type":"blob","x":7,"y":2,"n":3,"seed":5},{"type":"dot","x":14,"y":2},{"type":"dot","x":2,"y":2}]}'></div>
 </header>
 
 <section class="band band--light" id="problem">
@@ -180,7 +185,7 @@
       <h2>Three connected pillars. One <span class="nb">go-to-market</span> operating model.</h2>
       <div class="jx jx-pillars" data-motif="junctions" data-surface="navy" data-seed="5" data-draw="scroll"
            data-opts='{"tile":21,"anchor":"right","thin":0.07,"thick":0.15,"shapes":[{"type":"rect","x":3,"y":1,"w":2,"h":6},{"type":"rect","x":7,"y":1,"w":2,"h":6},{"type":"rect","x":11,"y":1,"w":2,"h":6},{"type":"rect","x":3,"y":7,"w":10,"h":2}]}'
-           data-opts-narrow='{"tile":20}'></div>
+           data-opts-narrow='{"tile":13,"fit":true,"thick":0.17,"shapes":[{"type":"rect","x":2,"y":2,"w":2,"h":6},{"type":"rect","x":6,"y":2,"w":2,"h":6},{"type":"rect","x":10,"y":2,"w":2,"h":6},{"type":"rect","x":2,"y":8,"w":10,"h":2}]}'></div>
     </div>
     <dl class="dl">
       <div class="dl__row">
