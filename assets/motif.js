@@ -13,12 +13,16 @@
      data-seed     integer                     (random field)
      data-opts     JSON, see below
      data-opts-narrow  JSON merged over data-opts when the element is under 700px wide
+     data-narrow-media media query that switches data-opts-narrow on instead of the 700px width rule
+                       (for a field whose shape changes with the page layout, e.g. side panel to strip)
      data-span-from, data-span-to, data-span-x, data-span-gap   see place() below
      data-draw     load | scroll               (draw the gold line in once; only when the gold is one
                                                 continuous line, and never under reduced motion)
      data-pop      with data-draw: draw the longest gold line, then pop the other gold shapes in
    data-opts
      tile    tile size in px (default 40)
+     fluid   reference width in px: below it the tile shrinks in proportion, so the composition
+             keeps its proportions in a narrower field (never grows above tile)
      fit     true: adjust the tile so whole tiles span the width (clean edges, no fade needed)
      rows    with fit: set the element's height to this many tiles
      anchor  left | right   which edge shape x-coordinates count from (default left)
@@ -84,13 +88,13 @@
       }
       if (sh.type === 'blob') {
         var bx0 = X(sh.x), by0 = Y(sh.y); bx0 = snap(bx0, by0);
-        var r = rng(sh.seed || 1), pts = [[bx0, by0]], have = {};
+        var r = rng(sh.seed || 1), pts = [[bx0, by0]], have = {}, want = sh.n || 10, tries = 0;
         have[pts[0][0] + ',' + pts[0][1]] = 1;
-        while (pts.length < (sh.n || 10)) {
+        /* Growth can stall (a start outside a short field has no room to grow), so cap the attempts. */
+        while (pts.length < want && tries++ < want * 50) {
           var b = pts[Math.floor(r() * pts.length)], d = [[1, 1], [1, -1], [-1, 1], [-1, -1]][Math.floor(r() * 4)];
           var q = [b[0] + d[0], b[1] + d[1]], kk = q[0] + ',' + q[1];
           if (!have[kk] && q[0] > 0 && q[1] > 0 && q[0] < cols && q[1] < rows) { have[kk] = 1; pts.push(q); }
-          if (pts.length > 400) break;
         }
         pts.forEach(function (pt) { add(pt[0], pt[1]); });
         return;
@@ -116,6 +120,7 @@
   function junctions(w, h, S, o) {
     /* fit: stretch the tile so a whole number of tiles spans the width, giving clean edges. */
     var s = o.tile || 40;
+    if (o.fluid && w < o.fluid) s = s * w / o.fluid;
     if (o.fit) s = w / Math.max(1, Math.round(w / s));
     var cols = Math.round(w / s) === w / s ? w / s : Math.ceil(w / s), rows = Math.ceil(h / s - 0.001), seed = o.seed || 1;
     var G = corners(o.shapes, cols, rows, o), arcs = [];
@@ -192,7 +197,9 @@
   function opts(el, w) {
     var o = {};
     try { o = JSON.parse(el.getAttribute('data-opts') || '{}'); } catch (e) {}
-    if (w < 700 && el.hasAttribute('data-opts-narrow')) {
+    var nm = el.getAttribute('data-narrow-media');
+    var narrow = nm && window.matchMedia ? window.matchMedia(nm).matches : w < 700;
+    if (narrow && el.hasAttribute('data-opts-narrow')) {
       try { var n = JSON.parse(el.getAttribute('data-opts-narrow')); for (var k in n) o[k] = n[k]; } catch (e) {}
     }
     o.seed = +el.getAttribute('data-seed') || 1;

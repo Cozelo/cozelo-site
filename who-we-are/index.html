@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=f940ee57">
+<link rel="stylesheet" href="/assets/site.css?v=3b30c977">
 <style>
 .bio__portrait{aspect-ratio:4/5; width:100%; height:auto; display:block;
   object-fit:cover; border-radius:10px; background:var(--bone)}
@@ -38,7 +38,7 @@
   .fig-people figure + figure{animation-delay:.35s}
 }
 
-/* Concise bios (29 Sep): short paragraphs, then experience lists. */
+/* Concise bios: short paragraphs, then experience lists. */
 .bio .prose p{margin-top:.9rem}
 .xp{margin:1.75rem 0 0; padding-top:1.25rem; border-top:1px solid var(--rule-dark)}
 .xp dt{font-family:var(--sans); font-weight:700; font-size:.95rem; color:var(--on-dark); margin-top:1rem}
@@ -56,7 +56,12 @@
   -webkit-mask-composite:source-in;
   mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.25) 30%, #000 65%), linear-gradient(180deg, transparent 0, #000 16%, #000 84%, transparent);
   mask-composite:intersect}
-@media(max-width:900px){.jx-team{left:20%}}
+/* Narrow screens: beside the short heading, the smaller shape running off the edge. */
+@media(max-width:900px){
+  .jx-team{left:auto; width:62%; height:144px;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.4) 25%, #000 50%), linear-gradient(180deg, transparent 0, #000 22%, #000 78%, transparent);
+    mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.4) 25%, #000 50%), linear-gradient(180deg, transparent 0, #000 22%, #000 78%, transparent)}
+}
 </style>
 </head>
 <body>
@@ -140,7 +145,8 @@
     <div class="head">
       <h2>The team</h2>
       <div class="jx jx-team" data-motif="junctions" data-surface="navy" data-seed="29"
-           data-opts='{"tile":30,"anchor":"right","thin":0.07,"shapes":[{"type":"rect","x":11,"y":3,"w":6,"h":2,"holes":2},{"type":"rect","x":9,"y":2,"w":2,"h":2},{"type":"rect","x":14,"y":4,"w":2,"h":2}]}'></div>
+           data-opts='{"tile":30,"anchor":"right","thin":0.07,"shapes":[{"type":"rect","x":11,"y":3,"w":6,"h":2,"holes":2},{"type":"rect","x":9,"y":2,"w":2,"h":2},{"type":"rect","x":14,"y":4,"w":2,"h":2}]}'
+           data-opts-narrow='{"tile":18,"shapes":[{"type":"rect","x":3,"y":3,"w":6,"h":2,"holes":2},{"type":"rect","x":1,"y":2,"w":2,"h":2},{"type":"rect","x":6,"y":4,"w":2,"h":2}]}'></div>
     </div>
     <div class="bios">
       <div class="bio">
@@ -239,6 +245,6 @@
 </footer>
 
 <script src="/assets/site.js?v=21677f43"></script>
-<script src="/assets/motif.js?v=a4381fb7"></script>
+<script src="/assets/motif.js?v=016f9eb2"></script>
 </body>
 </html>
