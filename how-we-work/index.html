@@ -72,6 +72,9 @@
    in once, then three gold circles inside its turns pop in.
    The section divider line is removed behind it. */
 #who-does-the-work{position:relative; border-top:0}
+/* Top padding clears the lower half of the field (3 tiles) plus a gap above the heading. */
+#who-does-the-work{padding-top:max(clamp(3.5rem,calc(2rem + 4.5vw),6.5rem), 7.25rem)}
+@media(max-width:760px){#who-does-the-work{padding-top:6rem}}
 .jx-through{z-index:2; top:0; transform:translateY(-50%)}
 </style>
 </head>
