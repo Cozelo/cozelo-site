@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/assets/logo-badge-128.png">
+<link rel="canonical" href="https://cozelo.co/ai-readiness/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cozelo">
+<meta property="og:title" content="Ready your go-to-market for AI | Cozelo">
+<meta property="og:description" content="Like a new hire, AI needs foundational knowledge to reach its full potential. For marketing and sales, that foundation has three interconnected parts.">
+<meta property="og:url" content="https://cozelo.co/ai-readiness/">
+<meta property="og:image" content="https://cozelo.co/assets/og-card-v4.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ready your go-to-market for AI | Cozelo">
+<meta name="twitter:description" content="Like a new hire, AI needs foundational knowledge to reach its full potential. For marketing and sales, that foundation has three interconnected parts.">
+<meta name="twitter:image" content="https://cozelo.co/assets/og-card-v4.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" href="/assets/logo-badge-128.png">
+<title>Ready your go-to-market for AI | Cozelo</title>
+<meta name="description" content="Like a new hire, AI needs foundational knowledge to reach its full potential. For marketing and sales, that foundation has three interconnected parts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=f940ee57">
+<style>
+/* ---------- AI readiness (29 Sep) ---------- */
+.phero h1{max-width:16ch}
+.why{margin-top:.6rem}
+.why b{font-family:var(--sans); font-weight:700; color:var(--on-dark); margin-right:.15em}
+.dl__row dd p{margin:0}
+.dl__row dd p + p{margin-top:.6rem}
+/* The question box: the only boxed element on the page. */
+.qband{padding-top:clamp(3.5rem,7vw,6rem); padding-bottom:0}
+#question,#problem{border-top:0}
+.exhibit{background:var(--bone); border:1px solid var(--rule-light); border-radius:4px;
+  padding:clamp(1.75rem,4.5vw,4rem) clamp(1.5rem,4.5vw,4rem) clamp(1.75rem,3.5vw,3.25rem)}
+.q{margin:0; font-family:var(--serif); font-style:italic; font-weight:400;
+  font-size:clamp(2rem,4.2vw,3.375rem); line-height:1.14; letter-spacing:-.012em; color:var(--navy); max-width:22ch}
+/* The firm name: same colour and italic as the question, in a box that
+   resizes to each name (width is set and animated by the script). */
+/* clip-path clips the name while the width animates. overflow:hidden would
+   move the box's baseline to its bottom edge and lift the name above the line. */
+.var{display:inline-block; vertical-align:baseline; box-sizing:content-box; clip-path:inset(0 round 10px); text-align:center;
+  border:1.5px solid rgba(27,47,75,.45); border-radius:10px; background:var(--white);
+  padding:0 .22em .04em; line-height:1.08; transition:width .3s var(--ease)}
+/* Rotating names stay on one line; the static default may wrap on narrow phones. */
+.var.is-rotating{white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.var{transition:none}}
+/* Under 360px the longest rotating name (Palo Alto Networks) would run past the box edge. */
+@media(max-width:359px){.q{font-size:1.625rem}}
+.answers{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(1.5rem,3vw,2.5rem); margin-top:clamp(2rem,4vw,3.25rem)}
+.ans{border-top:2px solid var(--navy); padding-top:1.25rem; display:flex; flex-direction:column}
+.ans__src{margin:0; font-family:var(--sans); font-weight:700; font-size:1rem; color:var(--navy)}
+.ans blockquote{margin:.875rem 0 0; font-family:var(--serif); font-size:clamp(1.2rem,1.6vw,1.375rem); line-height:1.45; color:var(--on-light)}
+.exhibit__foot{display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.5rem,4vw,3.5rem); align-items:start;
+  margin-top:clamp(2rem,4vw,3.25rem); padding-top:1.875rem; border-top:1px solid var(--rule-light)}
+.verdict{margin:0; font-family:var(--sans); font-weight:700; font-size:clamp(1.4rem,2.2vw,1.75rem); line-height:1.2; letter-spacing:-.02em; color:var(--navy); max-width:20ch}
+.test{margin:0; font-family:var(--serif); font-size:1.125rem; line-height:1.55; color:var(--on-light)}
+@media(max-width:900px){.answers,.exhibit__foot{grid-template-columns:1fr}}
+/* Keep the name and the closing "?”" on one line. */
+.q__end:has(.is-rotating){white-space:nowrap}
+/* The hero already ends in generous space; the box follows it directly. */
+.qband{padding-top:0; padding-bottom:clamp(3.5rem,7vw,6rem)}
+.model{display:grid; grid-template-columns:minmax(0,500px) minmax(0,1fr); gap:clamp(2.5rem,6vw,5rem); align-items:start}
+.model h2{max-width:16ch}
+.model .prose{margin-top:2rem}
+.coined{margin:1.75rem 0 0; font-family:var(--sans); font-weight:700; font-size:1.25rem; color:var(--navy)}
+@media(max-width:900px){.model{grid-template-columns:1fr} .model__wheel{max-width:28rem}}
+@media(min-width:901px){.model__wheel{position:sticky; top:2.5rem}}
+.parts{list-style:none; margin:2rem 0 0; padding:0; border-top:1px solid var(--rule-light)}
+.parts li{display:grid; grid-template-columns:6.5rem minmax(0,1fr); gap:1rem; padding:.9rem 0; border-bottom:1px solid var(--rule-light)}
+.parts b{font-family:var(--sans); font-size:1.0625rem; color:var(--navy)}
+.parts span{font-family:var(--serif); font-size:1.0625rem; line-height:1.5; color:var(--on-light)}
+
+/* One answer, downstream: a single gold line starts under the heading and runs down behind the
+   copy, past the divider, ending just above the question box. It draws itself in once. */
+#what-changes .inner{position:relative; z-index:2}
+.jx-down{position:absolute; z-index:1;
+  -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 70px); mask-image:linear-gradient(180deg, transparent 0, #000 70px)}
+/* "See how we get there" sits in the right column under the prose, with the link below it; no divider. */
+#what-changes .deeper{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); column-gap:clamp(2rem,6vw,5.5rem);
+  border-top:0; padding-top:0; margin-top:clamp(1.5rem,3vw,2.25rem)}
+#what-changes .deeper > *{grid-column:2; justify-self:start}
+#what-changes .deeper .textlink{margin-top:.75rem}
+@media(max-width:900px){#what-changes .deeper{grid-template-columns:1fr}#what-changes .deeper > *{grid-column:1}}
+@media(max-width:900px){.jx-down{display:none}}
+</style>
+</head>
+<body>
+
+<!-- Mobile navigation. Rendered <=1080px only. -->
+<div class="mnav" id="mnav">
+  <div class="mnav__box">
+    <a class="mnav__brand" href="/" aria-label="Cozelo — home">
+      <img src="/assets/logo-badge-128.png" alt="" width="30" height="30">
+    </a>
+    <button class="mnav__burger" id="mburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">
+      <span></span>
+    </button>
+  </div>
+  <a class="btn btn--primary mnav__cta" href="#lets-talk">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a>
+</div>
+<nav class="mmenu" id="mmenu" aria-label="Primary">
+  <a class="mlink" href="/">Home</a>
+  <a class="mlink current" href="/ai-readiness/">AI readiness</a>
+  <a class="mlink" href="/how-we-work/">How we work</a>
+  <a class="mlink" href="/who-we-are/">Who we are</a>
+  <div class="mmenu__foot">
+    <a class="btn btn--primary" href="#lets-talk">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a>
+  </div>
+</nav>
+
+<nav class="rail" id="rail" aria-label="Primary">
+  <div>
+    <a class="brand" href="/">
+      <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo — home" width="93" height="32">
+    </a>
+    <ul class="rail__pages">
+      <li><a class="rail__pg" href="/">Home</a></li>
+      <li><a class="rail__pg current" href="/ai-readiness/" aria-current="page">AI readiness</a>
+        <ul class="rail__toc">
+          <li><a href="#elements">The three keys</a></li>
+          <li><a href="#model">The operating model</a></li>
+          <li><a href="#what-changes">One answer</a></li>
+          <li><a href="#question">The question</a></li>
+        </ul>
+      </li>
+      <li><a class="rail__pg" href="/how-we-work/">How we work</a></li>
+      <li><a class="rail__pg" href="/who-we-are/">Who we are</a></li>
+    </ul>
+  </div>
+  <a class="btn btn--primary" href="#lets-talk">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a>
+</nav>
+
+<header class="band band--light phero" id="top">
+  <div class="hero__inner">
+    <h1>Ready your <span class="nb">go-to-market</span> for AI.</h1>
+    <p class="lede">Like a new hire, AI needs foundational knowledge to reach its full potential. For marketing and sales, that foundation has three interconnected parts.</p>
+  </div>
+</header>
+
+<section class="band band--dark" id="elements">
+  <div class="inner lay-stack">
+    <div class="head">
+      <h2>Three keys AI needs from you.</h2>
+    </div>
+    <dl class="dl">
+      <div class="dl__row">
+        <dt>Why you win</dt>
+        <dd><p>Define your target buyers, the problems you solve, and the reasons to choose you over the competition. Turn that into evidence-backed messaging ready for real-world use.</p><p class="why"><b>Why?</b> Without it, every AI tool falls back on whatever is generic to your category.</p></dd>
+      </div>
+      <div class="dl__row">
+        <dt>How you operate</dt>
+        <dd><p>Connect the people, processes, data, and systems behind your go-to-market. Integrate AI to improve how you work rather than to automate old inefficiencies.</p><p class="why"><b>Why?</b> AI added to one disconnected part automates the disconnect.</p></dd>
+      </div>
+      <div class="dl__row">
+        <dt>The context AI needs to thrive</dt>
+        <dd><p>Build an organized context foundation covering your business, buyers, offerings, messaging, and operating knowledge. Give your team a single consistent reference for AI-assisted work.</p><p class="why"><b>Why?</b> It lets an assistant or an agent work like someone who knows your company.</p></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- The wheel is the live .fwv, unchanged. Teague wants something better
+     than hover/tap highlighting before it changes. -->
+<section class="band band--shade" id="model">
+  <div class="inner model">
+    <div class="model__wheel">
+<svg class="fwv" viewBox="0 0 800 800" role="img" aria-labelledby="fwvTitle fwvDesc">
+<title id="fwvTitle">The go-to-market operating model</title>
+<desc id="fwvDesc">Why You Win sits at the center. Five connected parts of the operating model ring around it: message, attract, listen, engage and learn. Each is defined and continuously refined by the center. People, process, technology and data run underneath all of it as the outer ring.</desc>
+<circle class="fwv-navy" cx="400" cy="400" r="374.00"/>
+<g class="fwv-wedges">
+<path class="fwv-wedge" d="M239.95,172.69 A278.00,278.00 0 0,1 560.05,172.69 L504.21,252.01 A181.00,181.00 0 0,0 295.79,252.01 Z"/>
+<path class="fwv-wedge" d="M566.72,177.54 A278.00,278.00 0 0,1 665.64,481.98 L572.95,453.37 A181.00,181.00 0 0,0 508.55,255.16 Z"/>
+<path class="fwv-wedge" d="M663.09,489.82 A278.00,278.00 0 0,1 404.12,677.97 L402.69,580.98 A181.00,181.00 0 0,0 571.29,458.48 Z"/>
+<path class="fwv-wedge" d="M395.88,677.97 A278.00,278.00 0 0,1 136.91,489.82 L228.71,458.48 A181.00,181.00 0 0,0 397.31,580.98 Z"/>
+<path class="fwv-wedge" d="M134.36,481.98 A278.00,278.00 0 0,1 233.28,177.54 L291.45,255.16 A181.00,181.00 0 0,0 227.05,453.37 Z"/>
+</g>
+<circle class="fwv-navy" cx="400" cy="400" r="181.00"/>
+<circle class="fwv-core" cx="400" cy="400" r="120.00"/>
+<g class="fwv-labels">
+<text class="fwv-label" x="400.00" y="174.00">Message</text>
+<text class="fwv-label" x="614.94" y="330.16" transform="rotate(72 614.94 330.16)">Attract</text>
+<text class="fwv-label" x="532.84" y="582.84" transform="rotate(-36 532.84 582.84)">Listen</text>
+<text class="fwv-label" x="267.16" y="582.84" transform="rotate(36 267.16 582.84)">Engage</text>
+<text class="fwv-label" x="185.06" y="330.16" transform="rotate(-72 185.06 330.16)">Learn</text>
+</g>
+<path id="fwvOuterArc" d="M 111.79,265.61 A 318.00,318.00 0 0,1 688.21,265.61" fill="none"/>
+<text class="fwv-outer-label"><textPath href="#fwvOuterArc" startOffset="50%" text-anchor="middle">People, Process, Technology, Data</textPath></text>
+<text class="fwv-core-label" x="400" y="400"><tspan x="400" dy="-12">Why</tspan><tspan x="400" dy="32">You Win</tspan></text>
+</svg>
+    </div>
+    <div>
+      <h2>One operating model. Every part connected.</h2>
+      <div class="prose">
+        <p>Why You Win sits at the center and defines five connected parts. People, process, technology and data run underneath and carry that answer between them.</p>
+      </div>
+      <ul class="parts">
+        <li><b>Message</b><span>What you say, and why anyone should believe it.</span></li>
+        <li><b>Attract</b><span>How you put that argument into the world.</span></li>
+        <li><b>Listen</b><span>What comes back, and how you recognize it.</span></li>
+        <li><b>Engage</b><span>What you do with what comes back.</span></li>
+        <li><b>Learn</b><span>What happened, and what it tells you.</span></li>
+      </ul>
+      <div class="prose">
+        <p>AI inherits whatever it's connected to. An agent working from a CRM that tracks the wrong criteria scales the wrong criteria. A content tool fed a message sales doesn't use produces more of it, faster.</p>
+        <p class="call">The integration is what makes AI powerful.</p>
+        <p>When each part hands the same answer to the next, the context an AI tool draws on stays consistent wherever it looks, and its output starts to sound like your best people.</p>
+      </div>
+      <p class="coined">We call that Commercial Coherence&trade;.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band band--light" id="what-changes">
+  <div class="jx jx-down" data-motif="junctions" data-surface="white" data-seed="17" data-draw="scroll"
+       data-span-from="#what-changes h2" data-span-to="#question .exhibit" data-span-x="#what-changes .downstream" data-span-bleed="left" data-span-gap="28"
+       data-opts='{"tile":30,"fit":true,"shapes":[{"type":"chain","points":[[0.45,1],[0.62,0.3],[0.38,0.62],[0.5,-2]]}]}'></div>
+  <div class="inner lay-split">
+    <div class="downstream">
+      <h2>One answer unites everything built downstream.</h2>
+    </div>
+    <div class="prose">
+      <p>Messaging stops being rewritten based on the latest win, loss, or campaign. Your team trains on one reason instead of a folder of competing decks. Your CRM asks for the criteria that actually decide deals.</p>
+      <p>None of that needs new headcount or new software. It needs the answer to exist once, in a form the rest of your motion can act on.</p>
+      <p>There is a newer reason this matters. A seller handed slightly-off messaging adapts in the room. An agent does not. It reproduces exactly what it was given, at volume, in public. Buyers research you through AI now, and your own stack is filling with agents.</p>
+      <p class="call">Inconsistency used to cost you efficiency. Now it gets published.</p>
+    </div>
+  </div>
+  <div class="inner">
+    <div class="deeper">
+      <p>See how we get there, and the services that build each part.</p>
+      <a class="textlink" href="/how-we-work/">How we work</a>
+    </div>
+  </div>
+</section>
+
+<section class="band band--light qband" id="question" aria-labelledby="q-title">
+  <div class="inner">
+    <div class="exhibit">
+      <p class="q" id="q-title">&ldquo;Why should we pick you over <span class="q__end"><span class="var" data-rot><span class="var__t">your top competitor</span></span>?&rdquo;</span></p>
+      <div class="answers">
+        <div class="ans">
+          <p class="ans__src">Your website</p>
+          <blockquote>Trusted by industry leaders to deliver results that move the needle.</blockquote>
+        </div>
+        <div class="ans">
+          <p class="ans__src">Your best seller</p>
+          <blockquote>With us you get white glove treatment that bigger firms can&rsquo;t match.</blockquote>
+        </div>
+        <div class="ans">
+          <p class="ans__src">An AI assistant, asked by your buyer</p>
+          <blockquote>Both are credible options. <span data-rot-echo>Your top competitor</span> is the more established choice for a company your size.</blockquote>
+        </div>
+      </div>
+      <div class="exhibit__foot">
+        <p class="verdict">The reasons you lose start as moments of friction.</p>
+        <p class="test">Test it today. Ask Google and the LLM of your choice why a buyer should choose you over your top competitor. Compare the answers. Then compare them to your website.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--shade" id="lets-talk">
+  <div class="jx jx-close" data-motif="junctions" data-surface="shade" data-seed="41"
+       data-opts='{"tile":36,"anchorY":"bottom","shapes":[{"type":"chain","points":[[3,5],[3,1]]},{"type":"dot","x":6,"y":2}]}'
+       data-opts-narrow='{"tile":30}'></div>
+  <div class="inner close-wrap">
+    <div>
+      <h2 class="close__h">Where can AI make a difference in your <span class="nb">go-to-market</span>?</h2>
+      <p class="lede close__lede">Let&rsquo;s talk about what you&rsquo;re trying to improve, what&rsquo;s getting in the way, and where to start.</p>
+    </div>
+    <form class="cform" name="contact" method="POST" action="/thanks/"
+          data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="cform__hp"><label>Leave this empty <input name="bot-field"></label></p>
+      <div class="cform__grid">
+        <div>
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="full">
+          <label for="f-company">Company</label>
+          <input id="f-company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="full">
+          <label for="f-msg">What do you want AI to do for your go-to-market?</label>
+          <textarea id="f-msg" name="message" required></textarea>
+        </div>
+      </div>
+      <button class="btn btn--primary" type="submit">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></button>
+      <p class="cform__note">We use your information only to reply to your message. We won&rsquo;t automatically add you to our mailing list or share your responses with any third parties.</p>
+    </form>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer__in">
+    <div>
+      <a class="brand" href="/">
+        <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo — home" width="93" height="32">
+      </a>
+      <small>Cozelo connects why you win with how you operate. Then we build the business context AI needs to understand your value and put it to work.</small>
+      <p class="footer__social"><a href="https://www.linkedin.com/company/cozelo-co/home/" target="_blank" rel="noopener" aria-label="Cozelo on LinkedIn"><img src="/assets/linkedin-in-blue.png" alt="LinkedIn" width="33" height="28" loading="lazy"></a></p>
+    </div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/ai-readiness/">AI readiness</a></li>
+      <li><a href="/how-we-work/">How we work</a></li>
+      <li><a href="/who-we-are/">Who we are</a></li>
+    </ul>
+    <p class="footer__legal">&copy; 2026 Cozelo LLC</p>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=21677f43"></script>
+<script>
+// ---- The question: rotating firm name ----
+// Market leaders across software, services and industry (29 Sep: broadened), shuffled on
+// every visit (Fisher-Yates). Every 2.6s the name fades out, the box eases to
+// the next name's width, and the name fades in. The AI assistant's answer
+// names the same firm. Under reduced motion (and without JS) the page keeps
+// its default, "your top competitor", and nothing rotates.
+(function(){
+  var FIRMS = ["Salesforce","HubSpot","Adobe","Microsoft","Oracle","SAP","ServiceNow","Workday","Stripe","Shopify",
+    "Snowflake","Datadog","Cisco","Deloitte","Accenture","McKinsey","Siemens","Honeywell","Caterpillar","FedEx"];
+  for (var i = FIRMS.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = FIRMS[i]; FIRMS[i] = FIRMS[j]; FIRMS[j] = t; }
+  var box = document.querySelector('[data-rot]'), echo = document.querySelector('[data-rot-echo]');
+  var text = box && box.querySelector('.var__t');
+  if (!text || !echo) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !text.animate) return;
+  function set(name){ text.textContent = echo.textContent = name; }
+  box.classList.add('is-rotating');
+  set(FIRMS[0]);
+
+  // The box has an explicit width so it can ease between names; this
+  // measures a name in the box's own font.
+  function fit(){ box.style.width = 'auto'; var w = text.getBoundingClientRect().width; box.style.width = w + 'px'; }
+  function fitTo(name){
+    var probe = text.cloneNode(false); probe.textContent = name;
+    probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap';
+    box.parentNode.appendChild(probe);
+    var w = probe.getBoundingClientRect().width; probe.remove();
+    box.style.width = w + 'px';
+  }
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  window.addEventListener('resize', fit);
+
+  var n = 0;
+  setInterval(function(){
+    if (document.hidden) return;
+    n = (n + 1) % FIRMS.length;
+    var next = FIRMS[n];
+    fitTo(next);
+    echo.animate([{opacity:1},{opacity:0, offset:.3},{opacity:0, offset:.5},{opacity:1}], {duration:700});
+    text.animate([{opacity:1},{opacity:0}], {duration:200, fill:'forwards'}).onfinish = function(){
+      set(next);
+      text.animate([{opacity:0},{opacity:1}], {duration:240, delay:100, fill:'forwards'});
+    };
+  }, 2600);
+})();
+</script>
+<script src="/assets/motif.js?v=a4381fb7"></script>
+</body>
+</html>

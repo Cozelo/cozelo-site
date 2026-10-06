@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/assets/logo-badge-128.png">
+<link rel="canonical" href="https://cozelo.co/how-we-work/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cozelo">
+<meta property="og:title" content="How we work | Cozelo">
+<meta property="og:description" content="Ten weeks to define Why You Win, how to say it and what to fix first, then services that build it into your operating model and make it ready for AI.">
+<meta property="og:url" content="https://cozelo.co/how-we-work/">
+<meta property="og:image" content="https://cozelo.co/assets/og-card-v4.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How we work | Cozelo">
+<meta name="twitter:description" content="Ten weeks to define Why You Win, how to say it and what to fix first, then services that build it into your operating model and make it ready for AI.">
+<meta name="twitter:image" content="https://cozelo.co/assets/og-card-v4.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" href="/assets/logo-badge-128.png">
+<title>How we work | Cozelo</title>
+<meta name="description" content="Ten weeks to define Why You Win, how to say it and what to fix first, then services that build it into your operating model and make it ready for AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=f940ee57">
+<style>
+/* ---------- How we work (29 Sep) ---------- */
+/* Ten weeks (navy) */
+#engagement h2{max-width:22ch}
+@media(max-width:600px){.br-wide{display:none}}
+.phases{display:grid; grid-template-columns:10fr 3fr; margin-top:clamp(2.5rem,6vw,4.5rem)}
+.ruler{display:grid; grid-template-columns:repeat(10,1fr); border-bottom:2px solid var(--gold); padding-bottom:.625rem}
+.ruler span{font-family:var(--serif); font-size:.8125rem; color:#9fb0c6; padding-left:.5rem; border-left:1px solid rgba(255,255,255,.22); white-space:nowrap}
+.ruler > span:first-child{border-left:2px solid var(--gold)}
+.ruler--after{grid-template-columns:1fr; border-bottom:2px dashed rgba(255,255,255,.35)}
+.ruler--after span{border-left:2px dashed rgba(255,255,255,.35)}
+.phase{padding:1.375rem 2rem 0 .625rem}
+.phase h3{font-size:1.375rem}
+.phase__sub{margin:.25rem 0 0; font-family:var(--serif); font-size:.9375rem; color:#9fb0c6}
+/* Phase-one deliverables as a ruled list: name on the left, what it is on the right. */
+.outs{list-style:none; margin:1.625rem 0 0; padding:0; border-top:1px solid rgba(255,255,255,.22)}
+.outs li{display:grid; grid-template-columns:minmax(10rem,.8fr) minmax(0,1.6fr); gap:1.5rem; align-items:baseline;
+  padding:1rem 0; border-bottom:1px solid rgba(255,255,255,.22)}
+.outs b{display:block; font-family:var(--sans); font-size:1.0625rem; line-height:1.3}
+.outs p{margin:0; font-family:var(--serif); font-size:1rem; line-height:1.5; color:var(--on-dark-soft)}
+.phase__body{margin:.5rem 0 0; font-family:var(--serif); font-size:.97rem; line-height:1.5; color:var(--on-dark-soft)}
+.phase__body{margin-top:1.625rem}
+.da{display:grid; grid-template-columns:5fr 7fr; gap:clamp(1.5rem,5vw,3.5rem); margin-top:clamp(2.5rem,6vw,4rem);
+  padding-top:2.5rem; border-top:1px solid rgba(255,255,255,.22)}
+.da h3{font-size:clamp(1.5rem,2.4vw,1.875rem); line-height:1.12; letter-spacing:-.02em; max-width:16ch}
+.da .prose{max-width:none}
+#engagement .textlink{margin-top:2rem}
+@media(max-width:1000px){
+  .phases{grid-template-columns:1fr; gap:2.5rem}
+  .da{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .ruler span{padding-left:.3rem; font-size:.75rem}
+  .wk{display:none}
+  .outs li{grid-template-columns:1fr; gap:.35rem}
+  .phase{padding-right:0}
+}
+
+
+#services h2{max-width:20ch}
+#services .dl__row dt{color:var(--navy)}
+
+/* The same minds, throughout: a gold zig-zag outline across the seam, the full body width, with
+   circles inside its turns (a project with checkpoints and deliverables). The outline draws itself
+   in once, then three gold circles inside its turns pop in.
+   The section divider line is removed behind it. */
+#who-does-the-work{position:relative; border-top:0}
+.jx-through{z-index:2; top:0; transform:translateY(-50%)}
+</style>
+</head>
+<body>
+
+<!-- Mobile navigation. Rendered <=1080px only. -->
+<div class="mnav" id="mnav">
+  <div class="mnav__box">
+    <a class="mnav__brand" href="/" aria-label="Cozelo — home">
+      <img src="/assets/logo-badge-128.png" alt="" width="30" height="30">
+    </a>
+    <button class="mnav__burger" id="mburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">
+      <span></span>
+    </button>
+  </div>
+  <a class="btn btn--primary mnav__cta" href="#lets-talk">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a>
+</div>
+<nav class="mmenu" id="mmenu" aria-label="Primary">
+  <a class="mlink" href="/">Home</a>
+  <a class="mlink" href="/ai-readiness/">AI readiness</a>
+  <a class="mlink current" href="/how-we-work/">How we work</a>
+  <a class="mlink" href="/who-we-are/">Who we are</a>
+  <div class="mmenu__foot">
+    <a class="btn btn--primary" href="#lets-talk">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a>
+  </div>
+</nav>
+
+<nav class="rail" id="rail" aria-label="Primary">
+  <div>
+    <a class="brand" href="/">
+      <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo — home" width="93" height="32">
+    </a>
+    <ul class="rail__pages">
+      <li><a class="rail__pg" href="/">Home</a></li>
+      <li><a class="rail__pg" href="/ai-readiness/">AI readiness</a></li>
+      <li><a class="rail__pg current" href="/how-we-work/" aria-current="page">How we work</a>
+        <ul class="rail__toc">
+          <li><a href="#engagement">The first ten weeks</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#who-does-the-work">Who does the work</a></li>
+        </ul>
+      </li>
+      <li><a class="rail__pg" href="/who-we-are/">Who we are</a></li>
+    </ul>
+  </div>
+  <a class="btn btn--primary" href="#lets-talk">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a>
+</nav>
+
+<header class="band band--light phero" id="top">
+  <div class="hero__inner">
+    <h1>Strategy and action<br class="br-wide"> in the same hands.</h1>
+    <p class="lede">The people who define why you win and build your context base are the people who build it into your operating model. There is no handoff, because the handoff is where it always breaks.</p>
+  </div>
+</header>
+
+<section class="band band--dark" id="engagement">
+  <div class="inner">
+    <h2>In ten weeks, build the foundation.</h2>
+    <div class="phases">
+      <div>
+        <div class="ruler" aria-hidden="true"><span><span class="wk">Week </span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+        <div class="phase">
+          <h3>Phase one</h3>
+          <p class="phase__sub">You receive</p>
+          <ul class="outs">
+            <li><b>Why you win</b><p>One answer, built from your buyers, your competitors and your won and lost deals.</p></li>
+            <li><b>Practical messaging framework</b><p>Why you win by buyer, by offering, and against named competitors.</p></li>
+            <li><b>Evaluation of your op model</b><p>Every part of your go-to-market operating model and every connection between them.</p></li>
+            <li><b>AI context foundation</b><p>Your firm's essential go-to-market context, captured once and ready for the generative and agentic AI tools your team uses.</p></li>
+            <li><b>Priorities for further action</b><p>Where to act next, in what order, and who owns it.</p></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="ruler ruler--after" aria-hidden="true"><span>Week 11 on</span></div>
+        <div class="phase phase--after">
+          <h3>Phase two</h3>
+          <p class="phase__sub">Optional retainer</p>
+          <p class="phase__body">We build the answer into each part of the model and keep it current.</p>
+        </div>
+      </div>
+    </div>
+    <div class="da">
+      <h3>A context tool without curated context is an engine without fuel.</h3>
+      <div class="prose">
+        <p>Context has become one of the most talked-about words in AI, and context platforms, connectors and retrieval tools are multiplying. Each one can only work with what it&rsquo;s given. Point a model at an uncurated shared drive and it finds the outdated deck, the abandoned pricing sheet and three competing versions of your positioning, then treats each one as fact. Every request spends tokens sorting through the noise, and the answers drift from what your best people would say.</p>
+        <p>Phase one builds the fuel: a curated Digital Analogue&trade; of your go-to-market, holding the answers your team has agreed on, organized for the AI tools you already use.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--light" id="services">
+  <div class="inner lay-stack">
+    <div class="head">
+      <h2>Service options that flex to meet your needs.</h2>
+    </div>
+    <dl class="dl">
+      <div class="dl__row">
+        <dt>Why You Win &amp; messaging matrix</dt>
+        <dd>Define why buyers choose you and turn it into differentiated messaging your entire commercial team can use.</dd>
+      </div>
+      <div class="dl__row">
+        <dt>CRM &amp; lead management optimization</dt>
+        <dd>Build a better system for capturing, managing, nurturing and converting opportunities across the customer journey.</dd>
+      </div>
+      <div class="dl__row">
+        <dt>Custom go-to-market tech stack</dt>
+        <dd>Build a custom, AI and automation enabled revenue platform around how your business actually sells, serves customers and grows accounts.</dd>
+      </div>
+      <div class="dl__row">
+        <dt>AI readiness &amp; context architecture</dt>
+        <dd>Gather the information that only lives in your best employees&rsquo; heads and structure the enterprise knowledge, data and workflows AI needs to understand your team and move past generic outputs.</dd>
+      </div>
+      <div class="dl__row">
+        <dt>Partner engine</dt>
+        <dd>Build the strategy, operating model and relationship infrastructure to turn partnerships into a repeatable source of growth.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="band band--light" id="who-does-the-work">
+  <div class="jx jx-body jx-through" data-motif="junctions" data-surface="white" data-seed="13" data-draw="scroll" data-pop
+       data-opts='{"tile":28,"fit":true,"rows":6,"shapes":[{"type":"chain","points":[[2,2],[0.25,4],[0.5,2],[0.75,4],[-3,2]]},{"type":"rect","x":[0.25,-2],"y":3,"w":4,"h":2,"holes":1},{"type":"rect","x":[0.5,-2],"y":1,"w":4,"h":2,"holes":1},{"type":"rect","x":[0.75,-2],"y":3,"w":4,"h":2,"holes":1}]}'
+       data-opts-narrow='{"tile":22,"rows":6}'></div>
+  <div class="inner lay-split">
+    <div>
+      <h2>The same minds, throughout.</h2>
+    </div>
+    <div class="prose">
+      <p>The people who define why you win are the people who build it into how you work and the context base that makes AI a true game changer &mdash; and they stay for the retainer. The framework only holds if strategy and build stay together, because every gap in a go-to-market starts at a handoff.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band band--shade" id="lets-talk">
+  <div class="jx jx-close" data-motif="junctions" data-surface="shade" data-seed="41"
+       data-opts='{"tile":36,"anchorY":"bottom","shapes":[{"type":"chain","points":[[3,5],[3,1]]},{"type":"dot","x":6,"y":2}]}'
+       data-opts-narrow='{"tile":30}'></div>
+  <div class="inner close-wrap">
+    <div>
+      <h2 class="close__h">Where can AI make a difference in your <span class="nb">go-to-market</span>?</h2>
+      <p class="lede close__lede">Let&rsquo;s talk about what you&rsquo;re trying to improve, what&rsquo;s getting in the way, and where to start.</p>
+    </div>
+    <form class="cform" name="contact" method="POST" action="/thanks/"
+          data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="cform__hp"><label>Leave this empty <input name="bot-field"></label></p>
+      <div class="cform__grid">
+        <div>
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="full">
+          <label for="f-company">Company</label>
+          <input id="f-company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="full">
+          <label for="f-msg">What do you want AI to do for your go-to-market?</label>
+          <textarea id="f-msg" name="message" required></textarea>
+        </div>
+      </div>
+      <button class="btn btn--primary" type="submit">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></button>
+      <p class="cform__note">We use your information only to reply to your message. We won&rsquo;t automatically add you to our mailing list or share your responses with any third parties.</p>
+    </form>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer__in">
+    <div>
+      <a class="brand" href="/">
+        <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo — home" width="93" height="32">
+      </a>
+      <small>Cozelo connects why you win with how you operate. Then we build the business context AI needs to understand your value and put it to work.</small>
+      <p class="footer__social"><a href="https://www.linkedin.com/company/cozelo-co/home/" target="_blank" rel="noopener" aria-label="Cozelo on LinkedIn"><img src="/assets/linkedin-in-blue.png" alt="LinkedIn" width="33" height="28" loading="lazy"></a></p>
+    </div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/ai-readiness/">AI readiness</a></li>
+      <li><a href="/how-we-work/">How we work</a></li>
+      <li><a href="/who-we-are/">Who we are</a></li>
+    </ul>
+    <p class="footer__legal">&copy; 2026 Cozelo LLC</p>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=21677f43"></script>
+<script src="/assets/motif.js?v=a4381fb7"></script>
+</body>
+</html>

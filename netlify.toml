@@ -1,0 +1,43 @@
+# Cozelo — Netlify configuration
+# Static site: no build step, no dependencies. Netlify publishes this folder as-is.
+
+[build]
+  publish = "."
+  command = ""
+
+# Repo housekeeping (task notes, build scripts) is not part of the site.
+[[redirects]]
+  from = "/tasks/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/scripts/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# 29 Sep: AI-readiness direction. Why you win became AI readiness; Industries was retired.
+[[redirects]]
+  from = "/why-you-win/*"
+  to = "/ai-readiness/"
+  status = 301
+
+[[redirects]]
+  from = "/industries/*"
+  to = "/"
+  status = 301
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"

@@ -1,0 +1,378 @@
+/* Cozelo site: shared styles. Page-specific rules stay inline in each page, after this file. */
+:root{
+  --bone:#f7f5f1; --bone-shade:#eeebe4; --white:#fff;
+  --gold:#c9a245; --gold-ink:#7a6228; --navy:#1b2f4b;
+  --on-dark:#fff; --on-dark-soft:#b4b4b4; --on-navy-soft:#c3cad4; --on-light:#1a1a1a; --on-light-soft:#565656;
+  --rule-dark:rgba(255,255,255,.16); --rule-light:rgba(26,26,26,.14);
+  --sans:"Schibsted Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --serif:"Source Serif 4","Iowan Old Style",Charter,Cambria,Georgia,serif;
+  --gutter:clamp(1.5rem,5.5vw,6rem); --measure:36rem; --max:84rem; --rail-w:14.5rem;
+  --ease:cubic-bezier(.2,.7,.2,1); --dur-fast:180ms; --dur-band:520ms;
+  --btn-radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--white); color:var(--on-light);
+  font-family:var(--sans); font-size:1.125rem; line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- bands ---------- */
+/* Section spacing: about twice the H2 size on desktop (~6rem at 1440), easing to 3.5rem on phones. */
+.band{padding:clamp(3.5rem,calc(2rem + 4.5vw),6.5rem) var(--gutter); position:relative}
+.band--dark{background:var(--navy); color:var(--on-dark); --on-dark-soft:var(--on-navy-soft)}
+.band--dark + .band--dark{border-top:1px solid var(--rule-dark)}
+.band--light{background:var(--white); color:var(--on-light)}
+.band--light + .band--light{border-top:1px solid var(--rule-light)}
+.band--shade{background:var(--bone-shade); color:var(--on-light)}
+.inner{max-width:var(--max); margin:0 auto}
+section[id],header[id]{scroll-margin-top:5.5rem}
+
+/* ---------- type ---------- */
+/* Balanced line lengths in headings, so a no-break phrase never leaves a ragged line. */
+h1,h2,h3{font-family:var(--sans); margin:0; color:var(--navy); text-wrap:balance}
+.band--dark h1,.band--dark h2,.band--dark h3{color:var(--on-dark)}
+h1,.h-display{font-size:clamp(2.75rem,6.2vw,5rem); font-weight:800; line-height:1.0; letter-spacing:-.032em}
+h2{font-size:clamp(2rem,3.4vw,2.9rem); font-weight:700; line-height:1.06; letter-spacing:-.026em; max-width:24ch}
+/* Keep "go-to-market" on one line in headings (from 360px up). */
+@media(min-width:360px){.nb{white-space:nowrap}}
+/* Second sentence of the home H1 in Cozelo gold (Teague and Chris, 5 Oct). */
+.h1-accent{color:var(--gold)}
+h3{font-size:clamp(1.2rem,1.6vw,1.45rem); font-weight:700; line-height:1.15; letter-spacing:-.02em}
+.lede{font-family:var(--serif); font-size:1.26rem; line-height:1.45; color:var(--on-dark-soft); max-width:38rem}
+.band--light .lede,.band--shade .lede{color:var(--on-light-soft)}
+.prose{font-family:var(--serif); font-size:1.125rem; line-height:1.6; max-width:var(--measure); color:var(--on-dark-soft)}
+.band--light .prose,.band--shade .prose{color:var(--on-light)}
+.prose p{margin:0 0 1.15em}
+.prose p:last-child{margin-bottom:0}
+.prose .call{
+  font-family:var(--sans); font-weight:700; font-size:1.3rem; line-height:1.25; letter-spacing:-.02em;
+  color:var(--navy); border-left:3px solid var(--gold-ink); padding-left:1.05rem; margin:1.9rem 0;
+}
+.band--dark .prose .call{color:var(--on-dark)}
+
+/* ---------- section layouts ---------- */
+.lay-split{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:clamp(2rem,6vw,5.5rem); align-items:start}
+.lay-stack > .head{margin-bottom:clamp(1.8rem,3.5vw,2.8rem)}
+@media(max-width:900px){.lay-split{grid-template-columns:1fr; gap:2rem}}
+
+.brand{display:flex; align-items:center; gap:.65rem; text-decoration:none; color:inherit}
+/* Horizontal wordmark, supplied 12 Aug. Cropped to its bounding box and
+   recoloured to --navy. See the design brief for the four defects logged. */
+.wordmark-img{height:32px; width:auto; display:block}
+
+/* ---------- left rail: the desktop nav, present from load (>1080px) ----------
+   Page links, with the current page's sections listed under it and tracked on
+   scroll by site.js (gold marker + aria-current). Below 1080px the mobile
+   pills take over and the rail is not rendered. */
+.rail{
+  position:fixed; top:0; left:0; bottom:0; width:var(--rail-w); z-index:60;
+  display:none; flex-direction:column; justify-content:space-between; gap:2rem;
+  padding:2rem 1.75rem; overflow-y:auto;
+  background:var(--bone); color:var(--on-light); border-right:1px solid var(--rule-light);
+}
+.rail .wordmark-img{height:40px}
+.rail__pages{list-style:none; margin:3.5rem 0 0; padding:0}
+.rail__pg{display:block; padding:.45rem 0; color:var(--on-light-soft); text-decoration:none;
+  font-size:1rem; font-weight:700; letter-spacing:-.01em; line-height:1.25}
+.rail__pg:hover,.rail__pg.current{color:var(--navy)}
+.rail__toc{list-style:none; margin:.4rem 0 .9rem; padding:0 0 0 .875rem; border-left:2px solid var(--rule-light)}
+.rail__toc a{display:block; font-family:var(--serif); position:relative; padding:.375rem 0; color:var(--on-light-soft); text-decoration:none;
+  font-size:.906rem; line-height:1.3}
+.rail__toc a:hover{color:var(--navy)}
+.rail__toc a[aria-current]{color:var(--navy); font-weight:600}
+.rail__toc a[aria-current]::before{content:""; position:absolute; left:calc(-.875rem - 2px); top:.25rem; bottom:.25rem; width:2px; background:var(--gold)}
+/* 175px of usable width here, so the swap needs a tighter pair. */
+.rail .btn{--btn-inset:.9rem; --btn-inset-far:2.9rem; width:100%; justify-content:center; flex:0 0 auto}
+@media(min-width:1081px){
+  .rail{display:flex}
+  body{padding-left:var(--rail-w)}
+  section[id],header[id]{scroll-margin-top:1.5rem}
+}
+
+/* ---------- buttons ---------- */
+/* Asymmetric padding reserves the arrow's slot. Left + right stay constant
+   across the swap, so the button never changes width while the label slides. */
+.btn{
+  position:relative; overflow:hidden;
+  display:inline-flex; align-items:center; font-family:var(--sans); font-size:1rem; font-weight:700;
+  letter-spacing:-.015em; text-transform:none; text-decoration:none; line-height:1.2;
+  --btn-inset:1.9rem;      /* arrow side */
+  --btn-inset-far:3.9rem;  /* label side; the two swap on hover */
+  --btn-hide:-1.7em;       /* > the 1.5em arrow, so it clears the edge fully */
+  white-space:nowrap;
+  padding:.95rem var(--btn-inset-far) .95rem var(--btn-inset); border:2px solid transparent;
+  border-radius:var(--btn-radius); cursor:pointer;
+  transition:background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
+             border-color var(--dur-fast) var(--ease), padding .35s ease-in-out;
+}
+.btn--primary{background:var(--gold); color:var(--navy); border-color:var(--gold)}
+.btn--primary:hover{background:#d9b45c; border-color:#d9b45c; color:var(--navy)}
+/* Directional affordance on every button. Decorative, so hidden from assistive
+   tech. Drawn, not typeset — the U+2192 glyph renders small, low and thin.
+   Icon box = 1.5x font size, centred on the text box, measured off bcg.com. */
+.btn__arrow{
+  position:absolute; right:var(--btn-inset); top:50%;
+  width:1.5em; height:1.5em; margin-top:-.75em;
+  transition:transform .18s cubic-bezier(.2,.7,.2,1);
+}
+
+/* PRIMARY HOVER — the arrow cycle, reproduced from bcg.com. The icon is
+   absolutely positioned and the animation swaps which edge it is anchored to:
+   0-50% animates `right` past the edge; at 52% the anchor flips to `left`,
+   still outside; 52-100% brings it in from the left. The discontinuity is the
+   point — the arrow exits one side and re-enters the other, clipped throughout
+   by overflow:hidden. The label slides the other way on a matching padding
+   transition. Reserved for primary; secondary CTAs are text links. */
+@keyframes btn-arrow-cycle{
+  0%  {right:var(--btn-inset)}
+  50% {right:var(--btn-hide)}
+  52% {left:var(--btn-hide)}
+  100%{left:var(--btn-inset)}
+}
+@keyframes btn-arrow-reset{
+  0%  {left:var(--btn-inset)}
+  50% {left:var(--btn-hide)}
+  52% {right:var(--btn-hide)}
+  100%{right:var(--btn-inset)}
+}
+.btn--primary:hover, .btn--primary:focus-visible{
+  padding:.95rem var(--btn-inset) .95rem var(--btn-inset-far);
+}
+.btn--primary:hover .btn__arrow, .btn--primary:focus-visible .btn__arrow{
+  animation:btn-arrow-cycle .35s ease-in-out forwards;
+}
+/* Applied by script on mouseleave/blur only, so no arrow animates on load. */
+.btn--primary.is-resetting .btn__arrow{animation:btn-arrow-reset .35s ease-in-out forwards}
+@media(prefers-reduced-motion:reduce){
+  .btn{transition:background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease)}
+  .btn--primary:hover, .btn--primary:focus-visible{padding:.95rem var(--btn-inset-far) .95rem var(--btn-inset)}
+  .btn--primary:hover .btn__arrow, .btn--primary:focus-visible .btn__arrow,
+  .btn--primary.is-resetting .btn__arrow{animation:none}
+}
+/* Secondary CTA: an underlined text link. Only primary CTAs get the button. */
+.textlink{display:inline-block; font-family:var(--sans); font-size:1.0625rem; font-weight:700; line-height:1.3;
+  color:var(--navy); text-decoration:underline; text-decoration-thickness:1.5px; text-underline-offset:5px}
+.textlink:hover{text-decoration-thickness:2.5px}
+.band--dark .textlink{color:var(--on-dark)}
+.btnrow{display:flex; flex-wrap:wrap; gap:.9rem; margin-top:2.4rem}
+
+/* ---------- contact form. Netlify Forms: static markup is the whole
+   backend — no JS, no endpoint to stand up. Lives inside each page's own
+   closing band, under that page's own approved eyebrow/H2/lede. ---------- */
+.cform{margin-top:2.4rem; max-width:44rem}
+.cform__grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(16rem,100%),1fr)); gap:1rem}
+.cform label{display:block; font-family:var(--sans); font-weight:700;
+  font-size:.875rem; color:var(--on-light-soft); margin:0 0 .45rem}
+.band--dark .cform label{color:var(--on-dark-soft)}
+.cform input,.cform textarea{
+  width:100%; font-family:var(--serif); font-size:1rem; line-height:1.5; color:var(--on-light);
+  background:var(--white); border:2px solid rgba(26,26,26,.18); border-radius:var(--btn-radius);
+  padding:.8rem .9rem; transition:border-color var(--dur-fast) var(--ease);
+}
+.cform input:focus,.cform textarea:focus{outline:none; border-color:var(--navy); box-shadow:0 0 0 1px var(--navy)}
+.cform textarea{min-height:8rem; resize:vertical}
+.cform .full{grid-column:1/-1}
+.cform button{margin-top:1.2rem}
+.cform__hp{position:absolute; left:-9999px}
+
+/* ---------- page hero inner (interior pages) ---------- */
+.hero__inner{position:relative; z-index:2; max-width:var(--max); margin:0 auto; width:100%}
+
+
+
+/* ---------- summary → deep page ---------- */
+.deeper{margin-top:clamp(2.5rem,5vw,3.6rem); padding-top:1.6rem; border-top:1px solid var(--rule-dark);
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.4rem}
+.band--light .deeper{border-top-color:var(--rule-light)}
+.deeper p{font-family:var(--serif); font-size:1.05rem; line-height:1.5; margin:0; max-width:38rem; color:var(--on-dark-soft)}
+.band--light .deeper p{color:var(--on-light-soft)}
+@media(max-width:640px){.deeper{flex-direction:column; align-items:flex-start}}
+
+/* ---------- footer ---------- */
+.footer{padding:3rem var(--gutter) 3.5rem; border-top:1px solid var(--rule-light); background:var(--bone-shade); color:var(--on-light)}
+.footer__in{max-width:var(--max); margin:0 auto; display:flex; flex-wrap:wrap; gap:2rem; justify-content:space-between; align-items:flex-start}
+.footer small{display:block; font-family:var(--serif); font-size:.95rem; color:var(--on-light-soft); max-width:26rem; margin-top:.8rem}
+.footer ul{display:flex; flex-wrap:wrap; gap:1.4rem; list-style:none; margin:0; padding:0}
+.footer a{color:var(--on-light-soft); text-decoration:none; font-size:.906rem; font-weight:700}
+.footer a:hover{color:var(--gold-ink)}
+
+/* ============================================================
+   MOBILE NAVIGATION — floating pills, scroll-aware. <=1080px.
+   ============================================================ */
+.mnav{display:none; color:var(--on-dark)} /* pinned: it inherited this from the old dark body */
+/* A component whose entire style block lives inside a media query must be
+   switched off in the base cascade — unstyled is the default state, not
+   hidden. */
+.mmenu{display:none}
+@media(max-width:1080px){
+  .mnav{
+    position:fixed; top:12px; left:12px; right:12px; z-index:70;
+    display:flex; align-items:flex-start; justify-content:space-between; gap:.5rem;
+    transition:transform .32s var(--ease);
+  }
+  .mnav.up{transform:translateY(calc(-100% - 16px))}
+  .mnav__box{
+    display:flex; align-items:center; gap:.5rem; background:var(--white);
+    border-radius:var(--btn-radius); padding:.3rem .3rem .3rem .75rem;
+    box-shadow:0 1px 4px rgba(26,26,26,.16);
+  }
+  .mnav__brand{display:block; line-height:0; text-decoration:none}
+  .mnav__brand img{width:30px; height:30px; display:block}
+  .mnav__burger{
+    width:44px; height:44px; flex:0 0 44px; display:grid; place-items:center;
+    border:0; padding:0; cursor:pointer; border-radius:11px; background:var(--bone-shade);
+  }
+  .mnav__burger span{display:block; width:18px; height:2px; background:var(--on-light); position:relative; transition:.25s var(--ease)}
+  .mnav__burger span::before,.mnav__burger span::after{
+    content:""; position:absolute; left:0; width:18px; height:2px; background:var(--on-light); transition:.25s var(--ease)}
+  .mnav__burger span::before{top:-6px}
+  .mnav__burger span::after{top:6px}
+  .mnav__burger[aria-expanded="true"] span{background:transparent}
+  .mnav__burger[aria-expanded="true"] span::before{top:0; transform:rotate(45deg)}
+  .mnav__burger[aria-expanded="true"] span::after{top:0; transform:rotate(-45deg)}
+  .mnav__cta{
+    padding:.72rem 1.05rem; font-size:.82rem; box-shadow:0 1px 4px rgba(26,26,26,.16);
+    --btn-inset:1.05rem; --btn-inset-far:1.05rem;
+  }
+  .mnav__cta .btn__arrow{position:static; margin:0 0 0 .1rem; width:1.2em; height:1.2em}
+  body.menu-open .mnav__cta{opacity:0; pointer-events:none}
+  body.menu-open .mnav{transform:none}
+  body.menu-open{overflow:hidden}
+
+  .mmenu{
+    position:fixed; inset:0; z-index:65; background:var(--navy); color:#fff;
+    display:flex; flex-direction:column; padding:5.2rem var(--gutter) 2rem;
+    opacity:0; visibility:hidden; transform:translateY(-8px);
+    transition:opacity .26s var(--ease), transform .26s var(--ease), visibility .26s;
+    overflow-y:auto;
+  }
+  .mmenu.on{opacity:1; visibility:visible; transform:none}
+  .mmenu a.mlink{
+    color:#fff; text-decoration:none; font-size:1.6rem; font-weight:800; letter-spacing:-.028em;
+    padding:.68rem 0; border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .mmenu a.mlink.current{color:#d9b45c}
+  .mmenu__foot{margin-top:auto; padding-top:1.5rem}
+  .mmenu__foot .btn{width:100%; justify-content:center}
+  .hero{padding-top:8.5rem}
+}
+@media(max-width:1080px) and (prefers-reduced-motion:reduce){
+  .mnav{transition:none}
+  .mnav.up{transform:none}
+}
+
+/* ---------- reveal: removed sitewide 18 Aug per Teague's instruction —
+   content renders visible on load, no scroll-triggered fade/slide. ---------- */
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+
+/* ============================================================
+   INTERIOR-PAGE PATTERNS — added for the four pages below the
+   homepage. Same tokens, no new colors or type sizes introduced.
+   ============================================================ */
+
+/* Interior hero: same voice as the homepage hero, roughly a third the
+   height. White, with a figure drawn from the page's own content. */
+.phero{min-height:34vh; display:flex; flex-direction:column; justify-content:flex-end;
+  padding-top:9.5rem; padding-bottom:clamp(2.25rem,4vw,3.25rem)}
+.phero h1{max-width:28ch}
+.phero .lede{margin-top:1.5rem; max-width:42rem}
+/* No top bar on desktop any more, so the hero only needs clearance on mobile. */
+@media(min-width:1081px){.phero{padding-top:6.5rem}}
+
+/* Hero figure (Who we are): text left, figure right from 901px; stacked below that.
+   Figures use navy line work and sans labels only. Entrances run once on
+   load and are skipped under reduced motion; the resting state is the
+   finished figure. */
+.phero--fig .hero__inner{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  column-gap:clamp(2.5rem,6vw,6rem); align-items:end}
+.phero--fig .hero__text{min-width:0}
+.hfig{width:100%; max-width:30rem; justify-self:end; font-family:var(--sans); color:var(--navy)}
+.hfig__label{font-size:.875rem; font-weight:700; fill:var(--navy); color:var(--navy)}
+.hfig__soft{font-family:var(--serif); font-size:.875rem; font-weight:400; fill:var(--on-light-soft); color:var(--on-light-soft)}
+@media(max-width:900px){
+  .phero--fig .hero__inner{grid-template-columns:1fr}
+  .hfig{justify-self:start; margin-top:2.5rem; max-width:26rem}
+}
+@keyframes hfig-rise{from{opacity:0; transform:translateY(10px)}to{opacity:1; transform:none}}
+
+/* Definition rows: label left, prose right, hairline between. Collapses to
+   stacked below 760px. The system's densest pattern — used where a page
+   needs to say several distinct things without becoming a card grid. */
+.dl{border-top:1px solid var(--rule-dark); margin-top:clamp(2rem,4vw,3rem)}
+.band--light .dl,.band--shade .dl{border-top-color:var(--rule-light)}
+.dl__row{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(1.5rem,4vw,3rem); padding:clamp(1.5rem,3vw,2.1rem) 0;
+  border-bottom:1px solid var(--rule-dark)}
+.band--light .dl__row,.band--shade .dl__row{border-bottom-color:var(--rule-light)}
+.dl__row dt{font-family:var(--sans); font-weight:700; font-size:1.15rem;
+  letter-spacing:-.02em; margin:0}
+.dl__row dd{font-family:var(--serif); font-size:1.05rem; line-height:1.55;
+  color:var(--on-dark-soft); margin:0}
+.band--light .dl__row dd,.band--shade .dl__row dd{color:var(--on-light-soft)}
+@media(max-width:760px){.dl__row{grid-template-columns:1fr; gap:.6rem}}
+
+
+
+/* Bios: portrait frame at 4:5, name, role, first-person prose. min(20rem,100%)
+   so a single column never overflows a 320px phone. */
+.bios{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(20rem,100%),1fr));
+  gap:clamp(2.5rem,5vw,4rem); margin-top:clamp(2rem,4vw,3rem)}
+.bio__role{font-family:var(--sans); font-size:.95rem; font-weight:700;
+  color:var(--on-dark-soft); margin-top:.2rem; margin-bottom:.9rem}
+.band--light .bio__role,.band--shade .bio__role{color:var(--on-light-soft)}
+
+/* ---------- the go-to-market operating model wheel (home, how-we-work) ---------- */
+.fwv{width:100%; max-width:640px; height:auto; display:block}
+.fwv-navy{fill:var(--navy)}
+.fwv-wedge{fill:var(--bone)}
+.fwv-core{fill:var(--gold)}
+.fwv-label{font-family:var(--sans); font-size:29px; font-weight:700;
+  letter-spacing:-.01em; fill:var(--navy); text-anchor:middle;
+  dominant-baseline:central}
+.fwv-outer-label textPath{font-family:var(--sans); font-size:21px; font-weight:700;
+  letter-spacing:.05em; fill:#fff}
+.fwv-core-label{font-family:var(--sans); font-weight:800; font-size:30px;
+  letter-spacing:-.02em; fill:var(--navy); text-anchor:middle}
+
+/* Visually hidden, still read by screen readers. */
+.sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+
+/* ---------- closing contact section (same on every page) ---------- */
+.close-wrap{display:grid; grid-template-columns:5fr 6fr; gap:clamp(2rem,6vw,5rem); align-items:start}
+.close__h{font-size:clamp(2rem,3.1vw,2.7rem); font-weight:800; letter-spacing:-.03em; line-height:1.05; max-width:19ch}
+.close__lede{margin-top:1.5rem; max-width:28rem}
+.close-wrap .cform{margin-top:0}
+@media(max-width:900px){.close-wrap{grid-template-columns:1fr}}
+
+/* ---------- Junctions motif (drawn by assets/motif.js) ----------
+   Rules: not on every section; each field fades in from behind the copy it sits beside; the gold
+   shape is drawn for the idea next to it; only a single continuous gold line may draw itself in,
+   at most one per page; recurring elements (the closing contact section) use the same design. */
+.jx{display:block; overflow:hidden; pointer-events:none}
+.jx svg{display:block}
+.jx--await .m-main{stroke-dasharray:1; stroke-dashoffset:1}
+.jx--await .m-pop{opacity:0}
+.jx--draw .m-main{stroke-dasharray:1; stroke-dashoffset:1; animation:jx-draw 2.6s var(--ease) forwards}
+.jx--draw .m-pop{opacity:0; transform-box:fill-box; transform-origin:center;
+  animation:jx-pop .45s var(--ease) forwards; animation-delay:calc(2.5s + var(--i, 0) * .2s)}
+@keyframes jx-draw{to{stroke-dashoffset:0}}
+@keyframes jx-pop{from{opacity:0; transform:scale(.4)}to{opacity:1; transform:scale(1)}}
+
+/* Closing contact section, identical on every page: the gold ribbon runs down toward the heading,
+   with a second gold circle beside it (two parties starting a conversation). */
+#lets-talk{padding-top:0}
+.jx-close{height:clamp(120px,11vw,156px); margin:0 calc(-1 * var(--gutter)) clamp(1.75rem,3vw,2.5rem);
+  -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 50%), linear-gradient(90deg, #000 50%, transparent);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(180deg, transparent 0, #000 50%), linear-gradient(90deg, #000 50%, transparent);
+  mask-composite:intersect}
+.cform__note{margin:1rem 0 0; max-width:30rem; font-family:var(--serif); font-size:.875rem; line-height:1.5; color:var(--on-light-soft)}
+
+/* Footer: company LinkedIn, LinkedIn's official blue [in] logo (brand.linkedin.com/in-logo), unaltered. */
+.footer__social{margin-top:1.25rem}
+.footer__social a{display:inline-block; line-height:0; padding:2px}
+.footer__social img{display:block; width:33px; height:28px}
+.footer__legal{flex-basis:100%; margin:0; font-family:var(--serif); font-size:.8125rem; color:var(--on-light-soft)}
+/* Motif fields that span the content width (between the gutters). */
+.jx-body{position:absolute; left:max(var(--gutter), calc((100% - var(--max)) / 2)); right:max(var(--gutter), calc((100% - var(--max)) / 2))}
