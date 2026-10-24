@@ -375,3 +375,19 @@ h3{font-size:clamp(1.2rem,1.6vw,1.45rem); font-weight:700; line-height:1.15; let
 .footer__legal{flex-basis:100%; margin:0; font-family:var(--serif); font-size:.8125rem; color:var(--on-light-soft)}
 /* Motif fields that span the content width (between the gutters). */
 .jx-body{position:absolute; left:max(var(--gutter), calc((100% - var(--max)) / 2)); right:max(var(--gutter), calc((100% - var(--max)) / 2))}
+
+/* ---------- placeholders for content still to come ---------- */
+/* .ph: a labelled box standing in for a screenshot or video. .tbd: an inline note for copy still to confirm. */
+.ph{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem; text-align:center; width:100%;
+  background:var(--bone); border:1px dashed rgba(27,47,75,.35); border-radius:var(--btn-radius); padding:1.25rem}
+.ph b{font-family:var(--sans); font-weight:700; font-size:.9375rem; color:var(--navy)}
+.ph span{font-family:var(--serif); font-size:.875rem; line-height:1.45; color:var(--on-light-soft); max-width:28rem}
+.tbd{display:inline-block; font-family:var(--serif); font-style:italic; font-weight:400; font-size:.875rem; line-height:1.4; letter-spacing:0;
+  color:var(--gold-ink); background:#f6eedb; border-radius:6px; padding:.05rem .4rem; vertical-align:middle}
+
+/* ---------- offers: price line and what's included ---------- */
+.price{margin:0; font-family:var(--serif); font-weight:600; font-size:1.0625rem; line-height:1.45; color:var(--navy)}
+.incl{list-style:none; margin:0; padding:0; border-top:1px solid var(--rule-light)}
+.incl li{font-family:var(--serif); font-size:1rem; line-height:1.45; color:var(--on-light);
+  padding:.6rem 0 .6rem 1.4rem; border-bottom:1px solid var(--rule-light); position:relative}
+.incl li::before{content:""; position:absolute; left:0; top:1.15rem; width:.6rem; height:2px; background:var(--gold)}

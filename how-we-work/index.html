@@ -17,60 +17,44 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Cozelo">
 <meta property="og:title" content="How we work | Cozelo">
-<meta property="og:description" content="Ten weeks to define Why You Win, how to say it and what to fix first, then services that build it into your operating model and make it ready for AI.">
+<meta property="og:description" content="Where to start with Cozelo: a Digital Analogue™ for your firm or for one person, why you win and messaging, or operating model work, all from the same people.">
 <meta property="og:url" content="https://cozelo.co/how-we-work/">
 <meta property="og:image" content="https://cozelo.co/assets/og-card-v4.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How we work | Cozelo">
-<meta name="twitter:description" content="Ten weeks to define Why You Win, how to say it and what to fix first, then services that build it into your operating model and make it ready for AI.">
+<meta name="twitter:description" content="Where to start with Cozelo: a Digital Analogue™ for your firm or for one person, why you win and messaging, or operating model work, all from the same people.">
 <meta name="twitter:image" content="https://cozelo.co/assets/og-card-v4.png">
 <meta name="theme-color" content="#ffffff">
 <link rel="apple-touch-icon" href="/assets/logo-badge-128.png">
 <title>How we work | Cozelo</title>
-<meta name="description" content="Ten weeks to define Why You Win, how to say it and what to fix first, then services that build it into your operating model and make it ready for AI.">
+<meta name="description" content="Where to start with Cozelo: a Digital Analogue™ for your firm or for one person, why you win and messaging, or operating model work, all from the same people.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=3b30c977">
+<link rel="stylesheet" href="/assets/site.css?v=af11cdc1">
 <style>
 /* ---------- How we work ---------- */
-/* Ten weeks (navy) */
-#engagement h2{max-width:22ch}
 @media(max-width:600px){.br-wide{display:none}}
-.phases{display:grid; grid-template-columns:10fr 3fr; margin-top:clamp(2.5rem,6vw,4.5rem)}
-.ruler{display:grid; grid-template-columns:repeat(10,1fr); border-bottom:2px solid var(--gold); padding-bottom:.625rem}
-.ruler span{font-family:var(--serif); font-size:.8125rem; color:#9fb0c6; padding-left:.5rem; border-left:1px solid rgba(255,255,255,.22); white-space:nowrap}
-.ruler > span:first-child{border-left:2px solid var(--gold)}
-.ruler--after{grid-template-columns:1fr; border-bottom:2px dashed rgba(255,255,255,.35)}
-.ruler--after span{border-left:2px dashed rgba(255,255,255,.35)}
-.phase{padding:1.375rem 2rem 0 .625rem}
-.phase h3{font-size:1.375rem}
-.phase__sub{margin:.25rem 0 0; font-family:var(--serif); font-size:.9375rem; color:#9fb0c6}
-/* Phase-one deliverables as a ruled list: name on the left, what it is on the right. */
-.outs{list-style:none; margin:1.625rem 0 0; padding:0; border-top:1px solid rgba(255,255,255,.22)}
-.outs li{display:grid; grid-template-columns:minmax(10rem,.8fr) minmax(0,1.6fr); gap:1.5rem; align-items:baseline;
-  padding:1rem 0; border-bottom:1px solid rgba(255,255,255,.22)}
-.outs b{display:block; font-family:var(--sans); font-size:1.0625rem; line-height:1.3}
-.outs p{margin:0; font-family:var(--serif); font-size:1rem; line-height:1.5; color:var(--on-dark-soft)}
-.phase__body{margin:.5rem 0 0; font-family:var(--serif); font-size:.97rem; line-height:1.5; color:var(--on-dark-soft)}
-.phase__body{margin-top:1.625rem}
+/* How it connects (navy): three routes, then the context argument */
+.routes{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(1.5rem,3vw,2.5rem); margin-top:clamp(2.25rem,4.5vw,3.5rem)}
+.route{border-top:2px solid var(--gold); padding-top:1.25rem}
+.route h3{font-size:clamp(1.25rem,1.7vw,1.4rem); line-height:1.2}
+.route p{margin:.875rem 0 0; font-family:var(--serif); font-size:1.0625rem; line-height:1.55; color:var(--on-dark-soft)}
+.plan-note{margin:clamp(2rem,4vw,2.75rem) 0 0; max-width:44rem; font-family:var(--serif); font-size:1.05rem; line-height:1.55; color:var(--on-dark-soft)}
 .da{display:grid; grid-template-columns:5fr 7fr; gap:clamp(1.5rem,5vw,3.5rem); margin-top:clamp(2.5rem,6vw,4rem);
   padding-top:2.5rem; border-top:1px solid rgba(255,255,255,.22)}
 .da h3{font-size:clamp(1.5rem,2.4vw,1.875rem); line-height:1.12; letter-spacing:-.02em; max-width:16ch}
 .da .prose{max-width:none}
-#engagement .textlink{margin-top:2rem}
-@media(max-width:1000px){
-  .phases{grid-template-columns:1fr; gap:2.5rem}
-  .da{grid-template-columns:1fr}
-}
-@media(max-width:560px){
-  .ruler span{padding-left:.3rem; font-size:.75rem}
-  .wk{display:none}
-  .outs li{grid-template-columns:1fr; gap:.35rem}
-  .phase{padding-right:0}
-}
+@media(max-width:1000px){.routes,.da{grid-template-columns:1fr}}
+
+/* One person: summary left, what's included right */
+#personal .lay-split .price{margin-top:1.25rem}
+#personal .incl{margin-top:1.5rem}
+#personal .textlink{margin-top:1.75rem}
+.opt .incl{margin-top:.25rem}
+.opt .textlink{justify-self:start; margin-top:.25rem}
 
 
 
@@ -165,7 +149,7 @@
 <!-- Mobile navigation. Rendered <=1080px only. -->
 <div class="mnav" id="mnav">
   <div class="mnav__box">
-    <a class="mnav__brand" href="/" aria-label="Cozelo — home">
+    <a class="mnav__brand" href="/" aria-label="Cozelo home">
       <img src="/assets/logo-badge-128.png" alt="" width="30" height="30">
     </a>
     <button class="mnav__burger" id="mburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">
@@ -176,6 +160,7 @@
 </div>
 <nav class="mmenu" id="mmenu" aria-label="Primary">
   <a class="mlink" href="/">Home</a>
+  <a class="mlink" href="/digital-analogue/">Digital Analogue</a>
   <a class="mlink" href="/ai-readiness/">AI readiness</a>
   <a class="mlink current" href="/how-we-work/">How we work</a>
   <a class="mlink" href="/who-we-are/">Who we are</a>
@@ -187,17 +172,19 @@
 <nav class="rail" id="rail" aria-label="Primary">
   <div>
     <a class="brand" href="/">
-      <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo — home" width="93" height="32">
+      <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo home" width="93" height="32">
     </a>
     <ul class="rail__pages">
       <li><a class="rail__pg" href="/">Home</a></li>
+      <li><a class="rail__pg" href="/digital-analogue/">Digital Analogue</a></li>
       <li><a class="rail__pg" href="/ai-readiness/">AI readiness</a></li>
       <li><a class="rail__pg current" href="/how-we-work/" aria-current="page">How we work</a>
         <ul class="rail__toc">
           <li><a href="#maturity"><span class="nb">Go-to-market</span> maturity</a></li>
-          <li><a href="#support">Tailored support</a></li>
+          <li><a href="#start">Where to start</a></li>
           <li><a href="#who-does-the-work">Who does the work</a></li>
-          <li><a href="#engagement">The first ten weeks</a></li>
+          <li><a href="#personal">One person</a></li>
+          <li><a href="#connects">How it connects</a></li>
         </ul>
       </li>
       <li><a class="rail__pg" href="/who-we-are/">Who we are</a></li>
@@ -241,47 +228,51 @@
   </div>
 </section>
 
-<section class="band band--light" id="support" aria-labelledby="support-h">
+<section class="band band--light" id="start" aria-labelledby="start-h">
   <div class="inner">
     <div class="ways-head">
-      <h2 id="support-h"><span class="nb">Go-to-market</span> support tailored to your needs</h2>
+      <h2 id="start-h">Three places to start</h2>
       <div class="prose">
-        <p>Whether you want to re-establish your foundational differentiation, need help targeted at a specific element of your <span class="nb">go-to-market</span> operating model, or are ready for a strategic implementation of AI, we’re ready to discuss your situation and focus where change is most needed.</p>
+        <p>The Digital Analogue&trade; leads for firms that have put AI in place. When the sales problem comes first, or a system is holding your team back, we start there and build toward it.</p>
       </div>
     </div>
     <div class="opts">
       <article class="opt">
         <div class="opt__head">
-          <h3>Why you win</h3>
-          <p class="opt__q">“We need to define what wins new business”</p>
-          <p class="opt__q">“Sales and marketing are delivering distinct messages”</p>
+          <h3>Digital Analogue&trade;</h3>
+          <p class="opt__q">Your team has AI tools and needs results to show.</p>
+          <p class="opt__q">Each person&rsquo;s best AI results stay with that person.</p>
         </div>
         <div class="opt__body">
-          <p>Ten weeks to define why you win, build messaging that carries it, and use it to start your AI Digital Analogue&trade; context base.</p>
-          <p>Defining why you win is invaluable for new and mature teams, and it sits at the core of every successful <span class="nb">go-to-market</span> operating model.</p>
+          <p>Build the business context every AI tool your team uses reads first, with the instructions for using it well. There are three ways to get one:</p>
+          <ul class="incl">
+            <li>Personal Digital Analogue&trade;, $5,000, for one person</li>
+            <li>Built from your materials, $20,000, starting with a short review of what you have</li>
+            <li>Full context definition and build, $45,000, with why you win defined first</li>
+          </ul>
+          <a class="textlink" href="/digital-analogue/#get-one">Compare the three ways</a>
         </div>
       </article>
       <article class="opt">
         <div class="opt__head">
-          <h3>Targeted sales-marketing help</h3>
-          <p class="opt__q">“The lead handoff from marketing to sales is broken”</p>
-          <p class="opt__q">“Our CRM isn’t helping us win new business”</p>
+          <h3>Why you win and messaging</h3>
+          <p class="opt__q">What used to win business has stopped working.</p>
+          <p class="opt__q">Sales and marketing are delivering distinct messages.</p>
         </div>
         <div class="opt__body">
-          <p>Pick the area of your operating model that needs work today. We start from where you are and build to connect with what you already have.</p>
-          <p>Spanning the full breadth of the operating model, we can refine your <span class="nb">go-to-market</span> motions or the processes and technology that hold them together.</p>
+          <p>Define why buyers choose you, build messaging that carries it, and say it the same way everywhere.</p>
+          <p>Defining why you win is invaluable for new and mature teams, and it sits at the core of every successful <span class="nb">go-to-market</span> operating model. It&rsquo;s the first part of the full context definition and build, and it&rsquo;s available on its own. Reach out to discuss.</p>
         </div>
       </article>
       <article class="opt">
         <div class="opt__head">
-          <h3>AI implementation</h3>
-          <p class="opt__q">“Our lean team needs AI but we don’t know where to start”</p>
-          <p class="opt__q">“We’re all using AI but the benefits aren’t showing”</p>
+          <h3>Operating model work <span class="tbd">[confirm label]</span></h3>
+          <p class="opt__q">The lead handoff from marketing to sales is broken.</p>
+          <p class="opt__q">Your CRM isn&rsquo;t helping you win new business.</p>
         </div>
         <div class="opt__body">
-          <p>Build your enterprise Digital Analogue&trade; context base: a singular source of all the <span class="nb">go-to-market</span> context that your team needs for effective AI agents and work.</p>
-          <p>With it in place, every AI tool and agent starts from the same complete understanding of your business, so its work sounds like your best people from the first draft.</p>
-          <p>The scale of this project is determined by how much of the internal context is already captured in materials.</p>
+          <p>Pick the area of your operating model that needs work today: CRM and lead management, tech stack and automation, or partner programs. We start from where you are and build to connect with what you already have, including your Digital Analogue&trade;.</p>
+          <p>Each project is scoped to the work. Reach out to discuss.</p>
         </div>
       </article>
     </div>
@@ -297,43 +288,56 @@
       <h2>The same minds, throughout.</h2>
     </div>
     <div class="prose">
-      <p>The people who define why you win are the people who build it into how you work and the context base that makes AI a true game changer &mdash; and they stay for the retainer. The framework only holds if strategy and build stay together, because every gap in a go-to-market starts at a handoff.</p>
+      <p>The people who define why you win are the people who build it into how you work and into the context base your AI tools read. They stay with the work after the build. The framework only holds if strategy and build stay together, because every gap in a <span class="nb">go-to-market</span> starts at a handoff.</p>
     </div>
   </div>
 </section>
 
-<section class="band band--dark" id="engagement">
-  <div class="inner">
-    <h2>In ten weeks, build the foundation.</h2>
-    <div class="phases">
-      <div>
-        <div class="ruler" aria-hidden="true"><span><span class="wk">Week </span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
-        <div class="phase">
-          <h3>Phase one</h3>
-          <p class="phase__sub">You receive</p>
-          <ul class="outs">
-            <li><b>Why you win</b><p>One answer, built from your buyers, your competitors and your won and lost deals.</p></li>
-            <li><b>Practical messaging framework</b><p>Why you win by buyer, by offering, and against named competitors.</p></li>
-            <li><b>Evaluation of your op model</b><p>Every part of your go-to-market operating model and every connection between them.</p></li>
-            <li><b>AI context foundation</b><p>Your firm's essential go-to-market context, captured once and ready for the generative and agentic AI tools your team uses.</p></li>
-            <li><b>Priorities for further action</b><p>Where to act next, in what order, and who owns it.</p></li>
-          </ul>
-        </div>
+<section class="band band--shade" id="personal">
+  <div class="inner lay-split">
+    <div>
+      <h2>A Digital Analogue&trade; for one person.</h2>
+      <p class="price">$5,000, one-time <span class="tbd">[confirm name]</span></p>
+    </div>
+    <div>
+      <div class="prose">
+        <p>For a leader who wants to start with their own work. It stands on its own: a working tool you keep and use for a year.</p>
       </div>
-      <div>
-        <div class="ruler ruler--after" aria-hidden="true"><span>Week 11 on</span></div>
-        <div class="phase phase--after">
-          <h3>Phase two</h3>
-          <p class="phase__sub">Optional retainer</p>
-          <p class="phase__body">We build the answer into each part of the model and keep it current.</p>
-        </div>
+      <ul class="incl">
+        <li>Your own context, built and connected to the AI tool you use</li>
+        <li>Your own recurring tasks, compared before and after</li>
+        <li>A gap map of what your firm&rsquo;s enterprise context would add</li>
+        <li>12 months in the Digital Analogue app</li>
+        <li>The $5,000 credited toward further work within 60 days</li>
+      </ul>
+      <a class="textlink" href="/digital-analogue/#personal">Ask about a Personal Digital Analogue&trade;</a>
+    </div>
+  </div>
+</section>
+
+<section class="band band--dark" id="connects">
+  <div class="inner">
+    <h2>Every route builds the same foundation.</h2>
+    <div class="routes">
+      <div class="route">
+        <h3>Your firm has AI in place</h3>
+        <p>Start with a Digital Analogue&trade;, built from your materials or through a full context definition and build. Why you win, operating model work and the app plan continue from there.</p>
+      </div>
+      <div class="route">
+        <h3>Your sales methods have stopped working</h3>
+        <p>Start with why you win and messaging, or with the operating model problem that&rsquo;s most pressing. The Digital Analogue&trade; follows once your firm is ready to put AI to work.</p>
+      </div>
+      <div class="route">
+        <h3>One person wants to start</h3>
+        <p>A Personal Digital Analogue&trade; stands on its own. If your firm goes further within 60 days, the $5,000 is credited toward that work.</p>
       </div>
     </div>
+    <p class="plan-note">After the first year of any build, the Digital Analogue app plan keeps your team working in the app. <span class="tbd">[confirm: show the price, $500/month for up to 50 users]</span></p>
     <div class="da">
       <h3>A context tool without curated context is an engine without fuel.</h3>
       <div class="prose">
         <p>Context has become one of the most talked-about words in AI, and context platforms, connectors and retrieval tools are multiplying. Each one can only work with what it&rsquo;s given. Point a model at an uncurated shared drive and it finds the outdated deck, the abandoned pricing sheet and three competing versions of your positioning, then treats each one as fact. Every request spends tokens sorting through the noise, and the answers drift from what your best people would say.</p>
-        <p>Phase one builds the fuel: a curated Digital Analogue&trade; of your go-to-market, holding the answers your team has agreed on, organized for the AI tools you already use.</p>
+        <p>A Digital Analogue&trade; is the fuel: a curated capture of your <span class="nb">go-to-market</span>, holding the answers your team has agreed on, organized for the AI tools you already use.</p>
       </div>
     </div>
   </div>
@@ -381,13 +385,14 @@
   <div class="footer__in">
     <div>
       <a class="brand" href="/">
-        <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo — home" width="93" height="32">
+        <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo home" width="93" height="32">
       </a>
-      <small>Cozelo connects why you win with how you operate. Then we build the business context AI needs to understand your value and put it to work.</small>
+      <small>Cozelo builds the Digital Analogue&trade;, the business context AI needs to understand your value and put it to work, and connects it to why you win and how you operate.</small>
       <p class="footer__social"><a href="https://www.linkedin.com/company/cozelo-co/home/" target="_blank" rel="noopener" aria-label="Cozelo on LinkedIn"><img src="/assets/linkedin-in-blue.png" alt="LinkedIn" width="33" height="28" loading="lazy"></a></p>
     </div>
     <ul>
       <li><a href="/">Home</a></li>
+      <li><a href="/digital-analogue/">Digital Analogue</a></li>
       <li><a href="/ai-readiness/">AI readiness</a></li>
       <li><a href="/how-we-work/">How we work</a></li>
       <li><a href="/who-we-are/">Who we are</a></li>

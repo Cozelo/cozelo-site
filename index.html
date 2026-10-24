@@ -17,23 +17,23 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Cozelo">
 <meta property="og:title" content="Cozelo | Your go-to-market, built for AI">
-<meta property="og:description" content="Cozelo connects why you win with how you operate. Then we build the business context AI needs to understand your value and put it to work.">
+<meta property="og:description" content="Cozelo builds the Digital Analogue™: the business context every AI tool your team uses needs to understand your value and put it to work.">
 <meta property="og:url" content="https://cozelo.co/">
 <meta property="og:image" content="https://cozelo.co/assets/og-card-v4.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Cozelo | Your go-to-market, built for AI">
-<meta name="twitter:description" content="Cozelo connects why you win with how you operate. Then we build the business context AI needs to understand your value and put it to work.">
+<meta name="twitter:description" content="Cozelo builds the Digital Analogue™: the business context every AI tool your team uses needs to understand your value and put it to work.">
 <meta name="twitter:image" content="https://cozelo.co/assets/og-card-v4.png">
 <meta name="theme-color" content="#ffffff">
 <link rel="apple-touch-icon" href="/assets/logo-badge-128.png">
 <title>Cozelo | Your go-to-market, built for AI</title>
-<meta name="description" content="Cozelo connects why you win with how you operate. Then we build the business context AI needs to understand your value and put it to work.">
+<meta name="description" content="Cozelo builds the Digital Analogue™: the business context every AI tool your team uses needs to understand your value and put it to work.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=3b30c977">
+<link rel="stylesheet" href="/assets/site.css?v=af11cdc1">
 <style>
 /* ---------- homepage ---------- */
 .home-hero{padding-bottom:clamp(3rem,6vw,5rem)}
@@ -83,7 +83,6 @@
     mask-composite:intersect}
 }
 
-#engagement .lay-split .leave{margin-top:0}
 
 /* Why Cozelo: the two of us, beside the copy that names us. */
 .people{display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; max-width:24rem; justify-self:end; width:100%}
@@ -100,23 +99,20 @@
 /* Two or three columns of ruled cards */
 .cols{display:grid; gap:clamp(1.75rem,3.5vw,3rem); margin-top:clamp(2.25rem,4.5vw,3.5rem)}
 .cols--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cols--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+#problem .cols{margin-bottom:clamp(2rem,4vw,3rem)}
+.col .price{margin-top:.5rem; font-weight:600; color:var(--navy)}
+.sec-link{margin-top:clamp(2rem,4vw,2.75rem)}
+.sec-lede{margin-top:1.5rem; max-width:40rem; position:relative; z-index:1}
 .col{border-top:2px solid var(--navy); padding-top:1.25rem}
 .col h3{font-size:clamp(1.3rem,1.8vw,1.5rem); line-height:1.2; letter-spacing:-.02em}
 .col p{margin:.875rem 0 0; font-family:var(--serif); font-size:1.0625rem; line-height:1.55; color:var(--on-light)}
-@media(max-width:900px){.cols--2{grid-template-columns:1fr}}
+@media(max-width:900px){.cols--2,.cols--3{grid-template-columns:1fr}}
 
 #foundation h2{max-width:26ch}
 .lay-split--people{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr); align-items:center}
 @media(max-width:900px){.lay-split--people{grid-template-columns:1fr}}
 
-/* Engagement: deliverables list */
-.leave{margin-top:clamp(1.75rem,3.5vw,2.5rem); max-width:40rem}
-.leave__h{font-family:var(--sans); font-weight:700; font-size:1.15rem; color:var(--navy); margin:0}
-.leave ul{list-style:none; margin:1rem 0 0; padding:0; border-top:1px solid var(--rule-light)}
-.leave li{font-family:var(--serif); font-size:1.0625rem; line-height:1.5; color:var(--on-light);
-  padding:.8rem 0 .8rem 1.6rem; border-bottom:1px solid var(--rule-light); position:relative}
-.leave li::before{content:""; position:absolute; left:0; top:1.35rem; width:.7rem; height:2px; background:var(--navy)}
-.leave + .prose{margin-top:clamp(1.5rem,3vw,2rem)}
 
 </style>
 </head>
@@ -125,7 +121,7 @@
 <!-- Mobile navigation. Rendered <=1080px only. -->
 <div class="mnav" id="mnav">
   <div class="mnav__box">
-    <a class="mnav__brand" href="/" aria-label="Cozelo — home">
+    <a class="mnav__brand" href="/" aria-label="Cozelo home">
       <img src="/assets/logo-badge-128.png" alt="" width="30" height="30">
     </a>
     <button class="mnav__burger" id="mburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">
@@ -136,6 +132,7 @@
 </div>
 <nav class="mmenu" id="mmenu" aria-label="Primary">
   <a class="mlink current" href="/">Home</a>
+  <a class="mlink" href="/digital-analogue/">Digital Analogue</a>
   <a class="mlink" href="/ai-readiness/">AI readiness</a>
   <a class="mlink" href="/how-we-work/">How we work</a>
   <a class="mlink" href="/who-we-are/">Who we are</a>
@@ -147,18 +144,20 @@
 <nav class="rail" id="rail" aria-label="Primary">
   <div>
     <a class="brand" href="/">
-      <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo — home" width="93" height="32">
+      <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo home" width="93" height="32">
     </a>
     <ul class="rail__pages">
       <li><a class="rail__pg current" href="/" aria-current="page">Home</a>
         <ul class="rail__toc">
           <li><a href="#problem">The problem</a></li>
+          <li><a href="#digital-analogue">The Digital Analogue</a></li>
           <li><a href="#foundation">The foundation</a></li>
           <li><a href="#application">The application</a></li>
-          <li><a href="#engagement">The engagement</a></li>
+          <li><a href="#start">Where to start</a></li>
           <li><a href="#why-cozelo">Why Cozelo</a></li>
         </ul>
       </li>
+      <li><a class="rail__pg" href="/digital-analogue/">Digital Analogue</a></li>
       <li><a class="rail__pg" href="/ai-readiness/">AI readiness</a></li>
       <li><a class="rail__pg" href="/how-we-work/">How we work</a></li>
       <li><a class="rail__pg" href="/who-we-are/">Who we are</a></li>
@@ -170,7 +169,7 @@
 <header class="band band--light home-hero" id="top">
   <div class="inner">
     <h1>Your <span class="nb">go-to-market</span> wasn&rsquo;t designed for AI. <span class="h1-accent">It grew one decision at a time.</span></h1>
-    <p class="lede">Cozelo connects why you win with how you operate. Then we build the business context AI needs to understand your value and put it to work.</p>
+    <p class="lede">Your team has AI tools. What they lack is your business: why buyers choose you, how you sell, and what your best people know. Cozelo builds that into a Digital Analogue&trade; every AI tool can read.</p>
   </div>
   <div class="jx jx-hero" data-motif="junctions" data-surface="white" data-seed="23" data-narrow-media="(max-width: 900px)"
        data-opts='{"tile":29,"fluid":870,"anchor":"right","shapes":[{"type":"chain","points":[[13,14],[9,10],[8,7],[4,5]]},{"type":"blob","x":11,"y":12,"n":6,"seed":3},{"type":"blob","x":6,"y":6,"n":6,"seed":5},{"type":"dot","x":13,"y":4},{"type":"dot","x":4,"y":12}]}'
@@ -180,11 +179,45 @@
 <section class="band band--light" id="problem">
   <div class="inner">
     <h2>AI needs a clear picture of your business. Your whole business.</h2>
-    <div class="sec-body prose">
-      <p>Your positioning lives in a presentation. Your customer knowledge is in your best minds. Your processes span systems and teams, guided by unwritten rules.</p>
-      <p>That makes it harder to explain why buyers should choose you and impossible to consistently put AI to work.</p>
-      <p>Before adding more tools and agents, you need agreement on what matters, how the work happens, and what information it depends on.</p>
+    <div class="cols cols--2">
+      <div class="col">
+        <h3>You&rsquo;ve invested in AI and need results to show</h3>
+        <p>The licenses are in place and usage keeps climbing. Each person&rsquo;s best results stay with that person, much of the output still sounds generic, and it&rsquo;s hard to connect the spend to an outcome.</p>
+      </div>
+      <div class="col">
+        <h3>What used to win business has stopped working</h3>
+        <p>Deals take longer and the old playbook lands less often. Before AI can help, your team needs one clear answer to why buyers choose you, said the same way everywhere.</p>
+      </div>
     </div>
+    <div class="sec-body prose">
+      <p>Both start in the same place. Your positioning lives in a presentation. Your customer knowledge is in your best minds. Your processes span systems and teams, guided by unwritten rules. AI can only work with what it&rsquo;s given.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band band--light" id="digital-analogue">
+  <div class="inner">
+    <div class="lay-split">
+      <h2>Give every AI tool the context your best people carry.</h2>
+      <div class="prose">
+        <p>A Digital Analogue&trade; is your <span class="nb">go-to-market</span> written down once, in a form any LLM can read, and kept current by your team. Every AI tool and agent starts from the same answers, so your best user&rsquo;s results become available to the whole team.</p>
+      </div>
+    </div>
+    <div class="cols cols--3">
+      <div class="col">
+        <h3>The context base</h3>
+        <p>Everything AI needs to know about your <span class="nb">go-to-market</span>, organized by the operating model and kept in your own Google Drive or SharePoint.</p>
+      </div>
+      <div class="col">
+        <h3>The Orchestrator Instructions</h3>
+        <p>Cozelo&rsquo;s method for how an AI tool should use that context to do a task well.</p>
+      </div>
+      <div class="col">
+        <h3>The app</h3>
+        <p>Where your team reads and updates the context base, without opening a file.</p>
+      </div>
+    </div>
+    <a class="textlink sec-link" href="/digital-analogue/">Explore the Digital Analogue&trade;</a>
   </div>
 </section>
 
@@ -196,18 +229,19 @@
            data-opts='{"tile":21,"anchor":"right","thin":0.07,"thick":0.15,"shapes":[{"type":"rect","x":3,"y":1,"w":2,"h":6},{"type":"rect","x":7,"y":1,"w":2,"h":6},{"type":"rect","x":11,"y":1,"w":2,"h":6},{"type":"rect","x":3,"y":7,"w":10,"h":2}]}'
            data-opts-narrow='{"tile":13,"fit":true,"thick":0.17,"shapes":[{"type":"rect","x":2,"y":2,"w":2,"h":6},{"type":"rect","x":6,"y":2,"w":2,"h":6},{"type":"rect","x":10,"y":2,"w":2,"h":6},{"type":"rect","x":2,"y":8,"w":10,"h":2}]}'></div>
     </div>
+    <p class="lede sec-lede">Start with the Digital Analogue&trade;. Why you win and operating model work continue from it, or come first when your firm needs them first.</p>
     <dl class="dl">
+      <div class="dl__row">
+        <dt>The context AI needs to thrive</dt>
+        <dd>Build your Digital Analogue&trade;: an organized context foundation covering your business, buyers, offerings, messaging, and operating knowledge. Give your team a single consistent reference for AI-assisted work.</dd>
+      </div>
       <div class="dl__row">
         <dt>Why you win</dt>
         <dd>Define your target buyers, the problems you solve, and the reasons to choose you over the competition. Turn that into evidence-backed messaging ready for real-world use.</dd>
       </div>
       <div class="dl__row">
         <dt>How you operate</dt>
-        <dd>Connect the people, processes, data, and systems behind your go-to-market. Integrate AI to improve how you work rather than to automate old inefficiencies.</dd>
-      </div>
-      <div class="dl__row">
-        <dt>The context AI needs to thrive</dt>
-        <dd>Build an organized context foundation covering your business, buyers, offerings, messaging, and operating knowledge. Give your team a single consistent reference for AI-assisted work.</dd>
+        <dd>Connect the people, processes, data, and systems behind your go-to-market: CRM and lead management, tech stack and automation, partner programs. Integrate AI where it improves how you work.</dd>
       </div>
     </dl>
   </div>
@@ -229,24 +263,27 @@
   </div>
 </section>
 
-<section class="band band--shade" id="engagement">
-  <div class="inner lay-split">
-    <h2>In ten weeks, build the foundation.</h2>
-    <div>
-    <div class="leave">
-      <p class="leave__h">You receive:</p>
-      <ul>
-        <li>A clear why you win strategy</li>
-        <li>A practical messaging framework for your buyers and offerings</li>
-        <li>An evaluation of your go-to-market operating model</li>
-        <li>An AI context foundation organized for use by your team</li>
-        <li>Prioritized recommendations for further action</li>
-      </ul>
+<section class="band band--shade" id="start">
+  <div class="inner">
+    <h2>Start with one person or the whole firm.</h2>
+    <div class="cols cols--3">
+      <div class="col">
+        <h3>Personal Digital Analogue&trade;</h3>
+        <p class="price">$5,000</p>
+        <p>For one leader: your own context, connected to the AI tool you already use, with a before-and-after on your own recurring tasks and 12 months in the app.</p>
+      </div>
+      <div class="col">
+        <h3>Built from your materials</h3>
+        <p class="price">$20,000</p>
+        <p>For firms with solid positioning, messaging and process documents. A short review confirms there&rsquo;s enough to build from.</p>
+      </div>
+      <div class="col">
+        <h3>Full context definition and build</h3>
+        <p class="price">$45,000</p>
+        <p>Cozelo defines why you win, turns it into messaging, evaluates your operating model, and builds your Digital Analogue&trade; from the result.</p>
+      </div>
     </div>
-    <div class="prose">
-      <p>From there, we help put the model into practice through content, integrated workflows, and agent-enabled operations.</p>
-    </div>
-    </div>
+    <a class="textlink sec-link" href="/digital-analogue/#get-one">Compare the three ways</a>
   </div>
 </section>
 
@@ -314,13 +351,14 @@
   <div class="footer__in">
     <div>
       <a class="brand" href="/">
-        <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo — home" width="93" height="32">
+        <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo home" width="93" height="32">
       </a>
-      <small>Cozelo connects why you win with how you operate. Then we build the business context AI needs to understand your value and put it to work.</small>
+      <small>Cozelo builds the Digital Analogue&trade;, the business context AI needs to understand your value and put it to work, and connects it to why you win and how you operate.</small>
       <p class="footer__social"><a href="https://www.linkedin.com/company/cozelo-co/home/" target="_blank" rel="noopener" aria-label="Cozelo on LinkedIn"><img src="/assets/linkedin-in-blue.png" alt="LinkedIn" width="33" height="28" loading="lazy"></a></p>
     </div>
     <ul>
       <li><a href="/">Home</a></li>
+      <li><a href="/digital-analogue/">Digital Analogue</a></li>
       <li><a href="/ai-readiness/">AI readiness</a></li>
       <li><a href="/how-we-work/">How we work</a></li>
       <li><a href="/who-we-are/">Who we are</a></li>

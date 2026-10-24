@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E1VWMGRN72"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E1VWMGRN72');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/assets/logo-badge-128.png">
+<link rel="canonical" href="https://cozelo.co/digital-analogue/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cozelo">
+<meta property="og:title" content="The Digital Analogue™ | Cozelo">
+<meta property="og:description" content="A Digital Analogue™ gives any LLM a curated source of your unique business context, plus the instructions for effective, efficient use.">
+<meta property="og:url" content="https://cozelo.co/digital-analogue/">
+<meta property="og:image" content="https://cozelo.co/assets/og-card-v4.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Digital Analogue™ | Cozelo">
+<meta name="twitter:description" content="A Digital Analogue™ gives any LLM a curated source of your unique business context, plus the instructions for effective, efficient use.">
+<meta name="twitter:image" content="https://cozelo.co/assets/og-card-v4.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" href="/assets/logo-badge-128.png">
+<title>The Digital Analogue™ | Cozelo</title>
+<meta name="description" content="A Digital Analogue™ gives any LLM a curated source of your unique business context, plus the instructions for effective, efficient use.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=af11cdc1">
+<style>
+/* ---------- Digital Analogue ---------- */
+.phero h1{max-width:18ch}
+.reel{margin:clamp(2.5rem,5vw,3.5rem) 0 0; max-width:52rem}
+.reel .ph{aspect-ratio:16/9}
+.reel__play{width:72px; height:72px; border-radius:50%; background:var(--navy); display:flex; align-items:center; justify-content:center; margin-bottom:.75rem}
+.reel figcaption{margin-top:.75rem; font-family:var(--serif); font-size:.9375rem; color:var(--on-light-soft)}
+
+.stack{display:flex; flex-direction:column; gap:.85rem; min-width:0}
+.txt{margin:0; font-family:var(--serif); font-size:1.05rem; line-height:1.55; color:var(--on-light-soft)}
+.band--dark .txt{color:var(--on-dark-soft)}
+.trio h3,.cards h3,.pts h3,.ways h3,.steps h3{font-size:1.25rem; line-height:1.25}
+
+/* The idea: three parts, each with its screenshot above it */
+.trio{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(1.5rem,3vw,2.5rem); margin-top:clamp(2.5rem,5vw,3.5rem)}
+.trio .ph{aspect-ratio:4/3}
+#idea .textlink{margin-top:2.5rem}
+
+/* Why context: a small gold shape in a field below the heading, the curated set a task needs. */
+.jx-context{margin:2.5rem 0 0 calc(-1 * var(--gutter)); height:234px;
+  -webkit-mask-image:linear-gradient(90deg, #000 55%, transparent); mask-image:linear-gradient(90deg, #000 55%, transparent)}
+
+/* The context base: alternating image-and-copy splits, then four points */
+.cb{display:flex; flex-direction:column; gap:clamp(3.5rem,7vw,5.5rem)}
+.split-l{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(2rem,5vw,4.5rem); align-items:center}
+.split-r{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(2rem,5vw,4.5rem); align-items:center}
+.split-l .ph,.split-r .ph{aspect-ratio:16/11}
+.split-r h3{font-size:clamp(1.5rem,2.4vw,1.875rem); line-height:1.15}
+.pts{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(1.5rem,3vw,2.5rem)}
+.tick{display:block; width:32px; height:2px; background:var(--gold); margin-bottom:.35rem}
+
+/* The Orchestrator Instructions: one gold line through the five steps, drawn in once. */
+.jx-steps{height:150px; margin:clamp(2.5rem,5vw,3.5rem) 0 clamp(1.5rem,3vw,2.25rem)}
+.steps{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:clamp(1rem,2.5vw,2rem); list-style:none; margin:0; padding:0}
+.num{font-family:var(--sans); font-weight:800; font-size:1.75rem; line-height:1; color:var(--gold)}
+.steps__foot{margin-top:clamp(2rem,4vw,3rem); max-width:40rem}
+
+/* The app: four cards, each with its screenshot */
+.cards{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(1.5rem,3vw,2.5rem) clamp(1.5rem,4vw,3.5rem); margin-top:clamp(2.5rem,5vw,3.5rem)}
+.cards .ph{aspect-ratio:16/10}
+
+#security .textlink{margin-top:2rem}
+
+/* Three ways: matching columns, ruled in gold */
+.ways{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(1.5rem,3vw,2.5rem); margin-top:clamp(1.8rem,3.5vw,2.8rem)}
+.way{border-top:2px solid var(--gold); padding-top:1.5rem; display:flex; flex-direction:column; gap:.85rem; min-width:0}
+.way .textlink{margin-top:auto; padding-top:.5rem; align-self:flex-start}
+.after{margin-top:clamp(2.25rem,4.5vw,3rem); padding-top:1.5rem; border-top:1px solid var(--rule-light); display:grid; gap:.85rem; max-width:44rem}
+.after .textlink{margin-top:.5rem; justify-self:start}
+
+/* Start with one person: copy left, the inquiry form right */
+.solo{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:clamp(2rem,6vw,5rem); align-items:start}
+.solo .cform{margin-top:0}
+.solo .prose{margin-top:1.5rem}
+
+@media(max-width:1000px){.pts{grid-template-columns:repeat(2,minmax(0,1fr))} .steps{grid-template-columns:1fr} .jx-steps{display:none}}
+@media(max-width:900px){.trio,.cards,.ways,.split-l,.split-r,.solo{grid-template-columns:minmax(0,1fr)} .split-r .ph{order:2}}
+@media(max-width:560px){.pts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- Mobile navigation. Rendered <=1080px only. -->
+<div class="mnav" id="mnav">
+  <div class="mnav__box">
+    <a class="mnav__brand" href="/" aria-label="Cozelo home">
+      <img src="/assets/logo-badge-128.png" alt="" width="30" height="30">
+    </a>
+    <button class="mnav__burger" id="mburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">
+      <span></span>
+    </button>
+  </div>
+  <a class="btn btn--primary mnav__cta" href="#lets-talk">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a>
+</div>
+<nav class="mmenu" id="mmenu" aria-label="Primary">
+  <a class="mlink" href="/">Home</a>
+  <a class="mlink current" href="/digital-analogue/">Digital Analogue</a>
+  <a class="mlink" href="/ai-readiness/">AI readiness</a>
+  <a class="mlink" href="/how-we-work/">How we work</a>
+  <a class="mlink" href="/who-we-are/">Who we are</a>
+  <div class="mmenu__foot">
+    <a class="btn btn--primary" href="#lets-talk">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a>
+  </div>
+</nav>
+
+<nav class="rail" id="rail" aria-label="Primary">
+  <div>
+    <a class="brand" href="/">
+      <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo home" width="93" height="32">
+    </a>
+    <ul class="rail__pages">
+      <li><a class="rail__pg" href="/">Home</a></li>
+      <li><a class="rail__pg current" href="/digital-analogue/" aria-current="page">Digital Analogue</a>
+        <ul class="rail__toc">
+          <li><a href="#idea">The idea</a></li>
+          <li><a href="#why-context">Why context</a></li>
+          <li><a href="#context-base">The context base</a></li>
+          <li><a href="#instructions">The instructions</a></li>
+          <li><a href="#app">The app</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#get-one">Three ways</a></li>
+          <li><a href="#personal">Start with one person</a></li>
+        </ul>
+      </li>
+      <li><a class="rail__pg" href="/ai-readiness/">AI readiness</a></li>
+      <li><a class="rail__pg" href="/how-we-work/">How we work</a></li>
+      <li><a class="rail__pg" href="/who-we-are/">Who we are</a></li>
+    </ul>
+  </div>
+  <a class="btn btn--primary" href="#lets-talk">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a>
+</nav>
+
+<header class="band band--light phero" id="top">
+  <div class="hero__inner">
+    <h1>Any AI, higher quality, lower cost.</h1>
+    <p class="lede">Using AI alone no longer gives your team an advantage. Every competitor has the same tools, and the resulting flood of AI-generated content and design is becoming noise. Meanwhile, usage and spend are climbing. A Digital Analogue&trade; gives any LLM a curated source of your unique business context, plus the instructions for effective, efficient use.</p>
+    <figure class="reel">
+      <div class="ph">
+        <span class="reel__play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="#ffffff"/></svg></span>
+        <b>Sizzle reel, about 15 seconds</b>
+        <span>Poster: the AltaMesh Home screen. Generic AI draft, then the same request with AltaMesh context; the Enterprise Hub and change log; Connect your AI; logo lockup.</span>
+      </div>
+      <figcaption>See the Digital Analogue&trade; in 15 seconds. <span class="tbd">[transcript link when the reel exists]</span></figcaption>
+    </figure>
+  </div>
+</header>
+
+<section class="band band--light" id="idea">
+  <div class="inner">
+    <div class="lay-split">
+      <h2>Your business, in a form AI can read.</h2>
+      <div class="prose">
+        <p>A new hire has to learn your business before they can do good work. So does AI. A Digital Analogue&trade; is that onboarding, written once and kept current, in three parts.</p>
+      </div>
+    </div>
+    <div class="trio">
+      <div class="stack">
+        <div class="ph"><b>Screenshot: the context base folder</b><span>AltaMesh&rsquo;s markdown files in Google Drive, the core file first.</span></div>
+        <h3>The context base</h3>
+        <p class="txt">Everything AI needs to know about your <span class="nb">go-to-market</span>, organized by the operating model and kept in your own Google Drive or SharePoint.</p>
+      </div>
+      <div class="stack">
+        <div class="ph"><b>Screenshot: the setup text</b><span>The lines that tell an AI tool to start from the core file and the Orchestrator Instructions.</span></div>
+        <h3>The Orchestrator Instructions</h3>
+        <p class="txt">Cozelo&rsquo;s method for how an AI tool should use that context to do a task well.</p>
+      </div>
+      <div class="stack">
+        <div class="ph"><b>Screenshot: the app</b><span>AltaMesh Home, with both hubs and the change log.</span></div>
+        <h3>The app</h3>
+        <p class="txt">Where your team reads and updates the context base, without opening a file.</p>
+      </div>
+    </div>
+    <a class="textlink" href="/ai-readiness/">Why AI needs this before anything else</a>
+  </div>
+</section>
+
+<section class="band band--shade" id="why-context">
+  <div class="inner lay-split">
+    <div>
+      <h2>What an AI knows decides what it can do.</h2>
+      <div class="jx jx-context" data-motif="junctions" data-surface="shade" data-seed="31"
+           data-opts='{"tile":26,"fit":true,"shapes":[{"type":"blob","x":0.45,"y":4,"n":5,"seed":4},{"type":"dot","x":-3,"y":2}]}'
+           data-opts-narrow='{"tile":22}'></div>
+    </div>
+    <div class="prose">
+      <p>Context engineering is the practice of deciding what a model sees while it works: which information, in what structure, in what order and at what moment. Give a model too little and it falls back on the average of everything it has read, which is where generic work comes from. Give it too much, or several versions that disagree, and it spends tokens sorting through the pile and drifts from what your best people would say.</p>
+      <p>Good context is the smallest set of high-signal information a task needs, structured so the model can find it quickly and trust what it finds. Everything on this page is built on that idea.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band band--light" id="context-base">
+  <div class="inner cb">
+    <div class="split-l">
+      <div class="stack" style="gap:1.25rem">
+        <h2>Everything AI needs to know about your <span class="nb">go-to-market</span>, in one place.</h2>
+        <div class="prose">
+          <p>The Digital Analogue Context Base follows the operating model Cozelo uses with every client: Message, Attract, Listen, Engage and Learn, with the facts, people, processes, technology and data underneath them. Each part holds what an AI tool needs to do that part&rsquo;s work, so first drafts start close to what your best people would write.</p>
+        </div>
+        <a class="textlink" href="/ai-readiness/#model">Explore the operating model</a>
+      </div>
+      <div class="ph"><b>Screenshot: AltaMesh Enterprise Hub</b><span>Categories by operating-model part, with entry counts.</span></div>
+    </div>
+
+    <div class="split-r">
+      <div class="ph"><b>Screenshot: one context base file</b><span>An AltaMesh file open in Google Drive: headings, entries and the provenance line under each one.</span></div>
+      <div class="stack" style="gap:1rem">
+        <h3>Markdown, written for the way LLMs read.</h3>
+        <p class="txt">Every file is markdown: simple syntax and a clear hierarchy of headings and entries, the format LLMs parse most reliably. Your AI reads a short core file first, then opens only what the task needs, which keeps usage and spend down. <span class="tbd">[proof needed]</span></p>
+        <p class="txt">Any LLM can read it, so if you change tools, your context comes with you.</p>
+      </div>
+    </div>
+
+    <div class="pts">
+      <div class="stack"><span class="tick"></span><h3>Every entry shows its source</h3><p class="txt">Where it came from and when it was last confirmed, so AI knows which version to trust.</p></div>
+      <div class="stack"><span class="tick"></span><h3>Why you win decides</h3><p class="txt">When two entries disagree, your answer to why buyers choose you settles it.</p></div>
+      <div class="stack"><span class="tick"></span><h3>Gaps stay visible</h3><p class="txt">When something isn&rsquo;t documented yet, AI says so and leaves a placeholder for a person to fill.</p></div>
+      <div class="stack"><span class="tick"></span><h3>Your systems stay put</h3><p class="txt">Your CRM, analytics and brand assets keep running as they do today. The context base tells AI where to find them.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--dark" id="instructions">
+  <div class="inner">
+    <div class="lay-split">
+      <h2>The Orchestrator Instructions turn context into good work.</h2>
+      <div class="prose">
+        <p>Context only helps if the AI uses it well. The Orchestrator Instructions are Cozelo&rsquo;s proprietary method for that, and they guide every AI tool that reads your context base. Your rules hold on every request, whoever makes it.</p>
+      </div>
+    </div>
+    <div class="jx jx-steps" data-motif="junctions" data-surface="navy" data-seed="19" data-draw="scroll"
+         data-opts='{"tile":30,"fit":true,"rows":5,"thin":0.07,"shapes":[{"type":"chain","points":[[0.1,3],[0.3,1],[0.5,3],[0.7,1],[0.9,3]]}]}'></div>
+    <ol class="steps">
+      <li class="stack"><span class="num">1</span><h3>Understand the ask</h3><p class="txt">and ask a short question when something essential is missing.</p></li>
+      <li class="stack"><span class="num">2</span><h3>Start from your context</h3><p class="txt">and check with you before looking anywhere else.</p></li>
+      <li class="stack"><span class="num">3</span><h3>Follow your rules</h3><p class="txt">on every piece of work.</p></li>
+      <li class="stack"><span class="num">4</span><h3>Review its own draft</h3><p class="txt">before handing it over.</p></li>
+      <li class="stack"><span class="num">5</span><h3>Suggest updates</h3><p class="txt">when it learns something your context base should know.</p></li>
+    </ol>
+    <p class="txt steps__foot">Cozelo writes and maintains the Orchestrator Instructions. Every client receives each new version as the method improves.</p>
+  </div>
+</section>
+
+<section class="band band--light" id="app">
+  <div class="inner">
+    <div class="lay-split">
+      <h2>Context is only useful while it&rsquo;s current.</h2>
+      <div class="prose">
+        <p>Your business changes every week: a new offering, a lost deal that teaches you something, a message that stops landing. The Digital Analogue&trade; app makes keeping the context base current part of the work, done by the people who know the business best.</p>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="stack">
+        <div class="ph"><b>Screenshot: editing an AltaMesh entry</b><span>The entry form with its Status and As of fields.</span></div>
+        <h3>The people closest to the work keep it right</h3>
+        <p class="txt">Anyone you invite can update an entry in a simple form. The app writes the markdown, so nobody touches a file.</p>
+      </div>
+      <div class="stack">
+        <div class="ph"><b>Screenshot: the change log</b><span>Recent AltaMesh edits, newest first, with who and when.</span></div>
+        <h3>You can trust what your AI reads</h3>
+        <p class="txt">Every change is logged with who made it and when, and admins decide who can edit what.</p>
+      </div>
+      <div class="stack">
+        <div class="ph"><b>Screenshot: Connect your AI</b><span>The setup text and its copy button.</span></div>
+        <h3>Your best AI user&rsquo;s results, for the whole team</h3>
+        <p class="txt">One block of setup text connects each person&rsquo;s AI tool, so everyone starts every task from the same context base.</p>
+      </div>
+      <div class="stack">
+        <div class="ph"><b>Screenshot: AltaMesh Personal Hub</b><span>A demo user&rsquo;s priorities and working style.</span></div>
+        <h3>Personal context, kept private</h3>
+        <p class="txt">Each person adds their own priorities, working style and standing instructions, visible only to them and always inside the organization&rsquo;s rules.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--shade" id="security">
+  <div class="inner lay-split">
+    <h2>Your data stays where it already lives.</h2>
+    <div>
+      <div class="prose">
+        <p>Sign in with your company&rsquo;s Google or Microsoft account. Your context base is a set of files in your organization&rsquo;s Google Drive or SharePoint, covered by the permissions and policies you already run.</p>
+      </div>
+      <dl class="dl">
+        <div class="dl__row"><dt>Your sign-in, your platform</dt><dd>Your first admin connects the organization with Google or Microsoft, and colleagues join with the same company accounts.</dd></div>
+        <div class="dl__row"><dt>Files stay in your storage</dt><dd>The context base lives in your Google Drive or SharePoint. <span class="tbd">[confirm: Cozelo stores no copy]</span></dd></div>
+        <div class="dl__row"><dt>Narrow access</dt><dd>The app reaches one organization folder and each person&rsquo;s personal folder. On Google Drive, it can open only the files it creates and manages. <span class="tbd">[confirm SharePoint]</span></dd></div>
+        <div class="dl__row"><dt>Yours to keep</dt><dd>Everything is markdown in your own storage, so it stays usable with or without Cozelo.</dd></div>
+      </dl>
+      <p class="txt" style="margin-top:2rem">Privacy policy <span class="tbd">[privacy page needed]</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="band band--light" id="get-one">
+  <div class="inner">
+    <h2>Three ways to get a Digital Analogue&trade;.</h2>
+    <div class="ways">
+      <article class="way">
+        <h3>Personal Digital Analogue&trade; <span class="tbd">[confirm name]</span></h3>
+        <p class="price">$5,000, one-time, for one person</p>
+        <p class="txt">Cozelo builds a Digital Analogue&trade; around one person&rsquo;s work and connects it to the AI tool they already use.</p>
+        <ul class="incl">
+          <li>Personal context files, yours to keep</li>
+          <li>A before-and-after comparison on your own recurring tasks</li>
+          <li>A gap map of what your firm&rsquo;s enterprise context would add</li>
+          <li>12 months of Digital Analogue app use</li>
+          <li>The fee credited toward further work within 60 days</li>
+        </ul>
+        <a class="textlink" href="#personal">Ask about a Personal Digital Analogue&trade;</a>
+      </article>
+      <article class="way">
+        <h3>Built from your materials</h3>
+        <p class="price">$20,000, one-time, one year of Digital Analogue app use included</p>
+        <p class="txt">If you already have positioning, messaging and process documents, Cozelo builds your Digital Analogue&trade; from them.</p>
+        <p class="txt">The work starts with a short review of those materials. If they&rsquo;re too thin to build from, we&rsquo;ll say so and recommend the full context definition and build.</p>
+      </article>
+      <article class="way">
+        <h3>Full context definition and build</h3>
+        <p class="price">$45,000, one-time, one year of Digital Analogue app use included</p>
+        <p class="txt">Cozelo defines why you win, turns it into a messaging matrix, evaluates your <span class="nb">go-to-market</span> operating model, and builds your Digital Analogue&trade; from the result. You can stop at the end with everything in hand.</p>
+        <a class="textlink" href="/how-we-work/#start">How we work</a>
+      </article>
+    </div>
+    <div class="after">
+      <p class="txt">Each Digital Analogue&trade; runs on Google Workspace or Microsoft 365, with the sign-in and file storage your team already uses.</p>
+      <p class="txt">After the first year, the Digital Analogue app plan keeps your team working in the app. <span class="tbd">[confirm: show the price, $500/month for up to 50 users]</span> It&rsquo;s available to firms that have worked with Cozelo.</p>
+      <p class="txt">Why you win and operating model work continue from any build, or come first when a firm needs them first.</p>
+      <a class="textlink" href="#lets-talk">Not sure which fits? Tell us below.</a>
+    </div>
+  </div>
+</section>
+
+<section class="band band--light" id="personal">
+  <div class="inner solo">
+    <div>
+      <h2>Start with your own Digital Analogue&trade;.</h2>
+      <div class="prose">
+        <p>A Personal Digital Analogue&trade; is built around one person&rsquo;s work and connected to the AI tool you already use. You see the difference on your own recurring tasks, and the gap map shows what your firm&rsquo;s context would add.</p>
+        <p>You keep the files, and you have 12 months in the Digital Analogue app.</p>
+      </div>
+    </div>
+    <form class="cform" name="personal-digital-analogue" method="POST" action="/thanks/"
+          data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="personal-digital-analogue">
+      <p class="cform__hp"><label>Leave this empty <input name="bot-field"></label></p>
+      <div class="cform__grid">
+        <div>
+          <label for="p-name">Name</label>
+          <input id="p-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="p-email">Email</label>
+          <input id="p-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div>
+          <label for="p-role">Role</label>
+          <input id="p-role" name="role" type="text" autocomplete="organization-title" required>
+        </div>
+        <div>
+          <label for="p-firm">Firm</label>
+          <input id="p-firm" name="firm" type="text" autocomplete="organization" required>
+        </div>
+        <div class="full">
+          <label for="p-tools">Which AI tools do you use?</label>
+          <input id="p-tools" name="ai-tools" type="text">
+        </div>
+        <div class="full">
+          <label for="p-tasks">Which recurring tasks would you like AI to do better?</label>
+          <textarea id="p-tasks" name="tasks"></textarea>
+        </div>
+      </div>
+      <button class="btn btn--primary" type="submit">Ask about it<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></button>
+      <p class="cform__note">We use your information only to reply to your message. We won&rsquo;t automatically add you to our mailing list or share your responses with any third parties. <span class="tbd">[confirm where these inquiries go]</span></p>
+    </form>
+  </div>
+</section>
+
+<section class="band band--shade" id="lets-talk">
+  <div class="jx jx-close" data-motif="junctions" data-surface="shade" data-seed="41"
+       data-opts='{"tile":36,"anchorY":"bottom","shapes":[{"type":"chain","points":[[3,5],[3,1]]},{"type":"dot","x":6,"y":2}]}'
+       data-opts-narrow='{"tile":30}'></div>
+  <div class="inner close-wrap">
+    <div>
+      <h2 class="close__h">Where can AI make a difference in your <span class="nb">go-to-market</span>?</h2>
+      <p class="lede close__lede">Let&rsquo;s talk about what you&rsquo;re trying to improve, what&rsquo;s getting in the way, and where to start.</p>
+    </div>
+    <form class="cform" name="contact" method="POST" action="/thanks/"
+          data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="cform__hp"><label>Leave this empty <input name="bot-field"></label></p>
+      <div class="cform__grid">
+        <div>
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="full">
+          <label for="f-company">Company</label>
+          <input id="f-company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="full">
+          <label for="f-msg">What do you want AI to do for your go-to-market?</label>
+          <textarea id="f-msg" name="message" required></textarea>
+        </div>
+      </div>
+      <button class="btn btn--primary" type="submit">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></button>
+      <p class="cform__note">We use your information only to reply to your message. We won&rsquo;t automatically add you to our mailing list or share your responses with any third parties.</p>
+    </form>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer__in">
+    <div>
+      <a class="brand" href="/">
+        <img class="wordmark-img" src="/assets/logo-wordmark-navy.png" alt="Cozelo home" width="93" height="32">
+      </a>
+      <small>Cozelo builds the Digital Analogue&trade;, the business context AI needs to understand your value and put it to work, and connects it to why you win and how you operate.</small>
+      <p class="footer__social"><a href="https://www.linkedin.com/company/cozelo-co/home/" target="_blank" rel="noopener" aria-label="Cozelo on LinkedIn"><img src="/assets/linkedin-in-blue.png" alt="LinkedIn" width="33" height="28" loading="lazy"></a></p>
+    </div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/digital-analogue/">Digital Analogue</a></li>
+      <li><a href="/ai-readiness/">AI readiness</a></li>
+      <li><a href="/how-we-work/">How we work</a></li>
+      <li><a href="/who-we-are/">Who we are</a></li>
+    </ul>
+    <p class="footer__legal">&copy; 2026 Cozelo LLC</p>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=21677f43"></script>
+<script src="/assets/motif.js?v=016f9eb2"></script>
+</body>
+</html>
