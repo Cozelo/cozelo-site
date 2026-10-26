@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=0">
+<link rel="stylesheet" href="/assets/site.css?v=92d6f425">
 <style>
 /* ---------- Services ---------- */
 .phero h1{max-width:16ch}
@@ -44,27 +44,24 @@
 .cmp{width:100%; min-width:44rem; border-collapse:collapse; table-layout:fixed}
 .cmp col.cmp__label{width:28%}
 .cmp th,.cmp td{padding:1rem 1.25rem 1rem 0; text-align:left; vertical-align:top; border-bottom:1px solid var(--rule-light)}
-.cmp thead th{border-top:2px solid var(--gold); border-bottom:0; padding-top:1.5rem}
-.cmp thead th:first-child{border-top-color:transparent}
+.cmp thead th{border-top:2px solid var(--gold); padding-top:1.5rem}
 .cmp__tier{display:block; font-family:var(--sans); font-weight:700; font-size:1.25rem; line-height:1.25; color:var(--navy)}
 .cmp__desc{display:block; margin-top:.6rem; font-family:var(--serif); font-weight:400; font-size:.98rem; line-height:1.5; color:var(--on-light-soft)}
 .cmp tbody th{font-family:var(--sans); font-weight:700; font-size:1rem; color:var(--navy)}
 .cmp tbody td{font-family:var(--serif); font-size:1.05rem; line-height:1.45; color:var(--on-light)}
 .cmp .cmp__price td{font-family:var(--sans); font-weight:800; font-size:1.35rem; color:var(--navy)}
 .cmp .yes svg{width:1.4rem; height:1.4rem; color:var(--gold-ink); display:block}
-.cmp tfoot td{border-bottom:0; padding-top:1.5rem}
 /* Narrow screens: the descriptions repeat the rows, so they hide; row labels stay put while the tiers scroll. */
 @media(max-width:760px){
   .cmp{min-width:34rem}
   .cmp col.cmp__label{width:8.5rem}
   .cmp__desc{display:none}
   .cmp th,.cmp td{padding-right:.9rem}
-  .cmp tbody th,.cmp thead td,.cmp tfoot td:first-child{position:sticky; left:0; z-index:1; background:var(--white)}
+  .cmp tbody th,.cmp thead td{position:sticky; left:0; z-index:1; background:var(--white)}
   .cmp__tier{font-size:1.05rem}
   .cmp tbody th{font-size:.9rem}
   .cmp tbody td{font-size:.95rem}
   .cmp .cmp__price td{font-size:1.1rem}
-  .cmp tfoot .btn{padding-left:.9rem; padding-right:.9rem; font-size:.875rem}
 }
 .after{margin-top:clamp(2.25rem,4.5vw,3rem); padding-top:1.5rem; border-top:1px solid var(--rule-light); display:grid; gap:.85rem; max-width:44rem}
 
@@ -157,15 +154,11 @@
         </thead>
         <tbody>
           <tr class="cmp__price"><th scope="row">Price</th><td>$15,000</td><td>$20,000</td><td>$60,000</td></tr>
-          <tr><th scope="row">App users</th><td>1</td><td>Up to 5</td><td>Up to 10</td></tr>
-          <tr><th scope="row">Context base users</th><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
-          <tr><th scope="row">Months of app use</th><td>6</td><td>12</td><td>12</td></tr>
           <tr><th scope="row">Fully owned context files</th>
           <td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Included"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg></td>
           <td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Included"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg></td>
           <td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Included"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg></td>
           </tr>
-          <tr><th scope="row">Context</th><td>Bring your own</td><td>Bring your own</td><td>Cozelo-supported definition</td></tr>
           <tr><th scope="row">App updates</th>
           <td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Included"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg></td>
           <td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Included"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg></td>
@@ -176,10 +169,16 @@
           <td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Included"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg></td>
           <td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Included"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg></td>
           </tr>
+          <tr><th scope="row">Enterprise-grade Google or Microsoft Security</th>
+          <td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Included"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg></td>
+          <td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Included"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg></td>
+          <td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Included"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg></td>
+          </tr>
+          <tr><th scope="row">App users</th><td>1</td><td>Up to 5</td><td>Up to 10</td></tr>
+          <tr><th scope="row">Context base users</th><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
+          <tr><th scope="row">Months of app use</th><td>6</td><td>12</td><td>12</td></tr>
+          <tr><th scope="row">Context</th><td>Bring your own</td><td>Bring your own</td><td>Cozelo-supported definition</td></tr>
         </tbody>
-        <tfoot>
-          <tr><td></td><td><a class="btn btn--primary" href="#lets-talk" data-topic="A go-to-market Digital Analogue">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a></td><td><a class="btn btn--primary" href="#lets-talk" data-topic="A go-to-market Digital Analogue">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a></td><td><a class="btn btn--primary" href="#lets-talk" data-topic="A go-to-market Digital Analogue">Let's talk<svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a></td></tr>
-        </tfoot>
       </table>
     </div>
     <div class="after">
@@ -194,15 +193,15 @@
     <h2>When something else comes first.</h2>
     <div class="two">
       <article class="opt" id="why-you-win">
-        <h3>Why you win</h3>
-        <p>An evidence-based definition of why you win, and a messaging matrix that carries it to your target firms and personas. It becomes the center of your Digital Analogue&trade; when you build one. <a href="#lets-talk" data-topic="Why you win &amp; messaging">Reach out to discuss.</a></p>
+        <h3>Why you win &amp; messaging</h3>
+        <p>An evidence-based definition of why you win, and a messaging matrix that carries it to your target firms and personas. It becomes the center of your Digital Analogue&trade; when you build one.<br><a href="#lets-talk" data-topic="Why you win &amp; messaging">Reach out to discuss.</a></p>
       </article>
       <article class="opt" id="process-systems-data">
         <h3>Process, systems and data work</h3>
         <p class="sub">for your <span class="nb">go-to-market</span>: CRM and lead management, tech stack and automation.</p>
         <p class="opt__q">The lead handoff from marketing to sales is broken.</p>
         <p class="opt__q">Your CRM isn&rsquo;t helping you win new business.</p>
-        <p>We fix the part that needs it and connect it to your Digital Analogue&trade;. Each project is scoped to the work. <a href="#lets-talk" data-topic="Go-to-market process, systems and data work">Reach out to discuss.</a></p>
+        <p>We fix the part that needs it and connect it to your Digital Analogue&trade;. Each project is scoped to the work.<br><a href="#lets-talk" data-topic="Go-to-market process, systems and data work">Reach out to discuss.</a></p>
       </article>
     </div>
   </div>
@@ -292,7 +291,7 @@
   </div>
 </footer>
 
-<script src="/assets/site.js?v=0"></script>
-<script src="/assets/motif.js?v=0"></script>
+<script src="/assets/site.js?v=65676140"></script>
+<script src="/assets/motif.js?v=016f9eb2"></script>
 </body>
 </html>

@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=0">
+<link rel="stylesheet" href="/assets/site.css?v=92d6f425">
 <style>
 /* ---------- Digital Analogue ---------- */
 .phero h1{max-width:18ch}
@@ -52,8 +52,12 @@
 .split-l{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(2rem,5vw,4.5rem); align-items:center}
 .split-r{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(2rem,5vw,4.5rem); align-items:center}
 .split-l .ph,.split-r .ph{aspect-ratio:16/11}
-/* The Orchestrator Instructions: a small gold shape in a field, the few files a task needs. */
-.jx-orch{aspect-ratio:16/11; width:100%; border-radius:14px; background:var(--white)}
+/* The Orchestrator Instructions: a field running in from the page's left edge and fading out toward the copy.
+   The gold shape is the small part of the context base a task needs. */
+.jx-orch{--rail:var(--rail-w); --edge:calc(var(--gutter) + max(0px, (100vw - var(--rail) - 2 * var(--gutter) - var(--max)) / 2));
+  margin-left:calc(-1 * var(--edge)); width:calc(100% + var(--edge)); height:clamp(260px,27vw,380px);
+  -webkit-mask-image:linear-gradient(90deg, #000 72%, transparent); mask-image:linear-gradient(90deg, #000 72%, transparent)}
+@media(max-width:1080px){.jx-orch{--rail:0px}}
 .split-l h3,.split-r h3{font-size:clamp(1.5rem,2.4vw,1.875rem); line-height:1.15}
 
 /* How it's organized: the wheel beside the text and the five parts, then the markdown point */
@@ -67,8 +71,8 @@
 .parts span{font-family:var(--serif); font-size:1.0625rem; line-height:1.5; color:var(--on-light)}
 .md{margin-top:clamp(3rem,6vw,4.5rem)}
 
-/* The instructions: one gold line through the three steps, drawn in once. */
-.jx-steps{height:150px; margin:clamp(2.5rem,5vw,3.5rem) 0 clamp(1.5rem,3vw,2.25rem)}
+/* The instructions: three rising blocks, one above each step. */
+.jx-steps{ margin:clamp(2.5rem,5vw,3.5rem) 0 clamp(1.5rem,3vw,2.25rem)}
 .steps{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(1rem,2.5vw,2rem); list-style:none; margin:0; padding:0}
 .num{font-family:var(--sans); font-weight:800; font-size:1.75rem; line-height:1; color:var(--gold)}
 .steps__foot{margin-top:clamp(2rem,4vw,3rem); max-width:40rem}
@@ -164,8 +168,8 @@
       </div>
       <div class="split-r">
         <div class="jx jx-orch" data-motif="junctions" data-surface="white" data-seed="31"
-             data-opts='{"tile":26,"fit":true,"shapes":[{"type":"blob","x":0.5,"y":0.5,"n":5,"seed":4},{"type":"dot","x":0.82,"y":0.25}]}'
-             data-opts-narrow='{"tile":22}'></div>
+             data-opts='{"tile":30,"shapes":[{"type":"blob","x":0.55,"y":0.5,"n":12,"seed":3},{"type":"dot","x":0.3,"y":0.75}]}'
+             data-opts-narrow='{"tile":24}'></div>
         <div class="stack">
           <h3>The Orchestrator Instructions</h3>
           <p class="txt">Cozelo&rsquo;s proprietary methodology for how an AI tool should use your context to do a task well while minimizing token use.</p>
@@ -244,8 +248,8 @@
         <p>Context only helps if the AI uses it well. The Orchestrator Instructions are Cozelo&rsquo;s proprietary method for that, and they guide every AI tool that reads your context base. Your rules hold on every request, whoever makes it.</p>
       </div>
     </div>
-    <div class="jx jx-steps" data-motif="junctions" data-surface="navy" data-seed="19" data-draw="scroll"
-         data-opts='{"tile":30,"fit":true,"rows":5,"thin":0.07,"shapes":[{"type":"chain","points":[[0.17,3],[0.5,1],[0.83,3]]}]}'></div>
+    <div class="jx jx-steps" data-motif="junctions" data-surface="navy" data-seed="19"
+         data-opts='{"tile":30,"fit":true,"rows":8,"anchorY":"bottom","thin":0.07,"shapes":[{"type":"rect","x":1,"y":1,"w":4,"h":2},{"type":"rect","x":[0.345,1],"y":1,"w":5,"h":4},{"type":"rect","x":[0.69,1],"y":1,"w":6,"h":6}]}'></div>
     <ol class="steps">
       <li class="stack"><span class="num">1</span><h3>Understand the ask</h3><p class="txt">Ask if something essential is missing.</p></li>
       <li class="stack"><span class="num">2</span><h3>Use the context base, only read what&rsquo;s necessary</h3><p class="txt">Check with you before spending tokens looking anywhere else.</p></li>
@@ -368,7 +372,7 @@
   </div>
 </footer>
 
-<script src="/assets/site.js?v=0"></script>
-<script src="/assets/motif.js?v=0"></script>
+<script src="/assets/site.js?v=65676140"></script>
+<script src="/assets/motif.js?v=016f9eb2"></script>
 </body>
 </html>
