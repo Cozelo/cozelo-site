@@ -1,9 +1,14 @@
-# Cozelo — Netlify configuration
+# Cozelo: Netlify configuration
 # Static site: no build step, no dependencies. Netlify publishes this folder as-is.
 
 [build]
   publish = "."
   command = ""
+
+# Production builds (main) fail while any page holds a placeholder. Deploy Previews and
+# branch deploys use [build] above and are not checked.
+[context.production]
+  command = "bash scripts/check-placeholders.sh"
 
 # Repo housekeeping (task notes, build scripts) is not part of the site.
 [[redirects]]
@@ -18,10 +23,20 @@
   status = 404
   force = true
 
-# 29 Sep: AI-readiness direction. Why you win became AI readiness; Industries was retired.
+# Retired pages.
+[[redirects]]
+  from = "/ai-readiness/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/how-we-work/*"
+  to = "/services/"
+  status = 301
+
 [[redirects]]
   from = "/why-you-win/*"
-  to = "/ai-readiness/"
+  to = "/"
   status = 301
 
 [[redirects]]

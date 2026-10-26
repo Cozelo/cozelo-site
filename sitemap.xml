@@ -2,22 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cozelo.co/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://cozelo.co/ai-readiness/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <priority>0.8</priority>
+    <loc>https://cozelo.co/digital-analogue/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cozelo.co/how-we-work/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <loc>https://cozelo.co/services/</loc>
+    <lastmod>2026-10-26</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cozelo.co/who-we-are/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>

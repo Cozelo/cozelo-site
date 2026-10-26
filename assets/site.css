@@ -157,22 +157,27 @@ h3{font-size:clamp(1.2rem,1.6vw,1.45rem); font-weight:700; line-height:1.15; let
 .band--dark .textlink{color:var(--on-dark)}
 .btnrow{display:flex; flex-wrap:wrap; gap:.9rem; margin-top:2.4rem}
 
-/* ---------- contact form. Netlify Forms: static markup is the whole
-   backend — no JS, no endpoint to stand up. Lives inside each page's own
-   closing band, under that page's heading and lede. ---------- */
+/* ---------- contact form. Netlify Forms: one form, "contact", with identical markup on every
+   page so all submissions land in one form. Lives inside each page's closing band. site.js shows
+   the extra fields for the Personal Digital Analogue choice and preselects the choice from
+   links carrying data-topic. ---------- */
 .cform{margin-top:2.4rem; max-width:44rem}
 .cform__grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(16rem,100%),1fr)); gap:1rem}
 .cform label{display:block; font-family:var(--sans); font-weight:700;
   font-size:.875rem; color:var(--on-light-soft); margin:0 0 .45rem}
 .band--dark .cform label{color:var(--on-dark-soft)}
-.cform input,.cform textarea{
+.cform input,.cform textarea,.cform select{
   width:100%; font-family:var(--serif); font-size:1rem; line-height:1.5; color:var(--on-light);
   background:var(--white); border:2px solid rgba(26,26,26,.18); border-radius:var(--btn-radius);
   padding:.8rem .9rem; transition:border-color var(--dur-fast) var(--ease);
 }
-.cform input:focus,.cform textarea:focus{outline:none; border-color:var(--navy); box-shadow:0 0 0 1px var(--navy)}
+.cform input:focus,.cform textarea:focus,.cform select:focus{outline:none; border-color:var(--navy); box-shadow:0 0 0 1px var(--navy)}
 .cform textarea{min-height:8rem; resize:vertical}
+.cform select{appearance:none; -webkit-appearance:none; cursor:pointer; padding-right:2.6rem;
+  background:var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231b2f4b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right .9rem center / 1.1rem}
 .cform .full{grid-column:1/-1}
+.cform__more{grid-column:1/-1; display:grid; grid-template-columns:inherit; gap:1rem}
+.cform__more[hidden]{display:none}
 .cform button{margin-top:1.2rem}
 .cform__hp{position:absolute; left:-9999px}
 
@@ -375,3 +380,21 @@ h3{font-size:clamp(1.2rem,1.6vw,1.45rem); font-weight:700; line-height:1.15; let
 .footer__legal{flex-basis:100%; margin:0; font-family:var(--serif); font-size:.8125rem; color:var(--on-light-soft)}
 /* Motif fields that span the content width (between the gutters). */
 .jx-body{position:absolute; left:max(var(--gutter), calc((100% - var(--max)) / 2)); right:max(var(--gutter), calc((100% - var(--max)) / 2))}
+
+/* ---------- placeholders for content still to come ---------- */
+/* .ph: a labelled box standing in for a screenshot or video. .tbd: an inline note for copy still to confirm.
+   Both render in red so they stand out on Deploy Previews. scripts/check-placeholders.sh fails the
+   production build while any page still contains one. */
+.ph{--ph-red:#e00000; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem; text-align:center; width:100%;
+  background:#ffe6e6; border:2px dashed var(--ph-red); border-radius:var(--btn-radius); padding:1.25rem}
+.ph b{font-family:var(--sans); font-weight:700; font-size:.9375rem; color:var(--ph-red)}
+.ph span{font-family:var(--serif); font-size:.875rem; line-height:1.45; color:#a30000; max-width:28rem}
+.tbd{display:inline-block; font-family:var(--sans); font-style:normal; font-weight:700; font-size:.8125rem; line-height:1.4; letter-spacing:0;
+  color:#fff; background:#e00000; border-radius:6px; padding:.1rem .45rem; vertical-align:middle}
+
+/* ---------- offers: price line and what's included ---------- */
+.price{margin:0; font-family:var(--serif); font-weight:600; font-size:1.0625rem; line-height:1.45; color:var(--navy)}
+.incl{list-style:none; margin:0; padding:0; border-top:1px solid var(--rule-light)}
+.incl li{font-family:var(--serif); font-size:1rem; line-height:1.45; color:var(--on-light);
+  padding:.6rem 0 .6rem 1.4rem; border-bottom:1px solid var(--rule-light); position:relative}
+.incl li::before{content:""; position:absolute; left:0; top:1.15rem; width:.6rem; height:2px; background:var(--gold)}
