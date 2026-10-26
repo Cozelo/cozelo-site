@@ -37,6 +37,11 @@
 <style>
 /* ---------- Services ---------- */
 .phero h1{max-width:16ch}
+/* Hero: a field in the top right, fading in from behind the headline. */
+.phero{position:relative; overflow:hidden}
+.jx-svc{position:absolute; top:0; right:0; bottom:0; width:58%; z-index:0;
+  -webkit-mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.3) 30%, #000 65%); mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.3) 30%, #000 65%)}
+@media(max-width:900px){.jx-svc{display:none}}
 
 /* Build your Digital Analogue: three tiers compared row by row. Scrolls sideways inside its box on narrow screens. */
 .txt{margin:0; font-family:var(--serif); font-size:1.05rem; line-height:1.55; color:var(--on-light-soft)}
@@ -69,20 +74,10 @@
 .two{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(.9rem,1.6vw,1.25rem); margin-top:clamp(1.8rem,3.5vw,2.8rem)}
 .opt{display:flex; flex-direction:column; gap:.85rem; min-width:0; background:var(--white); border:1.5px solid var(--gold); border-radius:14px; padding:clamp(1.4rem,2.6vw,2.2rem)}
 .opt p{margin:0; font-family:var(--serif); font-size:1.08rem; line-height:1.6; color:var(--on-light)}
-.opt .sub{font-weight:600; color:var(--navy)}
-.opt .opt__q{font-style:italic; color:var(--on-light-soft); font-size:1.02rem; line-height:1.5}
 .opt a{font-family:var(--sans); font-weight:700; color:var(--navy); text-decoration:underline; text-decoration-thickness:1.5px; text-underline-offset:4px}
 @media(max-width:760px){.two{grid-template-columns:1fr}}
 
-/* Who does the work: a gold zig-zag outline across the seam, the full body width, with
-   circles inside its turns (a project with checkpoints and deliverables). The outline draws itself
-   in once, then three gold circles inside its turns pop in.
-   The section divider line is removed behind it. */
-#who-does-the-work{position:relative; border-top:0}
-/* Top padding clears the lower half of the field (3 tiles) plus a gap above the heading. */
-#who-does-the-work{padding-top:max(clamp(3.5rem,calc(2rem + 4.5vw),6.5rem), 7.25rem)}
-@media(max-width:760px){#who-does-the-work{padding-top:6rem}}
-.jx-through{z-index:2; top:0; transform:translateY(-50%)}
+/* Who does the work */
 #who-does-the-work .textlink{margin-top:1.75rem}
 </style></head>
 <body>
@@ -131,6 +126,8 @@
 </nav>
 
 <header class="band band--light phero" id="top">
+  <div class="jx jx-svc" data-motif="junctions" data-surface="white" data-seed="53"
+       data-opts='{"tile":29,"anchor":"right","shapes":[{"type":"blob","x":8,"y":6,"n":18,"seed":21},{"type":"blob","x":5,"y":4,"n":10,"seed":3},{"type":"dot","x":14,"y":8}]}'></div>
   <div class="hero__inner">
     <h1>Take control of your context.</h1>
     <p class="lede">Whether you start with one person or your whole <span class="nb">go-to-market</span> function, your Digital Analogue&trade; begins curating your context for efficient, effective AI use.</p>
@@ -147,9 +144,9 @@
         <thead>
           <tr>
             <td></td>
-            <th scope="col"><span class="cmp__tier">BYOC Starter</span><span class="cmp__desc">Bring your own content, 6 months of app use, 1 app user, unlimited context base users</span></th>
-            <th scope="col"><span class="cmp__tier">BYOC Pro</span><span class="cmp__desc">Bring your own content, 12 months of app use, up to 5 app users, unlimited context base users</span></th>
-            <th scope="col"><span class="cmp__tier">Full Build Pro</span><span class="cmp__desc">Full context definition and build, 12 months of app use</span></th>
+            <th scope="col"><span class="cmp__tier">BYOC Starter</span><span class="cmp__desc">Bring your own content</span></th>
+            <th scope="col"><span class="cmp__tier">BYOC Pro</span><span class="cmp__desc">Bring your own content</span></th>
+            <th scope="col"><span class="cmp__tier">Full Build Pro</span><span class="cmp__desc">Full context definition and build</span></th>
           </tr>
         </thead>
         <tbody>
@@ -174,10 +171,10 @@
           <td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Included"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg></td>
           <td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Included"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg></td>
           </tr>
+          <tr><th scope="row">Context</th><td>Bring your own</td><td>Bring your own</td><td>Cozelo-supported definition</td></tr>
+          <tr><th scope="row">Months of app use</th><td>6</td><td>12</td><td>12</td></tr>
           <tr><th scope="row">App users</th><td>1</td><td>Up to 5</td><td>Up to 10</td></tr>
           <tr><th scope="row">Context base users</th><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
-          <tr><th scope="row">Months of app use</th><td>6</td><td>12</td><td>12</td></tr>
-          <tr><th scope="row">Context</th><td>Bring your own</td><td>Bring your own</td><td>Cozelo-supported definition</td></tr>
         </tbody>
       </table>
     </div>
@@ -194,23 +191,19 @@
     <div class="two">
       <article class="opt" id="why-you-win">
         <h3>Why you win &amp; messaging</h3>
-        <p>An evidence-based definition of why you win, and a messaging matrix that carries it to your target firms and personas. It becomes the center of your Digital Analogue&trade; when you build one.<br><a href="#lets-talk" data-topic="Why you win &amp; messaging">Reach out to discuss.</a></p>
+        <p>An evidence-based definition of why you win, and a messaging matrix that carries it to your target firms and personas. It becomes the center of your Digital Analogue&trade; when you build one.</p>
+        <p><a href="#lets-talk" data-topic="Why you win &amp; messaging">Reach out to discuss.</a></p>
       </article>
       <article class="opt" id="process-systems-data">
         <h3>Process, systems and data work</h3>
-        <p class="sub">for your <span class="nb">go-to-market</span>: CRM and lead management, tech stack and automation.</p>
-        <p class="opt__q">The lead handoff from marketing to sales is broken.</p>
-        <p class="opt__q">Your CRM isn&rsquo;t helping you win new business.</p>
-        <p>We fix the part that needs it and connect it to your Digital Analogue&trade;. Each project is scoped to the work.<br><a href="#lets-talk" data-topic="Go-to-market process, systems and data work">Reach out to discuss.</a></p>
+        <p>AI implementation can&rsquo;t fix a broken marketing-to-sales handoff, messy CRM data, or disconnected systems. If you have a gap holding you back from AI implementation, we can start where your need is greatest.</p>
+        <p><a href="#lets-talk" data-topic="Go-to-market process, systems and data work">Reach out to discuss.</a></p>
       </article>
     </div>
   </div>
 </section>
 
 <section class="band band--light" id="who-does-the-work">
-  <div class="jx jx-body jx-through" data-motif="junctions" data-surface="white" data-seed="13" data-draw="scroll" data-pop
-       data-opts='{"tile":28,"fit":true,"rows":6,"shapes":[{"type":"chain","points":[[2,2],[0.25,4],[0.5,2],[0.75,4],[-3,2]]},{"type":"rect","x":[0.25,-2],"y":3,"w":4,"h":2,"holes":1},{"type":"rect","x":[0.5,-2],"y":1,"w":4,"h":2,"holes":1},{"type":"rect","x":[0.75,-2],"y":3,"w":4,"h":2,"holes":1}]}'
-       data-opts-narrow='{"tile":22,"rows":6}'></div>
   <div class="inner lay-split">
     <div>
       <h2>Who does the work.</h2>

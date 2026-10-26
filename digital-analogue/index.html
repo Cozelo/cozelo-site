@@ -38,7 +38,15 @@
 /* ---------- Digital Analogue ---------- */
 .phero h1{max-width:18ch}
 .reel{margin:clamp(2.5rem,5vw,3.5rem) 0 0; max-width:52rem}
-.reel .ph{aspect-ratio:16/9}
+.reel .ph{aspect-ratio:16/9; position:relative; z-index:1}
+/* Field behind the reel, from one page edge to the other, fading out above and below it. */
+.phero{overflow:hidden}
+.reel__frame{position:relative}
+.jx-reel{--rail:var(--rail-w); --edge:calc(var(--gutter) + max(0px, (100vw - var(--rail) - 2 * var(--gutter) - var(--max)) / 2));
+  position:absolute; z-index:0; top:-3.5rem; bottom:-2.5rem; left:calc(-1 * var(--edge)); width:calc(100vw - var(--rail));
+  -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 3.5rem, #000 calc(100% - 2.5rem), transparent);
+  mask-image:linear-gradient(180deg, transparent 0, #000 3.5rem, #000 calc(100% - 2.5rem), transparent)}
+@media(max-width:1080px){.jx-reel{--rail:0px}}
 .reel__play{width:72px; height:72px; border-radius:50%; background:#e00000; display:flex; align-items:center; justify-content:center; margin-bottom:.75rem}
 .reel figcaption{margin-top:.75rem; font-family:var(--serif); font-size:.9375rem; color:var(--on-light-soft)}
 
@@ -71,7 +79,7 @@
 .parts span{font-family:var(--serif); font-size:1.0625rem; line-height:1.5; color:var(--on-light)}
 .md{margin-top:clamp(3rem,6vw,4.5rem)}
 
-/* The instructions: three rising blocks, one above each step. */
+/* The instructions: above each step, its stage of the work: scattered pieces, the same pieces joined, then a finished box. */
 .jx-steps{ margin:clamp(2.5rem,5vw,3.5rem) 0 clamp(1.5rem,3vw,2.25rem)}
 .steps{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(1rem,2.5vw,2rem); list-style:none; margin:0; padding:0}
 .num{font-family:var(--sans); font-weight:800; font-size:1.75rem; line-height:1; color:var(--gold)}
@@ -81,12 +89,11 @@
 .cards{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(1.5rem,3vw,2.5rem) clamp(1.5rem,4vw,3.5rem); margin-top:clamp(2.5rem,5vw,3.5rem)}
 .cards .ph{aspect-ratio:16/10}
 
-/* Security: four points side by side, no rules between them */
-.sec-pts{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(1.5rem,3vw,2.5rem); margin-top:clamp(2rem,4vw,3rem)}
+/* Security: four points stacked, each running the full body width, no rules between them */
+.sec-pts{display:flex; flex-direction:column; gap:clamp(1.75rem,3vw,2.25rem); margin-top:clamp(2rem,4vw,3rem)}
 
-@media(max-width:1000px){.sec-pts{grid-template-columns:repeat(2,minmax(0,1fr))} .steps{grid-template-columns:1fr} .jx-steps{display:none}}
+@media(max-width:1000px){.steps{grid-template-columns:1fr} .jx-steps{display:none}}
 @media(max-width:900px){.cards,.split-l,.split-r,.model{grid-template-columns:minmax(0,1fr)} .split-r .ph{order:2} .model__wheel{max-width:28rem}}
-@media(max-width:560px){.sec-pts{grid-template-columns:1fr}}
 </style></head>
 <body>
 
@@ -140,10 +147,15 @@
     <h1>Any AI, higher quality, lower cost.</h1>
     <p class="lede">Using AI alone no longer gives your team an advantage. Every competitor has the same AI tools. Meanwhile, usage and spend are climbing. A Digital Analogue&trade; gives your LLM a curated source of your unique business context, plus the instructions for effective, efficient use.</p>
     <figure class="reel">
+      <div class="reel__frame">
+        <div class="jx jx-reel" data-motif="junctions" data-surface="white" data-seed="47"
+             data-opts='{"tile":30,"anchor":"right","shapes":[{"type":"chain","points":[[6,0],[4,3]]},{"type":"blob","x":5,"y":6,"n":12,"seed":3},{"type":"dot","x":2,"y":11}]}'
+             data-opts-narrow='{"tile":22,"shapes":[{"type":"blob","x":3,"y":2,"n":6,"seed":3}]}'></div>
       <div class="ph">
         <span class="reel__play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="#ffffff"/></svg></span>
         <b>Sizzle reel, about 15 seconds</b>
         <span>Poster: the AltaMesh Home screen. Generic AI draft, then the same request with AltaMesh context; the Enterprise Hub and change log; Connect your AI; logo lockup.</span>
+      </div>
       </div>
       <figcaption>See the Digital Analogue&trade; in 15 seconds. <span class="tbd">[transcript link when the reel exists]</span></figcaption>
     </figure>
@@ -168,7 +180,7 @@
       </div>
       <div class="split-r">
         <div class="jx jx-orch" data-motif="junctions" data-surface="white" data-seed="31"
-             data-opts='{"tile":30,"shapes":[{"type":"blob","x":0.55,"y":0.5,"n":12,"seed":3},{"type":"dot","x":0.3,"y":0.75}]}'
+             data-opts='{"tile":30,"shapes":[{"type":"blob","x":7,"y":7,"n":18,"seed":21},{"type":"blob","x":11,"y":4,"n":10,"seed":3},{"type":"dot","x":3,"y":3}]}'
              data-opts-narrow='{"tile":24}'></div>
         <div class="stack">
           <h3>The Orchestrator Instructions</h3>
@@ -249,7 +261,7 @@
       </div>
     </div>
     <div class="jx jx-steps" data-motif="junctions" data-surface="navy" data-seed="19"
-         data-opts='{"tile":30,"fit":true,"rows":8,"anchorY":"bottom","thin":0.07,"shapes":[{"type":"rect","x":1,"y":1,"w":4,"h":2},{"type":"rect","x":[0.345,1],"y":1,"w":5,"h":4},{"type":"rect","x":[0.69,1],"y":1,"w":6,"h":6}]}'></div>
+         data-opts='{"tile":30,"fit":true,"rows":7,"thin":0.07,"shapes":[{"type":"blob","x":[0,4],"y":3,"n":5,"seed":4},{"type":"dot","x":[0,1],"y":5},{"type":"dot","x":[0,8],"y":2},{"type":"dot","x":[0,9],"y":5},{"type":"blob","x":[0.345,4],"y":3,"n":5,"seed":4},{"type":"chain","points":[[[0.345,4],3],[[0.345,1],5]]},{"type":"chain","points":[[[0.345,4],3],[[0.345,8],2]]},{"type":"chain","points":[[[0.345,4],3],[[0.345,9],5]]},{"type":"rect","x":[0.69,1],"y":1,"w":6,"h":4,"holes":1}]}'></div>
     <ol class="steps">
       <li class="stack"><span class="num">1</span><h3>Understand the ask</h3><p class="txt">Ask if something essential is missing.</p></li>
       <li class="stack"><span class="num">2</span><h3>Use the context base, only read what&rsquo;s necessary</h3><p class="txt">Check with you before spending tokens looking anywhere else.</p></li>

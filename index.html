@@ -68,6 +68,8 @@
 #builds .prose{margin-top:clamp(1.5rem,3vw,2.25rem); max-width:44rem}
 .home-hero .lede + .lede{margin-top:1.25rem}
 
+/* Where to start sits directly above the form's motif strip, so it needs less space below it. */
+#start{padding-bottom:clamp(1.5rem,3vw,2.25rem)}
 /* Where to start: two situations, each a link to its part of Services. */
 .starts{list-style:none; margin:clamp(2rem,4vw,3rem) 0 0; padding:0; border-top:1px solid var(--rule-light); max-width:52rem}
 .starts li{border-bottom:1px solid var(--rule-light)}
@@ -156,7 +158,7 @@
   </div>
 </section>
 
-<section class="band band--shade" id="start">
+<section class="band band--light" id="start">
   <div class="inner">
     <h2>Where does your <span class="nb">go-to-market</span> stand today?</h2>
     <ul class="starts">
