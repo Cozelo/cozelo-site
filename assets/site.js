@@ -80,20 +80,14 @@ document.querySelectorAll('.btn--primary').forEach(function(b){
 })();
 
 // ---- Contact form: topic choice ----
-// The Personal Digital Analogue choice reveals its three extra fields. Links
-// with data-topic (offer buttons) select their choice before scrolling to the
-// form. Without JS the extra fields stay hidden and the form still submits.
+// Links with data-topic (offer buttons) select their choice before scrolling
+// to the form.
 (function(){
-  var topic = document.getElementById('f-topic'), more = document.getElementById('f-more');
-  if (!topic || !more) return;
-  var PERSONAL = 'Personal Digital Analogue';
-  function sync(){ more.hidden = topic.value !== PERSONAL; }
-  topic.addEventListener('change', sync);
+  var topic = document.getElementById('f-topic');
+  if (!topic) return;
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('[data-topic]');
     if (!a) return;
     topic.value = a.getAttribute('data-topic');
-    sync();
   });
-  sync();
 })();

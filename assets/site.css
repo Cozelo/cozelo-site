@@ -176,8 +176,6 @@ h3{font-size:clamp(1.2rem,1.6vw,1.45rem); font-weight:700; line-height:1.15; let
 .cform select{appearance:none; -webkit-appearance:none; cursor:pointer; padding-right:2.6rem;
   background:var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231b2f4b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right .9rem center / 1.1rem}
 .cform .full{grid-column:1/-1}
-.cform__more{grid-column:1/-1; display:grid; grid-template-columns:inherit; gap:1rem}
-.cform__more[hidden]{display:none}
 .cform button{margin-top:1.2rem}
 .cform__hp{position:absolute; left:-9999px}
 
