@@ -16,20 +16,20 @@
 <link rel="canonical" href="https://cozelo.co/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Cozelo">
-<meta property="og:title" content="Cozelo | The context that makes your AI tools work like your experts">
-<meta property="og:description" content="Every AI tool your team uses works from what it&rsquo;s given, so results vary with each person&rsquo;s expertise and aren&rsquo;t shared. Cozelo builds your Digital Analogue&trade;: one curated, current version of your business, from why buyers choose you to how your team sells.">
+<meta property="og:title" content="Cozelo | Build the context that makes AI work like your experts">
+<meta property="og:description" content="Any AI tool your team uses works from what it&rsquo;s given, so results vary with each person&rsquo;s expertise and aren&rsquo;t shared. Cozelo builds your Digital Analogue&trade;: one curated, current version of your business, from why buyers choose you to how your team sells.">
 <meta property="og:url" content="https://cozelo.co/">
 <meta property="og:image" content="https://cozelo.co/assets/og-card-v4.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cozelo | The context that makes your AI tools work like your experts">
-<meta name="twitter:description" content="Every AI tool your team uses works from what it&rsquo;s given, so results vary with each person&rsquo;s expertise and aren&rsquo;t shared. Cozelo builds your Digital Analogue&trade;: one curated, current version of your business, from why buyers choose you to how your team sells.">
+<meta name="twitter:title" content="Cozelo | Build the context that makes AI work like your experts">
+<meta name="twitter:description" content="Any AI tool your team uses works from what it&rsquo;s given, so results vary with each person&rsquo;s expertise and aren&rsquo;t shared. Cozelo builds your Digital Analogue&trade;: one curated, current version of your business, from why buyers choose you to how your team sells.">
 <meta name="twitter:image" content="https://cozelo.co/assets/og-card-v4.png">
 <meta name="theme-color" content="#ffffff">
 <link rel="apple-touch-icon" href="/assets/logo-badge-128.png">
-<title>Cozelo | The context that makes your AI tools work like your experts</title>
-<meta name="description" content="Every AI tool your team uses works from what it&rsquo;s given, so results vary with each person&rsquo;s expertise and aren&rsquo;t shared. Cozelo builds your Digital Analogue&trade;: one curated, current version of your business, from why buyers choose you to how your team sells.">
+<title>Cozelo | Build the context that makes AI work like your experts</title>
+<meta name="description" content="Any AI tool your team uses works from what it&rsquo;s given, so results vary with each person&rsquo;s expertise and aren&rsquo;t shared. Cozelo builds your Digital Analogue&trade;: one curated, current version of your business, from why buyers choose you to how your team sells.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -68,15 +68,18 @@
 /* Two columns of ruled cards */
 .cols{display:grid; gap:clamp(1.75rem,3.5vw,3rem); margin-top:clamp(2.25rem,4.5vw,3.5rem)}
 .cols--2{grid-template-columns:repeat(2,minmax(0,1fr))}
-#problem .cols{margin-bottom:clamp(2rem,4vw,3rem)}
+/* What's in the way: the two situations as matching panels; the paragraph that answers both sits apart below them. */
+.sit{background:var(--bone); border-top:3px solid var(--navy); border-radius:0 0 10px 10px; padding:clamp(1.25rem,2.4vw,1.85rem)}
+.both{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:clamp(1rem,5vw,5.5rem); align-items:start;
+  margin-top:clamp(3rem,6vw,4.5rem); padding-top:clamp(1.75rem,3.5vw,2.5rem); border-top:1px solid var(--rule-light)}
+.both h3{font-size:clamp(1.4rem,2.2vw,1.75rem); line-height:1.15}
+@media(max-width:900px){.both{grid-template-columns:1fr}}
 .col{border-top:2px solid var(--navy); padding-top:1.25rem}
 .col h3{font-size:clamp(1.3rem,1.8vw,1.5rem); line-height:1.2; letter-spacing:-.02em}
 .col p{margin:.875rem 0 0; font-family:var(--serif); font-size:1.0625rem; line-height:1.55; color:var(--on-light)}
 @media(max-width:900px){.cols--2{grid-template-columns:1fr}}
 
-/* What Cozelo builds: the statement, set large on navy. */
-.statement{margin:clamp(1.75rem,3.5vw,2.5rem) 0 0; max-width:46rem; font-family:var(--serif);
-  font-size:clamp(1.25rem,1.9vw,1.55rem); line-height:1.5; color:var(--on-dark)}
+#builds .prose{margin-top:clamp(1.5rem,3vw,2.25rem); max-width:44rem}
 
 /* The question: the only boxed element on the page. */
 #question h2{max-width:22ch; margin-bottom:clamp(2rem,4vw,3rem)}
@@ -161,7 +164,7 @@
     <ul class="rail__pages">
       <li><a class="rail__pg current" href="/" aria-current="page">Home</a>
         <ul class="rail__toc">
-          <li><a href="#problem">Two situations</a></li>
+          <li><a href="#problem">What&rsquo;s in the way</a></li>
           <li><a href="#builds">What Cozelo builds</a></li>
           <li><a href="#question">The question</a></li>
           <li><a href="#start">Where to start</a></li>
@@ -178,8 +181,8 @@
 
 <header class="band band--light home-hero" id="top">
   <div class="inner">
-    <h1>The context that makes your AI tools work like your experts.</h1>
-    <p class="lede">Every AI tool your team uses works from what it&rsquo;s given, so results vary with each person&rsquo;s expertise and aren&rsquo;t shared. Cozelo builds your Digital Analogue&trade;: one curated, current version of your business, from why buyers choose you to how your team sells. It becomes the primary source of context for every AI tool your team uses.</p>
+    <h1>Build the context that makes AI work like your experts.</h1>
+    <p class="lede">Any AI tool your team uses works from what it&rsquo;s given, so results vary with each person&rsquo;s expertise and aren&rsquo;t shared.<br>Cozelo builds your Digital Analogue&trade;: one curated, current version of your business, from why buyers choose you to how your team sells. It becomes the primary source of context for every AI tool your team uses.</p>
   </div>
   <div class="jx jx-hero" data-motif="junctions" data-surface="white" data-seed="23" data-narrow-media="(max-width: 900px)"
        data-opts='{"tile":29,"fluid":870,"anchor":"right","shapes":[{"type":"chain","points":[[13,14],[9,10],[8,7],[4,5]]},{"type":"blob","x":11,"y":12,"n":6,"seed":3},{"type":"blob","x":6,"y":6,"n":6,"seed":5},{"type":"dot","x":13,"y":4},{"type":"dot","x":4,"y":12}]}'
@@ -188,19 +191,22 @@
 
 <section class="band band--light" id="problem">
   <div class="inner">
-    <h2>AI needs a clear picture of your business. Your whole business.</h2>
+    <h2>AI can deliver the impact you need. Here&rsquo;s what stands in the way.</h2>
     <div class="cols cols--2">
-      <div class="col">
+      <div class="col sit">
         <h3>You&rsquo;ve invested in AI and need results to show</h3>
         <p>The licenses are in place and usage keeps climbing. Each person&rsquo;s best results stay with that person, much of the output still sounds generic, and it&rsquo;s hard to connect the spend to an outcome.</p>
       </div>
-      <div class="col">
+      <div class="col sit">
         <h3>What used to win business has stopped working</h3>
         <p>Deals take longer and the old playbook lands less often. Before AI can help, your team needs one clear answer to why buyers choose you, said the same way everywhere.</p>
       </div>
     </div>
-    <div class="sec-body prose">
-      <p>Both start in the same place. Your positioning lives in a presentation. Your customer knowledge is in your best minds. Your processes span systems and teams, guided by unwritten rules. AI can only work with what it&rsquo;s given.</p>
+    <div class="both">
+      <h3>Both start in the same place.</h3>
+      <div class="prose">
+        <p>Your positioning lives in a presentation. Your customer knowledge is in your best minds. Your processes span systems and teams, guided by unwritten rules. AI can only work with what it&rsquo;s given. Point it at a shared drive and it finds every outdated deck and competing version, with no way to tell which one is right.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -208,7 +214,9 @@
 <section class="band band--dark" id="builds">
   <div class="inner">
     <h2>What Cozelo builds.</h2>
-    <p class="statement">Cozelo gives every AI tool your teams use a single version of the truth about your business: your Digital Analogue&trade;. At its center is why you win, the reason buyers choose you, and if your teams don&rsquo;t share one clear answer, we research and define it first. Where the processes, systems or data around it are weak, we fix those too.</p>
+    <div class="prose">
+      <p>Cozelo gives every AI tool your teams use a single version of the truth about your business: your Digital Analogue&trade;.<br>At its center is why you win, the reason buyers choose you, and if your teams don&rsquo;t share one clear answer, we research and define it first. Where the processes, systems or data around it are weak, we fix those too.</p>
+    </div>
     <a class="textlink sec-link" href="/digital-analogue/">Explore the Digital Analogue&trade;</a>
   </div>
 </section>
@@ -217,24 +225,24 @@
   <div class="inner">
     <h2 id="question-h">Inconsistency used to cost you efficiency. Now it gets published.</h2>
     <div class="exhibit">
-      <p class="q">&ldquo;Why should we pick you over <span class="q__end"><span class="var" data-rot><span class="var__t">your top competitor</span></span>?&rdquo;</span></p>
+      <p class="q">&ldquo;Why should a buyer choose us over <span class="q__end"><span class="var" data-rot><span class="var__t">your top competitor</span></span>?&rdquo;</span></p>
       <div class="answers">
         <div class="ans">
-          <p class="ans__src">Your website</p>
+          <p class="ans__src">Your sales lead&rsquo;s AI, given last year&rsquo;s pitch deck</p>
+          <blockquote>Our proprietary platform and award-winning service set us apart from legacy providers.</blockquote>
+        </div>
+        <div class="ans">
+          <p class="ans__src">Your marketing manager&rsquo;s AI, given the website</p>
           <blockquote>Trusted by industry leaders to deliver results that move the needle.</blockquote>
         </div>
         <div class="ans">
-          <p class="ans__src">Your best seller</p>
-          <blockquote>With us you get white glove treatment that bigger firms can&rsquo;t match.</blockquote>
-        </div>
-        <div class="ans">
-          <p class="ans__src">An AI assistant, asked by your buyer</p>
+          <p class="ans__src">Your new hire&rsquo;s AI, given nothing</p>
           <blockquote>Both are credible options. <span data-rot-echo>Your top competitor</span> is the more established choice for a company your size.</blockquote>
         </div>
       </div>
       <div class="exhibit__foot">
-        <p class="verdict">AI answers from whatever it can find about you. Your Digital Analogue&trade; gives it the answer you&rsquo;d give.</p>
-        <p class="test">Test it today. Ask Google and the LLM of your choice why a buyer should choose you over your top competitor. Compare the answers. Then compare them to your website.</p>
+        <p class="verdict">Each AI tool answers from whatever it&rsquo;s given. Your Digital Analogue&trade; gives every one of them the answer you&rsquo;d give.</p>
+        <p class="test">Test it today. Ask three people on your team to put this question to the AI tool they use. Compare the answers with each other, then with what your best seller would say.</p>
       </div>
     </div>
   </div>
@@ -242,11 +250,11 @@
 
 <section class="band band--shade" id="start">
   <div class="inner">
-    <h2>Start with one person or the whole firm.</h2>
+    <h2>What do you want AI to do for you?</h2>
     <ul class="starts">
-      <li><a href="/services/#offers"><span>Your firm has AI in place</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a></li>
-      <li><a href="/services/#something-else"><span>Your sales methods have stopped working</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a></li>
-      <li><a href="/services/#personal"><span>One person wants to start</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a></li>
+      <li><a href="/services/#offers"><span>We have enterprise AI but aren&rsquo;t seeing productivity gains</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a></li>
+      <li><a href="/services/#something-else"><span>We need to win more new business</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a></li>
+      <li><a href="/services/#personal"><span>I want AI to improve my work efficiency or quality</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12H20M13.2 5.2 20 12l-6.8 6.8"/></svg></a></li>
     </ul>
     <p class="from">Projects start at $5,000 for one person.</p>
   </div>
