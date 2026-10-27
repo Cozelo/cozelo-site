@@ -24,6 +24,7 @@
      fluid   reference width in px: below it the tile shrinks in proportion, so the composition
              keeps its proportions in a narrower field (never grows above tile)
      fit     true: adjust the tile so whole tiles span the width (clean edges, no fade needed)
+     rowsMax shrink the tile so at least this many tiles fit the height
      rows    with fit: set the element's height to this many tiles
      anchor  left | right   which edge shape x-coordinates count from (default left)
      anchorY top | bottom   which edge shape y-coordinates count from (default top)
@@ -126,6 +127,8 @@
     /* fit: stretch the tile so a whole number of tiles spans the width, giving clean edges. */
     var s = o.tile || 40;
     if (o.fluid && w < o.fluid) s = s * w / o.fluid;
+    /* rowsMax: shrink the tile so the field is at least this many tiles tall (a shape that must fit the height) */
+    if (o.rowsMax && h / s < o.rowsMax) s = h / o.rowsMax;
     if (o.fit) s = w / Math.max(1, Math.round(w / s));
     var cols = Math.round(w / s) === w / s ? w / s : Math.ceil(w / s), rows = Math.ceil(h / s - 0.001), seed = o.seed || 1;
     var G = corners(o.shapes, cols, rows, o), arcs = [];
