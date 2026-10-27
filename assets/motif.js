@@ -35,6 +35,8 @@
                                        holes:n turns n of the circles inside it gold
        {type:'blob', x, y, n, seed}    n corners grown outward one at a time from (x, y) (organic)
        {type:'dot', x, y}              a single corner: a small gold circle
+       {type:'spine', x}               with hollow: one gold squiggle down corner column x, through the
+                                       inside of a shape (e.g. the line between a brain's hemispheres)
        {type:'chain', points:[[x,y],…]} corners stepping diagonally through the points (a ribbon)
      Negative x or y count from the opposite edge.
 */
@@ -70,6 +72,7 @@
     function snap(i, j) { var q = (i + j) & 1; if (P === null) P = q; return q === P ? i : i + 1; }
     (shapes || []).forEach(function (sh) {
       if (sh.type === 'dot') { add(X(sh.x), Y(sh.y)); return; }
+      if (sh.type === 'spine') { (o._spines = o._spines || []).push({ x: X(sh.x) }); return; }
       if (sh.type === 'rect') {
         var ax = X(sh.x), ay = Y(sh.y), bx = X(sh.x) + (o.anchor === 'right' ? -sh.w : sh.w), by = Y(sh.y) + (o.anchorY === 'bottom' ? -sh.h : sh.h);
         if (sh.w > -1 && sh.w < 1 && sh.w) { bx = X(sh.x + 0) + Math.round(sh.w * cols) * (o.anchor === 'right' ? -1 : 1); }
@@ -142,7 +145,10 @@
     for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
       /* flip: arcs round the top-left and bottom-right corners (the band joins TR and BL). */
       var tl = inG(c, r), tr = inG(c + 1, r), bl = inG(c, r + 1), br = inG(c + 1, r + 1), flip, inn = inner(c, r);
-      if (inn) flip = cellRand(seed, r, c) < 0.5;
+      /* spine: a single gold squiggle down a corner column, two tiles wide, through the hollow inside */
+      var sp = inn && (o._spines || []).some(function (q) { return c === q.x - 1 || c === q.x; });
+      if (sp) flip = (r & 1) === 1;
+      else if (inn) flip = cellRand(seed, r, c) < 0.5;
       else if (tl && br) flip = false;
       else if (tr && bl) flip = true;
       else if (tl || br) flip = true;
@@ -153,10 +159,12 @@
       }
       var x = c * s, y = r * s, m = s / 2;
       var T = [x + m, y], B = [x + m, y + s], L = [x, y + m], R = [x + s, y + m];
-      if (flip) { arcs.push({ a: T, b: L, ce: [c, r], inn: inn }); arcs.push({ a: B, b: R, ce: [c + 1, r + 1], inn: inn }); }
-      else { arcs.push({ a: T, b: R, ce: [c + 1, r], inn: inn }); arcs.push({ a: B, b: L, ce: [c, r + 1], inn: inn }); }
+      /* on the spine, the arcs that make up the squiggle are flagged sp */
+      var left = sp && (o._spines || []).some(function (q) { return c === q.x - 1; });
+      if (flip) { arcs.push({ a: T, b: L, ce: [c, r], inn: inn, sp: sp && !left }); arcs.push({ a: B, b: R, ce: [c + 1, r + 1], inn: inn, sp: sp && left }); }
+      else { arcs.push({ a: T, b: R, ce: [c + 1, r], inn: inn, sp: sp && left }); arcs.push({ a: B, b: L, ce: [c, r + 1], inn: inn, sp: sp && !left }); }
     }
-    var rad = s / 2, quiet = '', soft = '', goldArcs = [];
+    var rad = s / 2, quiet = '', soft = '', spine = '', goldArcs = [];
     function sweep(a, b, ce) { var cx = ce[0] * s, cy = ce[1] * s;
       return ((a[0] - cx) * (b[1] - cy) - (a[1] - cy) * (b[0] - cx)) > 0 ? 1 : 0; }
     /* A gold line is every line that passes round a gold corner. Lines are found by joining arcs
@@ -169,7 +177,7 @@
     arcs.forEach(function (k) {
       if (goldRoot[find(pk(k.a))]) { goldArcs.push(k); return; }
       var seg = 'M' + f1(k.a[0]) + ' ' + f1(k.a[1]) + 'A' + rad + ' ' + rad + ' 0 0 ' + sweep(k.a, k.b, k.ce) + ' ' + f1(k.b[0]) + ' ' + f1(k.b[1]);
-      if (softRoot[find(pk(k.a))]) soft += seg; else quiet += seg;
+      if (k.sp) spine += seg; else if (softRoot[find(pk(k.a))]) soft += seg; else quiet += seg;
     });
 
     /* Trace gold arcs end to end into continuous lines, so each can be drawn in one stroke. */
@@ -208,7 +216,8 @@
     return { lines: lines.length, svg: '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' + S.gold[0] +
       '"/><stop offset=".55" stop-color="' + S.gold[1] + '"/><stop offset="1" stop-color="' + S.gold[2] + '"/></linearGradient></defs>' +
       '<path d="' + quiet + '" fill="none" stroke="' + S.line + '" stroke-width="' + f1(s * (o.thin || 0.06)) + '" stroke-linecap="round"/>' +
-      (soft ? '<path d="' + soft + '" fill="none" stroke="' + S.gold[0] + '" stroke-width="' + f1(s * (o.thin || 0.06) * 1.6) + '" stroke-linecap="round"/>' : '') + gold };
+      (soft ? '<path d="' + soft + '" fill="none" stroke="' + S.gold[0] + '" stroke-width="' + f1(s * (o.thin || 0.06) * 1.6) + '" stroke-linecap="round"/>' : '') + gold +
+      (spine ? '<path d="' + spine + '" fill="none" stroke="url(#' + gid + ')" stroke-width="' + sw + '" stroke-linecap="round"/>' : '') };
   }
 
   function opts(el, w) {
