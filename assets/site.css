@@ -375,3 +375,14 @@ h3{font-size:clamp(1.2rem,1.6vw,1.45rem); font-weight:700; line-height:1.15; let
 .footer__legal{flex-basis:100%; margin:0; font-family:var(--serif); font-size:.8125rem; color:var(--on-light-soft)}
 /* Motif fields that span the content width (between the gutters). */
 .jx-body{position:absolute; left:max(var(--gutter), calc((100% - var(--max)) / 2)); right:max(var(--gutter), calc((100% - var(--max)) / 2))}
+
+/* ---------- placeholders for content still to come ---------- */
+/* .ph: a labelled box standing in for a screenshot or video. .tbd: an inline note for copy still to confirm.
+   Both render in red so they stand out on Deploy Previews. scripts/check-placeholders.sh fails the
+   production build while any page still contains one. */
+.ph{--ph-red:#e00000; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem; text-align:center; width:100%;
+  background:#ffe6e6; border:2px dashed var(--ph-red); border-radius:var(--btn-radius); padding:1.25rem}
+.ph b{font-family:var(--sans); font-weight:700; font-size:.9375rem; color:var(--ph-red)}
+.ph span{font-family:var(--serif); font-size:.875rem; line-height:1.45; color:#a30000; max-width:28rem}
+.tbd{display:inline-block; font-family:var(--sans); font-style:normal; font-weight:700; font-size:.8125rem; line-height:1.4; letter-spacing:0;
+  color:#fff; background:#e00000; border-radius:6px; padding:.1rem .45rem; vertical-align:middle}

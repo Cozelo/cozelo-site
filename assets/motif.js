@@ -24,15 +24,20 @@
      fluid   reference width in px: below it the tile shrinks in proportion, so the composition
              keeps its proportions in a narrower field (never grows above tile)
      fit     true: adjust the tile so whole tiles span the width (clean edges, no fade needed)
+     rowsMax shrink the tile so at least this many tiles fit the height
      rows    with fit: set the element's height to this many tiles
      anchor  left | right   which edge shape x-coordinates count from (default left)
      anchorY top | bottom   which edge shape y-coordinates count from (default top)
      thin, thick   stroke widths as a share of the tile (navy lines, gold lines)
+     hollow  true: only the gold shapes' outer outline is drawn in gold; the tiles inside keep their
+             random squiggles, drawn in pale gold, instead of the rows of navy circles
      shapes  list of gold shapes in tile units, measured from the anchored edges:
        {type:'rect', x, y, w|x2, h, holes} every corner of one parity in the box (a pillar, a slab);
                                        holes:n turns n of the circles inside it gold
        {type:'blob', x, y, n, seed}    n corners grown outward one at a time from (x, y) (organic)
        {type:'dot', x, y}              a single corner: a small gold circle
+       {type:'spine', x}               with hollow: one gold squiggle down corner column x, through the
+                                       inside of a shape (e.g. the line between a brain's hemispheres)
        {type:'chain', points:[[x,y],…]} corners stepping diagonally through the points (a ribbon)
      Negative x or y count from the opposite edge.
 */
@@ -68,6 +73,7 @@
     function snap(i, j) { var q = (i + j) & 1; if (P === null) P = q; return q === P ? i : i + 1; }
     (shapes || []).forEach(function (sh) {
       if (sh.type === 'dot') { add(X(sh.x), Y(sh.y)); return; }
+      if (sh.type === 'spine') { (o._spines = o._spines || []).push({ x: X(sh.x) }); return; }
       if (sh.type === 'rect') {
         var ax = X(sh.x), ay = Y(sh.y), bx = X(sh.x) + (o.anchor === 'right' ? -sh.w : sh.w), by = Y(sh.y) + (o.anchorY === 'bottom' ? -sh.h : sh.h);
         if (sh.w > -1 && sh.w < 1 && sh.w) { bx = X(sh.x + 0) + Math.round(sh.w * cols) * (o.anchor === 'right' ? -1 : 1); }
@@ -121,14 +127,32 @@
     /* fit: stretch the tile so a whole number of tiles spans the width, giving clean edges. */
     var s = o.tile || 40;
     if (o.fluid && w < o.fluid) s = s * w / o.fluid;
+    /* rowsMax: shrink the tile so the field is at least this many tiles tall (a shape that must fit the height) */
+    if (o.rowsMax && h / s < o.rowsMax) s = h / o.rowsMax;
     if (o.fit) s = w / Math.max(1, Math.round(w / s));
     var cols = Math.round(w / s) === w / s ? w / s : Math.ceil(w / s), rows = Math.ceil(h / s - 0.001), seed = o.seed || 1;
     var G = corners(o.shapes, cols, rows, o), arcs = [];
     function inG(i, j) { return G[i + ',' + j] === 1; }
+    /* hollow: a corner is inside a shape if it is gold, or a hole whose four neighbours are all gold.
+       A tile with all four corners inside stays random, and its lines never reach the outline. */
+    var In = {};
+    if (o.hollow) Object.keys(G).forEach(function (k) {
+      In[k] = 1;
+      var p = k.split(','), i = +p[0], j = +p[1];
+      [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(function (d) {
+        var a = i + d[0], b = j + d[1];
+        if (inG(a - 1, b) && inG(a + 1, b) && inG(a, b - 1) && inG(a, b + 1)) In[a + ',' + b] = 1;
+      });
+    });
+    function inner(c, r) { return o.hollow && In[c + ',' + r] && In[(c + 1) + ',' + r] && In[c + ',' + (r + 1)] && In[(c + 1) + ',' + (r + 1)]; }
     for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
       /* flip: arcs round the top-left and bottom-right corners (the band joins TR and BL). */
-      var tl = inG(c, r), tr = inG(c + 1, r), bl = inG(c, r + 1), br = inG(c + 1, r + 1), flip;
-      if (tl && br) flip = false;
+      var tl = inG(c, r), tr = inG(c + 1, r), bl = inG(c, r + 1), br = inG(c + 1, r + 1), flip, inn = inner(c, r);
+      /* spine: a single gold squiggle down a corner column, two tiles wide, through the hollow inside */
+      var sp = inn && (o._spines || []).some(function (q) { return c === q.x - 1 || c === q.x; });
+      if (sp) flip = (r & 1) === 1;
+      else if (inn) flip = cellRand(seed, r, c) < 0.5;
+      else if (tl && br) flip = false;
       else if (tr && bl) flip = true;
       else if (tl || br) flip = true;
       else if (tr || bl) flip = false;
@@ -138,10 +162,12 @@
       }
       var x = c * s, y = r * s, m = s / 2;
       var T = [x + m, y], B = [x + m, y + s], L = [x, y + m], R = [x + s, y + m];
-      if (flip) { arcs.push({ a: T, b: L, ce: [c, r] }); arcs.push({ a: B, b: R, ce: [c + 1, r + 1] }); }
-      else { arcs.push({ a: T, b: R, ce: [c + 1, r] }); arcs.push({ a: B, b: L, ce: [c, r + 1] }); }
+      /* on the spine, the arcs that make up the squiggle are flagged sp */
+      var left = sp && (o._spines || []).some(function (q) { return c === q.x - 1; });
+      if (flip) { arcs.push({ a: T, b: L, ce: [c, r], inn: inn, sp: sp && !left }); arcs.push({ a: B, b: R, ce: [c + 1, r + 1], inn: inn, sp: sp && left }); }
+      else { arcs.push({ a: T, b: R, ce: [c + 1, r], inn: inn, sp: sp && left }); arcs.push({ a: B, b: L, ce: [c, r + 1], inn: inn, sp: sp && !left }); }
     }
-    var rad = s / 2, quiet = '', goldArcs = [];
+    var rad = s / 2, quiet = '', soft = '', spine = '', goldArcs = [];
     function sweep(a, b, ce) { var cx = ce[0] * s, cy = ce[1] * s;
       return ((a[0] - cx) * (b[1] - cy) - (a[1] - cy) * (b[0] - cx)) > 0 ? 1 : 0; }
     /* A gold line is every line that passes round a gold corner. Lines are found by joining arcs
@@ -149,11 +175,12 @@
     var par = {}, pk = function (p) { return Math.round(p[0] * 2) + ',' + Math.round(p[1] * 2); };
     function find(a) { while (par[a] !== a) { par[a] = par[par[a]]; a = par[a]; } return a; }
     arcs.forEach(function (k) { var a = pk(k.a), b = pk(k.b); if (par[a] == null) par[a] = a; if (par[b] == null) par[b] = b; par[find(a)] = find(b); });
-    var goldRoot = {};
-    arcs.forEach(function (k) { if (inG(k.ce[0], k.ce[1])) goldRoot[find(pk(k.a))] = 1; });
+    var goldRoot = {}, softRoot = {};
+    arcs.forEach(function (k) { if (inG(k.ce[0], k.ce[1]) && !k.inn) goldRoot[find(pk(k.a))] = 1; if (k.inn) softRoot[find(pk(k.a))] = 1; });
     arcs.forEach(function (k) {
       if (goldRoot[find(pk(k.a))]) { goldArcs.push(k); return; }
-      quiet += 'M' + f1(k.a[0]) + ' ' + f1(k.a[1]) + 'A' + rad + ' ' + rad + ' 0 0 ' + sweep(k.a, k.b, k.ce) + ' ' + f1(k.b[0]) + ' ' + f1(k.b[1]);
+      var seg = 'M' + f1(k.a[0]) + ' ' + f1(k.a[1]) + 'A' + rad + ' ' + rad + ' 0 0 ' + sweep(k.a, k.b, k.ce) + ' ' + f1(k.b[0]) + ' ' + f1(k.b[1]);
+      if (k.sp) spine += seg; else if (softRoot[find(pk(k.a))]) soft += seg; else quiet += seg;
     });
 
     /* Trace gold arcs end to end into continuous lines, so each can be drawn in one stroke. */
@@ -191,7 +218,9 @@
     }).join('');
     return { lines: lines.length, svg: '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' + S.gold[0] +
       '"/><stop offset=".55" stop-color="' + S.gold[1] + '"/><stop offset="1" stop-color="' + S.gold[2] + '"/></linearGradient></defs>' +
-      '<path d="' + quiet + '" fill="none" stroke="' + S.line + '" stroke-width="' + f1(s * (o.thin || 0.06)) + '" stroke-linecap="round"/>' + gold };
+      '<path d="' + quiet + '" fill="none" stroke="' + S.line + '" stroke-width="' + f1(s * (o.thin || 0.06)) + '" stroke-linecap="round"/>' +
+      (soft ? '<path d="' + soft + '" fill="none" stroke="' + S.gold[0] + '" stroke-width="' + f1(s * (o.thin || 0.06) * 1.6) + '" stroke-linecap="round"/>' : '') + gold +
+      (spine ? '<path d="' + spine + '" fill="none" stroke="url(#' + gid + ')" stroke-width="' + sw + '" stroke-linecap="round"/>' : '') };
   }
 
   function opts(el, w) {

@@ -5,6 +5,11 @@
   publish = "."
   command = ""
 
+# Production builds (main) fail while any page holds a placeholder. Deploy Previews and
+# branch deploys use [build] above and are not checked.
+[context.production]
+  command = "bash scripts/check-placeholders.sh"
+
 # Repo housekeeping (task notes, build scripts) is not part of the site.
 [[redirects]]
   from = "/tasks/*"
