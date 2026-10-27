@@ -52,11 +52,14 @@
 .band--dark .txt{color:var(--on-dark-soft)}
 .cards h3,.sec-pts h3,.steps h3{font-size:1.25rem; line-height:1.25}
 
+/* App screenshots: full app windows at their own shape, trimmed only of the window's dark right edge. */
+.shot{display:block; width:100%; height:auto; aspect-ratio:1975/964; object-fit:cover; object-position:left top;
+  border:1px solid var(--rule-light); border-radius:var(--btn-radius); background:var(--white)}
+
 /* What's in it: three image-and-copy splits, alternating sides */
 .parts3{display:flex; flex-direction:column; gap:clamp(2.5rem,5vw,4rem); margin-top:clamp(2.5rem,5vw,3.5rem)}
 .split-l{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(2rem,5vw,4.5rem); align-items:center}
 .split-r{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(2rem,5vw,4.5rem); align-items:center}
-.split-l .ph,.split-r .ph{aspect-ratio:16/11}
 /* The Orchestrator Instructions: a field running in from the page's left edge and fading out toward the copy.
    The gold shape is the small part of the context base a task needs. */
 .jx-orch{--rail:var(--rail-w); --edge:calc(var(--gutter) + max(0px, (100vw - var(--rail) - 2 * var(--gutter) - var(--max)) / 2));
@@ -84,13 +87,12 @@
 
 /* The app: four cards, each with its screenshot */
 .cards{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(1.5rem,3vw,2.5rem) clamp(1.5rem,4vw,3.5rem); margin-top:clamp(2.5rem,5vw,3.5rem)}
-.cards .ph{aspect-ratio:16/10}
 
 /* Security: four points stacked, each running the full body width, no rules between them */
 .sec-pts{display:flex; flex-direction:column; gap:clamp(1.75rem,3vw,2.25rem); margin-top:clamp(2rem,4vw,3rem)}
 
 @media(max-width:1000px){.steps{grid-template-columns:1fr} .jx-steps{display:none}}
-@media(max-width:900px){.cards,.split-l,.split-r,.model{grid-template-columns:minmax(0,1fr)} .split-r .ph{order:2} .model__wheel{max-width:28rem}}
+@media(max-width:900px){.cards,.split-l,.split-r,.model{grid-template-columns:minmax(0,1fr)} .split-r .shot{order:2} .model__wheel{max-width:28rem}}
 </style></head>
 <body>
 
@@ -164,7 +166,7 @@
           <h3>The context base</h3>
           <p class="txt">Everything AI needs to know about your <span class="nb">go-to-market</span>, organized by the operating model and kept in your own Google Drive or SharePoint. Each part holds what an AI tool needs to do that part&rsquo;s work.</p>
         </div>
-        <div class="ph"><b>Screenshot: AltaMesh Enterprise Hub</b><span>Categories by operating-model part, with entry counts.</span></div>
+        <img class="shot" src="/assets/da/enterprise-hub.webp" width="2000" height="964" loading="lazy" decoding="async" alt="The Enterprise Hub in the Digital Analogue app for a demo company, AltaMesh: the sidebar lists the Foundation and operating-model sections, and cards for Firm Facts, Market, People &amp; Process, Technology &amp; Data and Visual identity show how many entries each has documented.">
       </div>
       <div class="split-r">
         <div class="jx jx-orch" data-motif="junctions" data-surface="white" data-seed="31"
@@ -180,7 +182,7 @@
           <h3>The app</h3>
           <p class="txt">Where your team reads and updates the context base, with data governance built in, without opening a file or learning markdown.</p>
         </div>
-        <div class="ph"><b>Screenshot: the app</b><span>AltaMesh Home, with both hubs and the change log.</span></div>
+        <img class="shot" src="/assets/da/home.webp" width="2000" height="964" loading="lazy" decoding="async" alt="The app&rsquo;s Home screen: Enterprise context and Personal context cards with buttons to open each hub, a Start an AI session panel with buttons to copy setup text for Claude or ChatGPT, and the start of the Recent changes logs.">
       </div>
     </div>
   </div>
@@ -266,22 +268,22 @@
     </div>
     <div class="cards">
       <div class="stack">
-        <div class="ph"><b>Screenshot: editing an AltaMesh entry</b><span>The entry form with its Status and As of fields.</span></div>
+        <img class="shot" src="/assets/da/edit-entry.webp" width="2000" height="964" loading="lazy" decoding="async" alt="Editing the Firmographic fence entry: a table of criteria and settings, each row with a Status dropdown open to Confirmed, Draft or Aspirational, and As of, Source and Owner fields above a Save and write to Context Base button.">
         <h3>The people closest to the work keep it right</h3>
         <p class="txt">Anyone you invite can update an entry in a simple form. The app writes the markdown, so nobody touches a file.</p>
       </div>
       <div class="stack">
-        <div class="ph"><b>Screenshot: the change log</b><span>Recent AltaMesh edits, newest first, with who and when.</span></div>
+        <img class="shot" src="/assets/da/change-log.webp" width="2000" height="964" loading="lazy" decoding="async" alt="The Change Log: filters by area, then a table of edits showing when, who, which area and field, and what changed, with removed text struck through.">
         <h3>You can trust what your AI reads</h3>
         <p class="txt">Every change is logged with who made it and when, and admins decide who can edit what.</p>
       </div>
       <div class="stack">
-        <div class="ph"><b>Screenshot: Connect your AI</b><span>The setup text and its copy button.</span></div>
+        <img class="shot" src="/assets/da/connect-your-ai.webp" width="2000" height="964" loading="lazy" decoding="async" alt="Settings, connecting an AI tool: steps and copy buttons for Claude setup text and a Claude Skill prompt, then for ChatGPT and Gemini setup text.">
         <h3>One setup for the whole team</h3>
         <p class="txt">One block of setup text connects each person&rsquo;s AI tool, so everyone starts every task from the same context base.</p>
       </div>
       <div class="stack">
-        <div class="ph"><b>Screenshot: AltaMesh Personal Hub</b><span>A demo user&rsquo;s priorities and working style.</span></div>
+        <img class="shot" src="/assets/da/personal-hub.webp" width="2000" height="964" loading="lazy" decoding="async" alt="The Personal Hub: a note that the personal folder is private, then cards for Focus, Working style, Relationships, AI instructions, Notes and My change log, each showing how much is documented.">
         <h3>Personal context, kept private</h3>
         <p class="txt">Each person adds their own priorities, working style and standing instructions, visible only to them and always inside the organization&rsquo;s rules.</p>
       </div>
