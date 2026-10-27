@@ -37,42 +37,59 @@
 <style>
 /* ---------- Digital Analogue ---------- */
 .phero h1{max-width:18ch}
-/* Hero: a small field in the top right corner, fading out toward the headline and down the page. */
+/* Hero: a field down the right side, the full height of the hero, fading out toward the headline. */
 .phero{position:relative; overflow:hidden}
-.jx-da{position:absolute; top:0; right:0; width:min(34%,30rem); height:min(100%,22rem); z-index:0;
-  -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 60%), linear-gradient(180deg, #000 35%, transparent);
-  -webkit-mask-composite:source-in;
-  mask-image:linear-gradient(90deg, transparent 0, #000 60%), linear-gradient(180deg, #000 35%, transparent);
-  mask-composite:intersect}
+.jx-da{position:absolute; top:0; right:0; bottom:0; width:min(34%,30rem); z-index:0;
+  -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 60%); mask-image:linear-gradient(90deg, transparent 0, #000 60%)}
 /* Hidden while the floating mobile bar (menu and Let's talk) is showing, so the two don't overlap. */
 @media(max-width:1080px){.jx-da{display:none}}
 
 .stack{display:flex; flex-direction:column; gap:.85rem; min-width:0}
 .txt{margin:0; font-family:var(--serif); font-size:1.05rem; line-height:1.55; color:var(--on-light-soft)}
 .band--dark .txt{color:var(--on-dark-soft)}
-.feats h3,.sec-pts h3,.steps h3{font-size:1.25rem; line-height:1.25}
+.sec-pts h3,.steps h3{font-size:1.25rem; line-height:1.25}
 
-/* App screenshots: full app windows, shown at the full content width so the screen is readable.
-   Each links to its full-size file for a closer look on small screens. */
-.shot{display:block; width:100%; height:auto; border:1px solid var(--rule-light); border-radius:var(--btn-radius); background:var(--white)}
-.shot-link{display:block; border-radius:var(--btn-radius); cursor:zoom-in}
+/* A feature with a screenshot: one card, the caption in a narrow column beside the screenshot
+   (stacked below 1000px). Clicking a screenshot opens it in the lightbox; without JavaScript the
+   link opens the image file. */
+.feat{display:grid; grid-template-columns:minmax(0,14rem) minmax(0,1fr); gap:clamp(1.25rem,3vw,2.5rem); align-items:start;
+  padding:clamp(1rem,2.4vw,1.75rem); background:var(--bone); border:1px solid var(--rule-light); border-radius:20px}
+.feat__cap{display:flex; flex-direction:column; gap:.75rem; min-width:0}
+.feat__cap::before{content:""; width:2.25rem; height:3px; border-radius:2px; background:var(--gold); margin-bottom:.25rem}
+.feat__cap .txt{font-size:1rem}
+.shot{display:block; width:100%; height:auto; border:1px solid var(--rule-light); border-radius:10px; background:var(--white)}
+.shot-link{display:block; border-radius:10px; cursor:zoom-in; transition:box-shadow var(--dur-fast) var(--ease)}
+.shot-link:hover{box-shadow:0 6px 24px rgba(27,47,75,.14)}
 .shot-link:focus-visible{outline:2px solid var(--navy); outline-offset:3px}
-/* A feature with a screenshot: heading and copy side by side, then the screenshot across the full width. */
-.feat{display:flex; flex-direction:column; gap:clamp(1.25rem,2.5vw,1.75rem)}
-.feat__head{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:.85rem clamp(2rem,5vw,4.5rem); align-items:baseline}
-.feat__head .txt{max-width:40rem}
+@media(max-width:1000px){.feat{grid-template-columns:minmax(0,1fr)}}
+
+/* Lightbox: the screenshot nearly full screen, in a bordered window with a close button.
+   On phones the screenshot keeps a readable width and scrolls sideways inside the window. */
+.lightbox{padding:0; border:1px solid rgba(27,47,75,.3); border-radius:18px; background:var(--white);
+  width:min(96vw,1600px); max-width:none; max-height:94vh; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.lightbox::backdrop{background:rgba(27,47,75,.8)}
+.lightbox__in{max-height:94vh; overflow:auto; padding:3.5rem clamp(.75rem,2vw,1.5rem) clamp(.75rem,2vw,1.5rem)}
+.lightbox img{display:block; width:100%; height:auto; max-height:calc(94vh - 5rem); object-fit:contain; margin:0 auto}
+.lightbox__x{position:absolute; top:.65rem; right:.65rem; width:2.5rem; height:2.5rem; padding:0; border-radius:50%;
+  border:1px solid var(--rule-light); background:var(--white); color:var(--navy); display:grid; place-items:center; cursor:pointer}
+.lightbox__x:hover{background:var(--bone-shade)}
+.lightbox__x:focus-visible{outline:2px solid var(--navy); outline-offset:2px}
+.lightbox__hint{display:none; position:absolute; top:1.15rem; left:1rem; margin:0; font-family:var(--serif); font-size:.875rem; color:var(--on-light-soft)}
+@media(max-width:700px){.lightbox img{width:1100px; max-width:none; max-height:none} .lightbox__hint{display:block}}
+html.lb-open{overflow:hidden}
 
 /* What's in it: the context base and the app as screenshot features, the Orchestrator Instructions as a split */
 .parts3{display:flex; flex-direction:column; gap:clamp(2.5rem,5vw,4rem); margin-top:clamp(2.5rem,5vw,3.5rem)}
 .split-r{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(2rem,5vw,4.5rem); align-items:center}
 /* The Orchestrator Instructions: a field running in from the page's left edge and fading out toward the copy,
-   with a gold brain at its center. */
+   with a gold brain, seen from above, at its center. */
 .jx-orch{--rail:var(--rail-w); --edge:calc(var(--gutter) + max(0px, (100vw - var(--rail) - 2 * var(--gutter) - var(--max)) / 2));
-  margin-left:calc(-1 * var(--edge)); width:calc(100% + var(--edge)); height:clamp(320px,27vw,380px);
+  margin-left:calc(-1 * var(--edge)); width:calc(100% + var(--edge)); height:clamp(360px,33vw,480px);
   -webkit-mask-image:linear-gradient(90deg, #000 82%, transparent); mask-image:linear-gradient(90deg, #000 82%, transparent)}
 @media(max-width:900px){.jx-orch{height:280px}}
 @media(max-width:1080px){.jx-orch{--rail:0px}}
-.parts3 h3{font-size:clamp(1.5rem,2.4vw,1.875rem); line-height:1.15}
+.parts3 .split-r h3{font-size:clamp(1.5rem,2.4vw,1.875rem); line-height:1.15}
+.feat h3{font-size:clamp(1.25rem,1.7vw,1.45rem); line-height:1.2}
 
 /* How it's organized: the wheel beside the text and the five parts, then the markdown point */
 .model{display:grid; grid-template-columns:minmax(0,500px) minmax(0,1fr); gap:clamp(2.5rem,6vw,5rem); align-items:start}
@@ -92,13 +109,13 @@
 .steps__foot{margin-top:clamp(2rem,4vw,3rem); max-width:40rem}
 
 /* The app: four features, each with its screenshot */
-.feats{display:flex; flex-direction:column; gap:clamp(3rem,6vw,4.5rem); margin-top:clamp(2.5rem,5vw,3.5rem)}
+.feats{display:flex; flex-direction:column; gap:clamp(1.25rem,2.5vw,1.75rem); margin-top:clamp(2.5rem,5vw,3.5rem)}
 
 /* Security: four points stacked, each running the full body width, no rules between them */
 .sec-pts{display:flex; flex-direction:column; gap:clamp(1.75rem,3vw,2.25rem); margin-top:clamp(2rem,4vw,3rem)}
 
 @media(max-width:1000px){.steps{grid-template-columns:1fr} .jx-steps{display:none}}
-@media(max-width:900px){.feat__head,.split-r,.model{grid-template-columns:minmax(0,1fr)} .model__wheel{max-width:28rem}}
+@media(max-width:900px){.split-r,.model{grid-template-columns:minmax(0,1fr)} .model__wheel{max-width:28rem}}
 </style></head>
 <body>
 
@@ -168,25 +185,26 @@
     </div>
     <div class="parts3">
       <div class="feat">
-        <div class="feat__head">
+        <div class="feat__cap">
           <h3>The context base</h3>
           <p class="txt">Everything AI needs to know about your <span class="nb">go-to-market</span>, organized by the operating model and kept in your own Google Drive or SharePoint. Each part holds what an AI tool needs to do that part&rsquo;s work.</p>
         </div>
         <a class="shot-link" href="/assets/da/enterprise-hub.webp"><img class="shot" src="/assets/da/enterprise-hub.webp" width="1974" height="962" loading="lazy" decoding="async" alt="The Enterprise Hub in the Digital Analogue app for a demo company, AltaMesh: the sidebar lists the Foundation and operating-model sections, and cards for Firm Facts, Market, People &amp; Process, Technology &amp; Data and Visual identity show how many entries each has documented."></a>
       </div>
       <div class="split-r">
-        <!-- A brain seen from the side, front to the left: dots are the tile corners the gold line closes around.
-             Corners left out inside it draw the folds. -->
-        <div class="jx jx-orch" data-motif="junctions" data-surface="white" data-seed="31"
-             data-opts='{"tile":16,"thick":0.17,"shapes":[{"type":"dot","x":[0.5,-1],"y":[0.5,-9]},{"type":"dot","x":[0.5,1],"y":[0.5,-9]},{"type":"dot","x":[0.5,3],"y":[0.5,-9]},{"type":"dot","x":[0.5,-6],"y":[0.5,-8]},{"type":"dot","x":[0.5,-4],"y":[0.5,-8]},{"type":"dot","x":[0.5,-2],"y":[0.5,-8]},{"type":"dot","x":[0.5,0],"y":[0.5,-8]},{"type":"dot","x":[0.5,2],"y":[0.5,-8]},{"type":"dot","x":[0.5,4],"y":[0.5,-8]},{"type":"dot","x":[0.5,6],"y":[0.5,-8]},{"type":"dot","x":[0.5,-7],"y":[0.5,-7]},{"type":"dot","x":[0.5,-5],"y":[0.5,-7]},{"type":"dot","x":[0.5,-3],"y":[0.5,-7]},{"type":"dot","x":[0.5,-1],"y":[0.5,-7]},{"type":"dot","x":[0.5,3],"y":[0.5,-7]},{"type":"dot","x":[0.5,5],"y":[0.5,-7]},{"type":"dot","x":[0.5,7],"y":[0.5,-7]},{"type":"dot","x":[0.5,9],"y":[0.5,-7]},{"type":"dot","x":[0.5,-10],"y":[0.5,-6]},{"type":"dot","x":[0.5,-8],"y":[0.5,-6]},{"type":"dot","x":[0.5,-6],"y":[0.5,-6]},{"type":"dot","x":[0.5,-4],"y":[0.5,-6]},{"type":"dot","x":[0.5,-2],"y":[0.5,-6]},{"type":"dot","x":[0.5,0],"y":[0.5,-6]},{"type":"dot","x":[0.5,2],"y":[0.5,-6]},{"type":"dot","x":[0.5,4],"y":[0.5,-6]},{"type":"dot","x":[0.5,8],"y":[0.5,-6]},{"type":"dot","x":[0.5,10],"y":[0.5,-6]},{"type":"dot","x":[0.5,-11],"y":[0.5,-5]},{"type":"dot","x":[0.5,-5],"y":[0.5,-5]},{"type":"dot","x":[0.5,-3],"y":[0.5,-5]},{"type":"dot","x":[0.5,-1],"y":[0.5,-5]},{"type":"dot","x":[0.5,1],"y":[0.5,-5]},{"type":"dot","x":[0.5,3],"y":[0.5,-5]},{"type":"dot","x":[0.5,5],"y":[0.5,-5]},{"type":"dot","x":[0.5,9],"y":[0.5,-5]},{"type":"dot","x":[0.5,11],"y":[0.5,-5]},{"type":"dot","x":[0.5,-10],"y":[0.5,-4]},{"type":"dot","x":[0.5,-8],"y":[0.5,-4]},{"type":"dot","x":[0.5,-4],"y":[0.5,-4]},{"type":"dot","x":[0.5,-2],"y":[0.5,-4]},{"type":"dot","x":[0.5,2],"y":[0.5,-4]},{"type":"dot","x":[0.5,4],"y":[0.5,-4]},{"type":"dot","x":[0.5,6],"y":[0.5,-4]},{"type":"dot","x":[0.5,8],"y":[0.5,-4]},{"type":"dot","x":[0.5,10],"y":[0.5,-4]},{"type":"dot","x":[0.5,12],"y":[0.5,-4]},{"type":"dot","x":[0.5,-11],"y":[0.5,-3]},{"type":"dot","x":[0.5,-9],"y":[0.5,-3]},{"type":"dot","x":[0.5,-7],"y":[0.5,-3]},{"type":"dot","x":[0.5,-5],"y":[0.5,-3]},{"type":"dot","x":[0.5,-3],"y":[0.5,-3]},{"type":"dot","x":[0.5,-1],"y":[0.5,-3]},{"type":"dot","x":[0.5,1],"y":[0.5,-3]},{"type":"dot","x":[0.5,3],"y":[0.5,-3]},{"type":"dot","x":[0.5,5],"y":[0.5,-3]},{"type":"dot","x":[0.5,7],"y":[0.5,-3]},{"type":"dot","x":[0.5,9],"y":[0.5,-3]},{"type":"dot","x":[0.5,11],"y":[0.5,-3]},{"type":"dot","x":[0.5,13],"y":[0.5,-3]},{"type":"dot","x":[0.5,-12],"y":[0.5,-2]},{"type":"dot","x":[0.5,-10],"y":[0.5,-2]},{"type":"dot","x":[0.5,-8],"y":[0.5,-2]},{"type":"dot","x":[0.5,-6],"y":[0.5,-2]},{"type":"dot","x":[0.5,-4],"y":[0.5,-2]},{"type":"dot","x":[0.5,-2],"y":[0.5,-2]},{"type":"dot","x":[0.5,0],"y":[0.5,-2]},{"type":"dot","x":[0.5,2],"y":[0.5,-2]},{"type":"dot","x":[0.5,4],"y":[0.5,-2]},{"type":"dot","x":[0.5,6],"y":[0.5,-2]},{"type":"dot","x":[0.5,8],"y":[0.5,-2]},{"type":"dot","x":[0.5,10],"y":[0.5,-2]},{"type":"dot","x":[0.5,12],"y":[0.5,-2]},{"type":"dot","x":[0.5,-11],"y":[0.5,-1]},{"type":"dot","x":[0.5,-9],"y":[0.5,-1]},{"type":"dot","x":[0.5,-7],"y":[0.5,-1]},{"type":"dot","x":[0.5,-5],"y":[0.5,-1]},{"type":"dot","x":[0.5,-3],"y":[0.5,-1]},{"type":"dot","x":[0.5,-1],"y":[0.5,-1]},{"type":"dot","x":[0.5,3],"y":[0.5,-1]},{"type":"dot","x":[0.5,5],"y":[0.5,-1]},{"type":"dot","x":[0.5,7],"y":[0.5,-1]},{"type":"dot","x":[0.5,9],"y":[0.5,-1]},{"type":"dot","x":[0.5,11],"y":[0.5,-1]},{"type":"dot","x":[0.5,13],"y":[0.5,-1]},{"type":"dot","x":[0.5,-12],"y":[0.5,0]},{"type":"dot","x":[0.5,-10],"y":[0.5,0]},{"type":"dot","x":[0.5,-8],"y":[0.5,0]},{"type":"dot","x":[0.5,2],"y":[0.5,0]},{"type":"dot","x":[0.5,4],"y":[0.5,0]},{"type":"dot","x":[0.5,6],"y":[0.5,0]},{"type":"dot","x":[0.5,8],"y":[0.5,0]},{"type":"dot","x":[0.5,10],"y":[0.5,0]},{"type":"dot","x":[0.5,12],"y":[0.5,0]},{"type":"dot","x":[0.5,-11],"y":[0.5,1]},{"type":"dot","x":[0.5,-9],"y":[0.5,1]},{"type":"dot","x":[0.5,-5],"y":[0.5,1]},{"type":"dot","x":[0.5,-3],"y":[0.5,1]},{"type":"dot","x":[0.5,-1],"y":[0.5,1]},{"type":"dot","x":[0.5,1],"y":[0.5,1]},{"type":"dot","x":[0.5,3],"y":[0.5,1]},{"type":"dot","x":[0.5,5],"y":[0.5,1]},{"type":"dot","x":[0.5,7],"y":[0.5,1]},{"type":"dot","x":[0.5,9],"y":[0.5,1]},{"type":"dot","x":[0.5,11],"y":[0.5,1]},{"type":"dot","x":[0.5,-10],"y":[0.5,2]},{"type":"dot","x":[0.5,-8],"y":[0.5,2]},{"type":"dot","x":[0.5,-6],"y":[0.5,2]},{"type":"dot","x":[0.5,-4],"y":[0.5,2]},{"type":"dot","x":[0.5,-2],"y":[0.5,2]},{"type":"dot","x":[0.5,0],"y":[0.5,2]},{"type":"dot","x":[0.5,2],"y":[0.5,2]},{"type":"dot","x":[0.5,4],"y":[0.5,2]},{"type":"dot","x":[0.5,6],"y":[0.5,2]},{"type":"dot","x":[0.5,8],"y":[0.5,2]},{"type":"dot","x":[0.5,-9],"y":[0.5,3]},{"type":"dot","x":[0.5,-7],"y":[0.5,3]},{"type":"dot","x":[0.5,-5],"y":[0.5,3]},{"type":"dot","x":[0.5,3],"y":[0.5,3]},{"type":"dot","x":[0.5,5],"y":[0.5,3]},{"type":"dot","x":[0.5,9],"y":[0.5,3]},{"type":"dot","x":[0.5,11],"y":[0.5,3]},{"type":"dot","x":[0.5,13],"y":[0.5,3]},{"type":"dot","x":[0.5,-8],"y":[0.5,4]},{"type":"dot","x":[0.5,-6],"y":[0.5,4]},{"type":"dot","x":[0.5,-4],"y":[0.5,4]},{"type":"dot","x":[0.5,-2],"y":[0.5,4]},{"type":"dot","x":[0.5,0],"y":[0.5,4]},{"type":"dot","x":[0.5,2],"y":[0.5,4]},{"type":"dot","x":[0.5,4],"y":[0.5,4]},{"type":"dot","x":[0.5,6],"y":[0.5,4]},{"type":"dot","x":[0.5,8],"y":[0.5,4]},{"type":"dot","x":[0.5,10],"y":[0.5,4]},{"type":"dot","x":[0.5,12],"y":[0.5,4]},{"type":"dot","x":[0.5,-5],"y":[0.5,5]},{"type":"dot","x":[0.5,-3],"y":[0.5,5]},{"type":"dot","x":[0.5,-1],"y":[0.5,5]},{"type":"dot","x":[0.5,1],"y":[0.5,5]},{"type":"dot","x":[0.5,3],"y":[0.5,5]},{"type":"dot","x":[0.5,5],"y":[0.5,5]},{"type":"dot","x":[0.5,7],"y":[0.5,5]},{"type":"dot","x":[0.5,9],"y":[0.5,5]},{"type":"dot","x":[0.5,11],"y":[0.5,5]},{"type":"dot","x":[0.5,13],"y":[0.5,5]},{"type":"dot","x":[0.5,6],"y":[0.5,6]},{"type":"dot","x":[0.5,8],"y":[0.5,6]},{"type":"dot","x":[0.5,10],"y":[0.5,6]},{"type":"dot","x":[0.5,12],"y":[0.5,6]},{"type":"dot","x":[0.5,7],"y":[0.5,7]},{"type":"dot","x":[0.5,6],"y":[0.5,8]},{"type":"dot","x":[0.5,8],"y":[0.5,8]},{"type":"dot","x":[0.5,7],"y":[0.5,9]}]}'
-             data-opts-narrow='{"tile":11}'></div>
+        <!-- A brain seen from above, front at the top: two hemispheres side by side. The dots are the tile
+             corners each gold outline closes around; with "hollow", the tiles inside keep their squiggles,
+             drawn in pale gold. -->
+        <div class="jx jx-orch" data-motif="junctions" data-surface="white" data-seed="31" data-narrow-media="(max-width:900px)"
+             data-opts='{"tile":23,"fluid":680,"hollow":true,"thick":0.15,"shapes":[{"type":"dot","x":[0.46,-7],"y":[0.5,-6]},{"type":"dot","x":[0.46,-7],"y":[0.5,-4]},{"type":"dot","x":[0.46,-7],"y":[0.5,-2]},{"type":"dot","x":[0.46,-7],"y":[0.5,0]},{"type":"dot","x":[0.46,-7],"y":[0.5,2]},{"type":"dot","x":[0.46,-7],"y":[0.5,4]},{"type":"dot","x":[0.46,-7],"y":[0.5,6]},{"type":"dot","x":[0.46,-6],"y":[0.5,-7]},{"type":"dot","x":[0.46,-6],"y":[0.5,-5]},{"type":"dot","x":[0.46,-6],"y":[0.5,-3]},{"type":"dot","x":[0.46,-6],"y":[0.5,-1]},{"type":"dot","x":[0.46,-6],"y":[0.5,1]},{"type":"dot","x":[0.46,-6],"y":[0.5,3]},{"type":"dot","x":[0.46,-6],"y":[0.5,5]},{"type":"dot","x":[0.46,-6],"y":[0.5,7]},{"type":"dot","x":[0.46,-5],"y":[0.5,-8]},{"type":"dot","x":[0.46,-5],"y":[0.5,-6]},{"type":"dot","x":[0.46,-5],"y":[0.5,-4]},{"type":"dot","x":[0.46,-5],"y":[0.5,-2]},{"type":"dot","x":[0.46,-5],"y":[0.5,0]},{"type":"dot","x":[0.46,-5],"y":[0.5,2]},{"type":"dot","x":[0.46,-5],"y":[0.5,4]},{"type":"dot","x":[0.46,-5],"y":[0.5,6]},{"type":"dot","x":[0.46,-5],"y":[0.5,8]},{"type":"dot","x":[0.46,-4],"y":[0.5,-9]},{"type":"dot","x":[0.46,-4],"y":[0.5,-7]},{"type":"dot","x":[0.46,-4],"y":[0.5,-5]},{"type":"dot","x":[0.46,-4],"y":[0.5,-3]},{"type":"dot","x":[0.46,-4],"y":[0.5,-1]},{"type":"dot","x":[0.46,-4],"y":[0.5,1]},{"type":"dot","x":[0.46,-4],"y":[0.5,3]},{"type":"dot","x":[0.46,-4],"y":[0.5,5]},{"type":"dot","x":[0.46,-4],"y":[0.5,7]},{"type":"dot","x":[0.46,-4],"y":[0.5,9]},{"type":"dot","x":[0.46,-3],"y":[0.5,-8]},{"type":"dot","x":[0.46,-3],"y":[0.5,-6]},{"type":"dot","x":[0.46,-3],"y":[0.5,-4]},{"type":"dot","x":[0.46,-3],"y":[0.5,-2]},{"type":"dot","x":[0.46,-3],"y":[0.5,0]},{"type":"dot","x":[0.46,-3],"y":[0.5,2]},{"type":"dot","x":[0.46,-3],"y":[0.5,4]},{"type":"dot","x":[0.46,-3],"y":[0.5,6]},{"type":"dot","x":[0.46,-3],"y":[0.5,8]},{"type":"dot","x":[0.46,-2],"y":[0.5,-7]},{"type":"dot","x":[0.46,-2],"y":[0.5,-5]},{"type":"dot","x":[0.46,-2],"y":[0.5,-3]},{"type":"dot","x":[0.46,-2],"y":[0.5,-1]},{"type":"dot","x":[0.46,-2],"y":[0.5,1]},{"type":"dot","x":[0.46,-2],"y":[0.5,3]},{"type":"dot","x":[0.46,-2],"y":[0.5,5]},{"type":"dot","x":[0.46,-2],"y":[0.5,7]},{"type":"dot","x":[0.46,-1],"y":[0.5,-8]},{"type":"dot","x":[0.46,-1],"y":[0.5,-6]},{"type":"dot","x":[0.46,-1],"y":[0.5,-4]},{"type":"dot","x":[0.46,-1],"y":[0.5,-2]},{"type":"dot","x":[0.46,-1],"y":[0.5,0]},{"type":"dot","x":[0.46,-1],"y":[0.5,2]},{"type":"dot","x":[0.46,-1],"y":[0.5,4]},{"type":"dot","x":[0.46,-1],"y":[0.5,6]},{"type":"dot","x":[0.46,-1],"y":[0.5,8]},{"type":"dot","x":[0.46,1],"y":[0.5,-8]},{"type":"dot","x":[0.46,1],"y":[0.5,-6]},{"type":"dot","x":[0.46,1],"y":[0.5,-4]},{"type":"dot","x":[0.46,1],"y":[0.5,-2]},{"type":"dot","x":[0.46,1],"y":[0.5,0]},{"type":"dot","x":[0.46,1],"y":[0.5,2]},{"type":"dot","x":[0.46,1],"y":[0.5,4]},{"type":"dot","x":[0.46,1],"y":[0.5,6]},{"type":"dot","x":[0.46,1],"y":[0.5,8]},{"type":"dot","x":[0.46,2],"y":[0.5,-7]},{"type":"dot","x":[0.46,2],"y":[0.5,-5]},{"type":"dot","x":[0.46,2],"y":[0.5,-3]},{"type":"dot","x":[0.46,2],"y":[0.5,-1]},{"type":"dot","x":[0.46,2],"y":[0.5,1]},{"type":"dot","x":[0.46,2],"y":[0.5,3]},{"type":"dot","x":[0.46,2],"y":[0.5,5]},{"type":"dot","x":[0.46,2],"y":[0.5,7]},{"type":"dot","x":[0.46,3],"y":[0.5,-8]},{"type":"dot","x":[0.46,3],"y":[0.5,-6]},{"type":"dot","x":[0.46,3],"y":[0.5,-4]},{"type":"dot","x":[0.46,3],"y":[0.5,-2]},{"type":"dot","x":[0.46,3],"y":[0.5,0]},{"type":"dot","x":[0.46,3],"y":[0.5,2]},{"type":"dot","x":[0.46,3],"y":[0.5,4]},{"type":"dot","x":[0.46,3],"y":[0.5,6]},{"type":"dot","x":[0.46,3],"y":[0.5,8]},{"type":"dot","x":[0.46,4],"y":[0.5,-9]},{"type":"dot","x":[0.46,4],"y":[0.5,-7]},{"type":"dot","x":[0.46,4],"y":[0.5,-5]},{"type":"dot","x":[0.46,4],"y":[0.5,-3]},{"type":"dot","x":[0.46,4],"y":[0.5,-1]},{"type":"dot","x":[0.46,4],"y":[0.5,1]},{"type":"dot","x":[0.46,4],"y":[0.5,3]},{"type":"dot","x":[0.46,4],"y":[0.5,5]},{"type":"dot","x":[0.46,4],"y":[0.5,7]},{"type":"dot","x":[0.46,4],"y":[0.5,9]},{"type":"dot","x":[0.46,5],"y":[0.5,-8]},{"type":"dot","x":[0.46,5],"y":[0.5,-6]},{"type":"dot","x":[0.46,5],"y":[0.5,-4]},{"type":"dot","x":[0.46,5],"y":[0.5,-2]},{"type":"dot","x":[0.46,5],"y":[0.5,0]},{"type":"dot","x":[0.46,5],"y":[0.5,2]},{"type":"dot","x":[0.46,5],"y":[0.5,4]},{"type":"dot","x":[0.46,5],"y":[0.5,6]},{"type":"dot","x":[0.46,5],"y":[0.5,8]},{"type":"dot","x":[0.46,6],"y":[0.5,-7]},{"type":"dot","x":[0.46,6],"y":[0.5,-5]},{"type":"dot","x":[0.46,6],"y":[0.5,-3]},{"type":"dot","x":[0.46,6],"y":[0.5,-1]},{"type":"dot","x":[0.46,6],"y":[0.5,1]},{"type":"dot","x":[0.46,6],"y":[0.5,3]},{"type":"dot","x":[0.46,6],"y":[0.5,5]},{"type":"dot","x":[0.46,6],"y":[0.5,7]},{"type":"dot","x":[0.46,7],"y":[0.5,-6]},{"type":"dot","x":[0.46,7],"y":[0.5,-4]},{"type":"dot","x":[0.46,7],"y":[0.5,-2]},{"type":"dot","x":[0.46,7],"y":[0.5,0]},{"type":"dot","x":[0.46,7],"y":[0.5,2]},{"type":"dot","x":[0.46,7],"y":[0.5,4]},{"type":"dot","x":[0.46,7],"y":[0.5,6]}]}'
+             data-opts-narrow='{"tile":13,"fluid":0,"shapes":[{"type":"dot","x":[0.5,-7],"y":[0.5,-6]},{"type":"dot","x":[0.5,-7],"y":[0.5,-4]},{"type":"dot","x":[0.5,-7],"y":[0.5,-2]},{"type":"dot","x":[0.5,-7],"y":[0.5,0]},{"type":"dot","x":[0.5,-7],"y":[0.5,2]},{"type":"dot","x":[0.5,-7],"y":[0.5,4]},{"type":"dot","x":[0.5,-7],"y":[0.5,6]},{"type":"dot","x":[0.5,-6],"y":[0.5,-7]},{"type":"dot","x":[0.5,-6],"y":[0.5,-5]},{"type":"dot","x":[0.5,-6],"y":[0.5,-3]},{"type":"dot","x":[0.5,-6],"y":[0.5,-1]},{"type":"dot","x":[0.5,-6],"y":[0.5,1]},{"type":"dot","x":[0.5,-6],"y":[0.5,3]},{"type":"dot","x":[0.5,-6],"y":[0.5,5]},{"type":"dot","x":[0.5,-6],"y":[0.5,7]},{"type":"dot","x":[0.5,-5],"y":[0.5,-8]},{"type":"dot","x":[0.5,-5],"y":[0.5,-6]},{"type":"dot","x":[0.5,-5],"y":[0.5,-4]},{"type":"dot","x":[0.5,-5],"y":[0.5,-2]},{"type":"dot","x":[0.5,-5],"y":[0.5,0]},{"type":"dot","x":[0.5,-5],"y":[0.5,2]},{"type":"dot","x":[0.5,-5],"y":[0.5,4]},{"type":"dot","x":[0.5,-5],"y":[0.5,6]},{"type":"dot","x":[0.5,-5],"y":[0.5,8]},{"type":"dot","x":[0.5,-4],"y":[0.5,-9]},{"type":"dot","x":[0.5,-4],"y":[0.5,-7]},{"type":"dot","x":[0.5,-4],"y":[0.5,-5]},{"type":"dot","x":[0.5,-4],"y":[0.5,-3]},{"type":"dot","x":[0.5,-4],"y":[0.5,-1]},{"type":"dot","x":[0.5,-4],"y":[0.5,1]},{"type":"dot","x":[0.5,-4],"y":[0.5,3]},{"type":"dot","x":[0.5,-4],"y":[0.5,5]},{"type":"dot","x":[0.5,-4],"y":[0.5,7]},{"type":"dot","x":[0.5,-4],"y":[0.5,9]},{"type":"dot","x":[0.5,-3],"y":[0.5,-8]},{"type":"dot","x":[0.5,-3],"y":[0.5,-6]},{"type":"dot","x":[0.5,-3],"y":[0.5,-4]},{"type":"dot","x":[0.5,-3],"y":[0.5,-2]},{"type":"dot","x":[0.5,-3],"y":[0.5,0]},{"type":"dot","x":[0.5,-3],"y":[0.5,2]},{"type":"dot","x":[0.5,-3],"y":[0.5,4]},{"type":"dot","x":[0.5,-3],"y":[0.5,6]},{"type":"dot","x":[0.5,-3],"y":[0.5,8]},{"type":"dot","x":[0.5,-2],"y":[0.5,-7]},{"type":"dot","x":[0.5,-2],"y":[0.5,-5]},{"type":"dot","x":[0.5,-2],"y":[0.5,-3]},{"type":"dot","x":[0.5,-2],"y":[0.5,-1]},{"type":"dot","x":[0.5,-2],"y":[0.5,1]},{"type":"dot","x":[0.5,-2],"y":[0.5,3]},{"type":"dot","x":[0.5,-2],"y":[0.5,5]},{"type":"dot","x":[0.5,-2],"y":[0.5,7]},{"type":"dot","x":[0.5,-1],"y":[0.5,-8]},{"type":"dot","x":[0.5,-1],"y":[0.5,-6]},{"type":"dot","x":[0.5,-1],"y":[0.5,-4]},{"type":"dot","x":[0.5,-1],"y":[0.5,-2]},{"type":"dot","x":[0.5,-1],"y":[0.5,0]},{"type":"dot","x":[0.5,-1],"y":[0.5,2]},{"type":"dot","x":[0.5,-1],"y":[0.5,4]},{"type":"dot","x":[0.5,-1],"y":[0.5,6]},{"type":"dot","x":[0.5,-1],"y":[0.5,8]},{"type":"dot","x":[0.5,1],"y":[0.5,-8]},{"type":"dot","x":[0.5,1],"y":[0.5,-6]},{"type":"dot","x":[0.5,1],"y":[0.5,-4]},{"type":"dot","x":[0.5,1],"y":[0.5,-2]},{"type":"dot","x":[0.5,1],"y":[0.5,0]},{"type":"dot","x":[0.5,1],"y":[0.5,2]},{"type":"dot","x":[0.5,1],"y":[0.5,4]},{"type":"dot","x":[0.5,1],"y":[0.5,6]},{"type":"dot","x":[0.5,1],"y":[0.5,8]},{"type":"dot","x":[0.5,2],"y":[0.5,-7]},{"type":"dot","x":[0.5,2],"y":[0.5,-5]},{"type":"dot","x":[0.5,2],"y":[0.5,-3]},{"type":"dot","x":[0.5,2],"y":[0.5,-1]},{"type":"dot","x":[0.5,2],"y":[0.5,1]},{"type":"dot","x":[0.5,2],"y":[0.5,3]},{"type":"dot","x":[0.5,2],"y":[0.5,5]},{"type":"dot","x":[0.5,2],"y":[0.5,7]},{"type":"dot","x":[0.5,3],"y":[0.5,-8]},{"type":"dot","x":[0.5,3],"y":[0.5,-6]},{"type":"dot","x":[0.5,3],"y":[0.5,-4]},{"type":"dot","x":[0.5,3],"y":[0.5,-2]},{"type":"dot","x":[0.5,3],"y":[0.5,0]},{"type":"dot","x":[0.5,3],"y":[0.5,2]},{"type":"dot","x":[0.5,3],"y":[0.5,4]},{"type":"dot","x":[0.5,3],"y":[0.5,6]},{"type":"dot","x":[0.5,3],"y":[0.5,8]},{"type":"dot","x":[0.5,4],"y":[0.5,-9]},{"type":"dot","x":[0.5,4],"y":[0.5,-7]},{"type":"dot","x":[0.5,4],"y":[0.5,-5]},{"type":"dot","x":[0.5,4],"y":[0.5,-3]},{"type":"dot","x":[0.5,4],"y":[0.5,-1]},{"type":"dot","x":[0.5,4],"y":[0.5,1]},{"type":"dot","x":[0.5,4],"y":[0.5,3]},{"type":"dot","x":[0.5,4],"y":[0.5,5]},{"type":"dot","x":[0.5,4],"y":[0.5,7]},{"type":"dot","x":[0.5,4],"y":[0.5,9]},{"type":"dot","x":[0.5,5],"y":[0.5,-8]},{"type":"dot","x":[0.5,5],"y":[0.5,-6]},{"type":"dot","x":[0.5,5],"y":[0.5,-4]},{"type":"dot","x":[0.5,5],"y":[0.5,-2]},{"type":"dot","x":[0.5,5],"y":[0.5,0]},{"type":"dot","x":[0.5,5],"y":[0.5,2]},{"type":"dot","x":[0.5,5],"y":[0.5,4]},{"type":"dot","x":[0.5,5],"y":[0.5,6]},{"type":"dot","x":[0.5,5],"y":[0.5,8]},{"type":"dot","x":[0.5,6],"y":[0.5,-7]},{"type":"dot","x":[0.5,6],"y":[0.5,-5]},{"type":"dot","x":[0.5,6],"y":[0.5,-3]},{"type":"dot","x":[0.5,6],"y":[0.5,-1]},{"type":"dot","x":[0.5,6],"y":[0.5,1]},{"type":"dot","x":[0.5,6],"y":[0.5,3]},{"type":"dot","x":[0.5,6],"y":[0.5,5]},{"type":"dot","x":[0.5,6],"y":[0.5,7]},{"type":"dot","x":[0.5,7],"y":[0.5,-6]},{"type":"dot","x":[0.5,7],"y":[0.5,-4]},{"type":"dot","x":[0.5,7],"y":[0.5,-2]},{"type":"dot","x":[0.5,7],"y":[0.5,0]},{"type":"dot","x":[0.5,7],"y":[0.5,2]},{"type":"dot","x":[0.5,7],"y":[0.5,4]},{"type":"dot","x":[0.5,7],"y":[0.5,6]}]}'></div>
         <div class="stack">
           <h3>The Orchestrator Instructions</h3>
           <p class="txt">Cozelo&rsquo;s proprietary methodology for how an AI tool should use your context to carry out a task.</p>
         </div>
       </div>
       <div class="feat">
-        <div class="feat__head">
+        <div class="feat__cap">
           <h3>The app</h3>
           <p class="txt">Where your team reads and updates the context base, with data governance built in, without opening a file or learning markdown.</p>
         </div>
@@ -276,28 +294,28 @@
     </div>
     <div class="feats">
       <div class="feat">
-        <div class="feat__head">
+        <div class="feat__cap">
           <h3>The people closest to the work keep it right</h3>
           <p class="txt">Anyone you invite can update an entry in a simple form. The app writes the markdown, so nobody touches a file.</p>
         </div>
         <a class="shot-link" href="/assets/da/edit-entry.webp"><img class="shot" src="/assets/da/edit-entry.webp" width="1974" height="962" loading="lazy" decoding="async" alt="Editing the Firmographic fence entry: a table of criteria and settings, each row with a Status dropdown open to Confirmed, Draft or Aspirational, and As of, Source and Owner fields above a Save and write to Context Base button."></a>
       </div>
       <div class="feat">
-        <div class="feat__head">
+        <div class="feat__cap">
           <h3>You can trust what your AI reads</h3>
           <p class="txt">Every change is logged with who made it and when, and admins decide who can edit what.</p>
         </div>
         <a class="shot-link" href="/assets/da/change-log.webp"><img class="shot" src="/assets/da/change-log.webp" width="1974" height="962" loading="lazy" decoding="async" alt="The Change Log: filters by area, then a table of edits showing when, who, which area and field, and what changed, with removed text struck through."></a>
       </div>
       <div class="feat">
-        <div class="feat__head">
+        <div class="feat__cap">
           <h3>One setup for the whole team</h3>
           <p class="txt">One block of setup text connects each person&rsquo;s AI tool, so everyone starts every task from the same context base.</p>
         </div>
         <a class="shot-link" href="/assets/da/connect-your-ai.webp"><img class="shot" src="/assets/da/connect-your-ai.webp" width="1974" height="962" loading="lazy" decoding="async" alt="Settings, connecting an AI tool: steps and copy buttons for Claude setup text and a Claude Skill prompt, then for ChatGPT and Gemini setup text."></a>
       </div>
       <div class="feat">
-        <div class="feat__head">
+        <div class="feat__cap">
           <h3>Personal context, kept private</h3>
           <p class="txt">Each person adds their own priorities, working style and standing instructions, visible only to them and always inside the organization&rsquo;s rules.</p>
         </div>
@@ -379,6 +397,36 @@
 </footer>
 
 <script src="/assets/site.js?v=21677f43"></script>
-<script src="/assets/motif.js?v=016f9eb2"></script>
+<dialog class="lightbox" id="lightbox" aria-label="Screenshot, enlarged">
+  <div class="lightbox__in">
+    <p class="lightbox__hint">Scroll sideways to see the whole screen.</p>
+    <button class="lightbox__x" type="button" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <img alt="">
+  </div>
+</dialog>
+
+<script src="/assets/motif.js?v=bc85eca2"></script>
+<script>
+// Screenshot lightbox: a screenshot link opens its image in the dialog; the X, Esc or a click
+// outside the window closes it.
+(function(){
+  var d = document.getElementById('lightbox');
+  if (!d || !d.showModal) return;
+  var img = d.querySelector('img');
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a.shot-link');
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault();
+    img.src = a.getAttribute('href');
+    img.alt = a.querySelector('img').alt;
+    document.documentElement.classList.add('lb-open');
+    d.showModal();
+    d.querySelector('.lightbox__in').scrollLeft = 0;
+  });
+  d.querySelector('.lightbox__x').addEventListener('click', function(){ d.close(); });
+  d.addEventListener('click', function(e){ if (e.target === d) d.close(); });
+  d.addEventListener('close', function(){ document.documentElement.classList.remove('lb-open'); });
+})();
+</script>
 </body>
 </html>
