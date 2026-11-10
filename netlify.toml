@@ -34,6 +34,12 @@
   to = "/"
   status = 301
 
+# 9 Nov: Earnings AI lives at /earningsai/. Send the hyphenated spelling there too.
+[[redirects]]
+  from = "/earnings-ai/*"
+  to = "/earningsai/"
+  status = 301
+
 [[headers]]
   for = "/assets/*"
   [headers.values]

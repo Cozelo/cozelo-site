@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/assets/logo-badge-128.png">
+<link rel="canonical" href="https://cozelo.co/earningsai/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Cozelo">
+<meta property="og:title" content="Earnings AI | Cozelo">
+<meta property="og:description" content="How publicly traded companies are infusing AI in their go-to-market, straight from their leadership.">
+<meta property="og:url" content="https://cozelo.co/earningsai/">
+<meta property="og:image" content="https://cozelo.co/assets/og-card-v4.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f7f5f1">
+<meta name="robots" content="index, follow">
+<title>Earnings AI | Cozelo</title>
+<meta name="description" content="How publicly traded companies are infusing AI in their go-to-market, straight from their leadership.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* A cousin of cozelo.co: same tokens and faces, a lighter notebook layout.
+   One reading column on bone paper. Serif leads here; the site leads with sans. */
+:root{
+  --bone:#f7f5f1; --bone-shade:#eeebe4; --white:#fff;
+  --gold:#c9a245; --gold-ink:#7a6228; --navy:#1b2f4b;
+  --ink:#1a1a1a; --soft:#565656; --rule:rgba(26,26,26,.14);
+  --sans:"Schibsted Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --serif:"Source Serif 4","Iowan Old Style",Charter,Cambria,Georgia,serif;
+  --col:42rem; --gutter:clamp(1.25rem,5vw,3rem);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; background:var(--bone); color:var(--ink); font-family:var(--serif); font-size:1.125rem; line-height:1.6; -webkit-font-smoothing:antialiased}
+a{color:var(--navy)}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:2px solid var(--navy); outline-offset:3px; border-radius:2px}
+.wrap{max-width:var(--col); margin:0 auto; padding:0 var(--gutter)}
+
+/* Masthead: a news nameplate. */
+.page{max-width:76rem; margin:0 auto; padding:0 var(--gutter)}
+.strip{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 0; font-family:var(--sans); font-size:.875rem; color:var(--soft)}
+.strip img{height:24px; width:auto; display:block}
+.strip a.home{font-weight:700; color:var(--navy); text-decoration:underline; text-decoration-thickness:1.5px; text-underline-offset:4px}
+.nameplate{border-top:4px solid var(--navy); border-bottom:1px solid var(--navy); padding:clamp(1.4rem,3.5vw,2.4rem) 0 clamp(1.2rem,3vw,1.9rem); text-align:center}
+.nameplate h1{font-family:var(--sans); font-weight:800; font-size:clamp(3.4rem,10vw,7.25rem); line-height:.9; letter-spacing:-.045em; color:var(--navy); margin:0}
+.nameplate h1 span{color:var(--gold)}
+.deck{max-width:46rem; margin:1rem auto 0; font-family:var(--serif); font-size:clamp(1.05rem,1.6vw,1.25rem); line-height:1.45; color:var(--soft)}
+.dateline{display:flex; flex-wrap:wrap; justify-content:space-between; gap:.35rem 1.5rem; padding:.75rem 0; border-bottom:1px solid var(--rule); font-family:var(--sans); font-size:.875rem; color:var(--soft)}
+.dateline b{color:var(--navy)}
+.dateline time{color:var(--soft)}
+
+
+/* Summary box: the season in five lines, like an article's key-points box. */
+.summary{margin:clamp(1.4rem,3vw,2rem) 0 0; padding:1.1rem clamp(1.1rem,2.5vw,1.75rem) 1.2rem; background:#fff; border:1px solid var(--rule); border-left:4px solid var(--gold)}
+.summary h2{font-family:var(--sans); font-weight:800; font-size:1.05rem; letter-spacing:-.01em; color:var(--navy); margin:0 0 .7rem}
+.summary ul{list-style:none; margin:0; padding:0; columns:2 22rem; column-gap:2.5rem}
+.summary li{break-inside:avoid; position:relative; padding-left:1.1rem; margin:0 0 .55rem; font-size:1rem; line-height:1.45}
+.summary li::before{content:""; position:absolute; left:0; top:.55em; width:.42rem; height:.42rem; background:var(--navy); border-radius:1px}
+.summary li b{font-family:var(--sans); color:var(--navy)}
+.summary a{color:var(--navy); text-underline-offset:3px; text-decoration-thickness:1px}
+
+/* Items */
+.items{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:clamp(2rem,4.5vw,4rem); align-items:start}
+.item:nth-child(odd){position:relative}
+@media(min-width:861px){.item:nth-child(even){padding-left:0}.items{background:linear-gradient(var(--rule),var(--rule)) center/1px 100% no-repeat}}
+@media(max-width:860px){.items{grid-template-columns:1fr}}
+.item{padding:clamp(1.9rem,4vw,2.5rem) 0; border-bottom:1px solid var(--rule); scroll-margin-top:1rem}
+.meta{font-family:var(--sans); font-size:.875rem; color:var(--soft); margin:0 0 .6rem}
+.meta b{color:var(--navy)}
+.item h2{font-family:var(--sans); font-weight:800; font-size:clamp(1.4rem,2.3vw,1.7rem); line-height:1.12; letter-spacing:-.025em; color:var(--navy); margin:0 0 .85rem; text-wrap:balance}
+.item h2 a{color:inherit; text-decoration:none}
+.item h2 a:hover{text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px}
+.lines p{margin:0 0 .85rem}
+.lines p:last-child{margin-bottom:0}
+
+details{margin-top:1.1rem}
+summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:.5rem; font-family:var(--sans); font-weight:700; font-size:1rem; color:var(--navy)}
+summary::-webkit-details-marker{display:none}
+summary .pm{width:1.35rem; height:1.35rem; border:1.5px solid var(--gold-ink); border-radius:50%; position:relative; flex:0 0 auto}
+summary .pm::before,summary .pm::after{content:""; position:absolute; left:50%; top:50%; background:var(--gold-ink); transform:translate(-50%,-50%)}
+summary .pm::before{width:.6rem; height:1.5px}
+summary .pm::after{width:1.5px; height:.6rem; transition:transform .18s ease}
+details[open] summary .pm::after{transform:translate(-50%,-50%) scaleY(0)}
+details[open] summary .label-open{display:none}
+details:not([open]) summary .label-close{display:none}
+
+.notes{margin-top:1.1rem; padding-left:1.1rem; border-left:2px solid var(--bone-shade)}
+.notes p{margin:0 0 .9rem}
+.notes b{font-family:var(--sans); color:var(--navy)}
+.notes blockquote{margin:1.1rem 0; padding-left:1rem; border-left:3px solid var(--gold-ink); font-style:italic; color:var(--navy)}
+.notes blockquote cite{display:block; font-style:normal; font-family:var(--sans); font-size:.875rem; color:var(--soft); margin-top:.3rem}
+.src{display:flex; flex-wrap:wrap; justify-content:space-between; gap:.5rem 1rem; margin-top:1.1rem; padding-top:.8rem; border-top:1px solid var(--rule); font-family:var(--sans); font-size:.875rem; color:var(--soft)}
+.copy{font:inherit; font-weight:700; color:var(--navy); background:none; border:0; padding:0; cursor:pointer; text-decoration:underline; text-underline-offset:3px}
+
+.item.is-hidden{display:none}
+.morewrap{display:flex; justify-content:center; padding:clamp(1.75rem,4vw,2.5rem) 0 .5rem; border-top:1px solid var(--navy)}
+.morebtn{font-family:var(--sans); font-weight:700; font-size:1rem; color:var(--navy); background:transparent; border:2px solid var(--navy); border-radius:999px; padding:.8rem 1.9rem; cursor:pointer; transition:background-color .18s ease, color .18s ease}
+.morebtn:hover{background:var(--navy); color:#fff}
+.morewrap:has(.morebtn[hidden]){display:none}
+
+/* Close */
+.close{max-width:42rem; padding:clamp(2.5rem,6vw,3.5rem) 0 clamp(2.5rem,6vw,4rem)}
+.close p{margin:0 0 1rem; color:var(--soft); font-size:1rem}
+.close .about{color:var(--ink); font-size:1.05rem}
+.close a.more{font-family:var(--sans); font-weight:700; color:var(--navy); text-decoration:underline; text-decoration-thickness:1.5px; text-underline-offset:4px}
+.foot{border-top:1px solid var(--rule); padding:1.5rem 0 2.5rem; font-family:var(--sans); font-size:.85rem; color:var(--soft)}
+.foot__in{display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem}
+@media(prefers-reduced-motion:reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+
+<header class="page">
+  <div class="strip">
+    <a href="/" aria-label="Cozelo home"><img src="/assets/logo-wordmark-navy.png" alt="Cozelo" width="70" height="24"></a>
+    <a class="home" href="/">cozelo.co</a>
+  </div>
+  <div class="nameplate">
+    <h1>Earnings <span>AI</span></h1>
+    <p class="deck">How publicly traded companies are infusing AI into their<br>go-to-market&nbsp;- straight from their leadership.</p>
+  </div>
+  <p class="dateline"><b>Notes by Chris DiPierro, Founder &amp; CEO, Cozelo</b><time id="today" datetime="2026-11-07">Saturday, November 7, 2026</time></p>
+  <section class="summary" aria-labelledby="summary-h">
+    <h2 id="summary-h">The short version</h2>
+    <ul>
+      <li><b>Search is sending fewer buyers.</b> <a href="#ziff-davis-q3-2026">Ziff Davis</a> lost 37% of its organic Google referrals. <a href="#airsculpt-q3-2026">AirSculpt</a>&rsquo;s leads fell 16%.</li>
+      <li><b>AI referrals are small, and they convert.</b> <a href="#tripadvisor-q3-2026">Tripadvisor</a>, <a href="#expedia-q3-2026">Expedia</a> and <a href="#legalzoom-q3-2026">LegalZoom</a> say those visitors arrive ready to buy.</li>
+      <li><b>AI assistant users buy more.</b> <a href="#booking-q3-2026">Booking</a>&rsquo;s assistant users convert at about twice the rate. <a href="#amazon-q3-2026">Amazon</a>&rsquo;s spend 50% more per order.</li>
+      <li><b>AI is taking over the coordination work.</b> <a href="#servicenow-q3-2026">ServiceNow</a>&rsquo;s sales ops, <a href="#cloudflare-q3-2026">Cloudflare</a>&rsquo;s measurement roles, <a href="#ch-robinson-q3-2026">C.H. Robinson</a>&rsquo;s quoting.</li>
+    </ul>
+  </section>
+</header>
+
+<main>
+  <div class="page">
+    <ol class="items" id="items">
+
+      <li class="item" id="ziff-davis-q3-2026">
+        <p class="meta">NASDAQ: ZD · Q3 call, Nov 6</p>
+        <h2><a href="#ziff-davis-q3-2026">Ziff Davis lost 37% of its organic Google traffic while AI cited its content 2.7 billion times</a></h2>
+        <div class="lines">
+          <p>Ziff Davis CEO Vivek Shah said organic Google referrals to its sites fell about 37% year over year in the third quarter. Over the same quarter, Google&rsquo;s AI Overviews and AI Mode cited its content roughly 2.7 billion times, nearly 10 times the clicks those sites got from Google Search.</p>
+          <p>Shah said the job now is turning that visibility into revenue. The plan is to expand ad surfaces, build direct audiences and keep growing social commerce. He said Ziff Davis remains open to licensing deals for AI use of its content, and expects its lawsuit against OpenAI to bring clarity. He also noted that not all of its businesses rely on Google traffic, pointing to its subscription, app and newsletter businesses.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> The 10x comparison isn&rsquo;t like for like. It sets AI citations against all clicks from Google Search, since Google gives no click count for its AI answers. Shah&rsquo;s point stands anyway:</p>
+            <blockquote>&ldquo;Monetizing that relevance is the priority.&rdquo;<cite>Vivek Shah, CEO</cite></blockquote>
+            <p><b>Why it matters for go-to-market.</b> Being cited and being visited are now two different things. For a publisher, that&rsquo;s a revenue problem. For a B2B firm, it&rsquo;s a message problem. The AI answer is the first version of you a buyer meets, and they may never click through to check it.</p>
+            <p><b>What I&rsquo;d ask them.</b> What would they charge for a citation? When an AI cites them, who checks what it says?</p>
+            <p class="src"><span>Ziff Davis Q3 2026 earnings call, Nov 6, 2026. <a href="https://www.fool.com/earnings/call-transcripts/2026/11/06/ziff-davis-zd-q3-2026-earnings-call-transcript/">Transcript</a></span><button class="copy" type="button" data-id="ziff-davis-q3-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+      <li class="item" id="airsculpt-q3-2026">
+        <p class="meta">NASDAQ: AIRS · Q3 call, Nov 6</p>
+        <h2><a href="#airsculpt-q3-2026">AirSculpt blames Google&rsquo;s AI Overviews for a 16% drop in leads</a></h2>
+        <div class="lines">
+          <p>AirSculpt CEO Yogi Jashnani said Google increasingly keeps consumers on its own platform, so the company got fewer clicks while competition for them stayed the same. Leads fell 16% from a year earlier, and cost per lead rose 26%. CFO Michael Arthur said the rise in customer acquisition cost per case came mainly from the same place: fewer people and leads reaching the company&rsquo;s website.</p>
+          <p>Jashnani said AirSculpt is beginning to see early signs of improvement in how it shows up in AI-generated search results. It&rsquo;s optimizing its website for AI search and strengthening its digital content, customer reviews and educational resources. It&rsquo;s also investing more in brand and local marketing to drive traffic that doesn&rsquo;t depend on Google. It expects to spend about $3 million more on brand marketing than last year, down from the $5 million it indicated last quarter.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> The CFO didn&rsquo;t hedge on why acquisition costs went up:</p>
+            <blockquote>&ldquo;primarily driven by AI overviews&rdquo;<cite>Michael Arthur, CFO</cite></blockquote>
+            <p>My read: reviews and educational content are now part of the acquisition funnel. They&rsquo;re what an AI reads before it decides what to say about you.</p>
+            <p><b>Why it matters for go-to-market.</b> When the AI answers the question on the search page, the click never happens. What it says about you comes from your reviews, your content and whatever else it can find. For a considered purchase, that answer is the first consultation.</p>
+            <p><b>What I&rsquo;d ask them.</b> What did AI answers say about AirSculpt before they started fixing it? Which change moved it most?</p>
+            <p class="src"><span>AirSculpt Q3 2026 earnings call, Nov 6, 2026. <a href="https://www.fool.com/earnings/call-transcripts/2026/11/06/airsculpt-airs-q3-2026-earnings-call-transcript/">Transcript</a></span><button class="copy" type="button" data-id="airsculpt-q3-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+      <li class="item" id="tripadvisor-q3-2026">
+        <p class="meta">NASDAQ: TRIP · Q3 call, Nov 5</p>
+        <h2><a href="#tripadvisor-q3-2026">Tripadvisor leads in AI citations while search losses weigh on its hotel business</a></h2>
+        <div class="lines">
+          <p>Tripadvisor CEO Matt Goldberg said its brands lead in share of citations for experiences prompts in AI discovery, and that Viator works across Anthropic, OpenAI, Gemini and Meta&rsquo;s Muse. That traffic is probably less than 1% of the total. It converts at close to five times the average on Viator and about twice the average on Tripadvisor.</p>
+          <p>Search is still the bigger force. CFO Mike Noonan said persistent SEO headwinds cut about 3 points from Experiences bookings growth in the quarter. He expects SEO headwinds to continue in 2027 and start to ease in 2028. He also pointed to fewer available paid search clicks and a planned shift of spend into newer paid channels. The company took about $369 million in goodwill impairment on its Hotels and Other segment, citing the financial trends in that legacy business, and is reducing 425 roles there, about 150 of which move to the Experiences segment.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> Tripadvisor leads in AI citations for experiences, and in the same quarter it took a $369 million write-down on the legacy business that search used to feed. My read: citations are growing, and clicks aren&rsquo;t.</p>
+            <blockquote>&ldquo;our brands lead in share of citations for experiences prompts&rdquo;<cite>Matt Goldberg, President and CEO</cite></blockquote>
+            <p><b>Why it matters for go-to-market.</b> Leading in citations didn&rsquo;t replace the traffic. The AI visitors who do arrive convert at several times the average, which makes each one worth more. But &ldquo;cited&rdquo; only pays when the answer sends people to you, and that depends on what the answer says about you.</p>
+            <p><b>What I&rsquo;d ask them.</b> How much of the higher conversion is AI, and how much is who uses it? What do AI answers say about Viator when they don&rsquo;t link to it?</p>
+            <p class="src"><span>Tripadvisor Q3 2026 earnings call, Nov 5, 2026. <a href="https://www.fool.com/earnings/call-transcripts/2026/11/06/tripadvisor-trip-q3-2026-earnings-call-transcript/">Transcript</a></span><button class="copy" type="button" data-id="tripadvisor-q3-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+      <li class="item" id="cloudflare-q3-2026">
+        <p class="meta">NYSE: NET · Q3 call, Nov 5</p>
+        <h2><a href="#cloudflare-q3-2026">Cloudflare says AI lets its sellers spend far more time in front of customers</a></h2>
+        <div class="lines">
+          <p>Citi&rsquo;s Fatima Boolani asked how Cloudflare&rsquo;s restructuring six months ago changed its go-to-market. CEO Matthew Prince said sellers used to lose a big chunk of their week to meeting prep and Salesforce reports. He used 60% as an example of how bad it could get. He said Cloudflare has dramatically increased the time sellers spend in front of customers, as part of getting more efficient where AI can help. He didn&rsquo;t say which seller tasks AI now handles.</p>
+          <p>Prince said headcount is shifting toward builders and sellers. Sales productivity set a record and grew year over year for the 11th straight quarter. Quota attainment was the highest in more than five years. He didn&rsquo;t give figures for either.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> Prince said the jobs that changed most belonged to</p>
+            <blockquote>&ldquo;the measurers&rdquo;<cite>Matthew Prince, Co-founder and CEO</cite></blockquote>
+            <p>AI does more of the counting now. He also said selling is getting more technical, and Cloudflare is adding forward-deployed engineers alongside its reps.</p>
+            <p><b>Why it matters for go-to-market.</b> When AI preps a seller for a meeting, the brief is only as good as what the AI knows about you. Your buyers&rsquo; priorities, your differentiators, your proof. If that knowledge is scattered across decks and people&rsquo;s heads, sellers walk in faster with the same fuzzy story. The judgment stays with the seller. The foundation is the part you have to build.</p>
+            <p><b>What I'd ask them.</b> What share of a seller's week is in front of customers now? And who checks the AI's numbers?</p>
+            <p class="src"><span>Cloudflare Q3 2026 earnings call, Nov 5, 2026. <a href="https://finance.yahoo.com/markets/stocks/articles/cloudflare-net-q3-2026-earnings-074900653.html">Transcript</a></span><button class="copy" type="button" data-id="cloudflare-q3-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+      <li class="item" id="us-foods-q3-2026">
+        <p class="meta">NYSE: USFD · Q3 call, Nov 5</p>
+        <h2><a href="#us-foods-q3-2026">US Foods puts a $75 million figure on AI, led by added sales</a></h2>
+        <div class="lines">
+          <p>US Foods CEO Dave Flitman said AI tools deployed over the past two years now generate more than $75 million of adjusted EBITDA across sales, supply chain and enterprise functions, rising to more than $110 million next year. Melius Research&rsquo;s Jacob Aiken-Phillips asked how that overlaps with existing procurement and productivity programs. CFO Dirk Locascio said it doesn&rsquo;t overlap with strategic vendor management, and that AI helps the company reach its existing productivity target. Later, he said the biggest portion comes from incremental sales and margin, pointing to suggested sales, product recommendations, AI search and forecasting.</p>
+          <p>Flitman pointed to two seller tools. Visit Assistant helps sellers win back products customers used to buy from US Foods. Scout AI is being built to help resolve issues and automate admin work. Accounts supported by those insights are growing cases nearly 10% faster than accounts without them. About 40% of sellers are now fully on variable pay, ahead of the expected pace, and the company now expects seller headcount to grow in the low single digits.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> US Foods is using AI to grow sales without adding sellers at the old rate. Higher case growth on supported accounts, slower seller hiring. That&rsquo;s the trade.</p>
+            <blockquote>&ldquo;The biggest portion of it is from incremental sales and margin&rdquo;<cite>Dirk Locascio, CFO</cite></blockquote>
+            <p><b>Why it matters for go-to-market.</b> This is AI aimed at revenue. Suggested sales and product recommendations run on what you know about your customers and why they buy. My read: that knowledge is the real asset, and it belongs to the business. Change the tool and it should come with you.</p>
+            <p><b>What I&rsquo;d ask them.</b> How do you measure the sales lift, and against what? Did moving sellers to variable pay change how much they use the tools?</p>
+            <p class="src"><span>US Foods Q3 2026 earnings call, Nov 5, 2026. <a href="https://www.fool.com/earnings/call-transcripts/2026/11/05/us-foods-usfd-q3-2026-earnings-call-transcript/">Transcript</a></span><button class="copy" type="button" data-id="us-foods-q3-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+      <li class="item" id="rockwell-q4-2026">
+        <p class="meta">NYSE: ROK · Q4 call, Nov 5</p>
+        <h2><a href="#rockwell-q4-2026">Rockwell&rsquo;s CEO pitches AI quoting tools as a way to win more deals</a></h2>
+        <div class="lines">
+          <p>Rockwell&rsquo;s call covered a lot of what it sells to factories and data centers. The internal AI story came in pieces. When Bank of America&rsquo;s Andrew Obin asked why recurring revenue in its services business disappointed, CEO Blake Moret pointed to simplifying how Rockwell quotes and delivers, including internal agentic tools that cut keystrokes. He framed it as a revenue play. Quote more efficiently and you win more.</p>
+          <p>When Citi&rsquo;s Andy Kaplowitz asked about 2027 margins, CFO Christian Rothe said AI is producing both hard and soft savings, and that AI productivity in software development let the team finish products that weren&rsquo;t on this year&rsquo;s plan. He said Rockwell will go into its productivity actions in more detail at Investor Day. No AI-specific numbers.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> The quoting tools came up as an answer to a services problem. My read: Rockwell sees AI paying off first where it touches the customer. Moret called them</p>
+            <blockquote>&ldquo;internal agentic orchestration tools to reduce keystrokes&rdquo;<cite>Blake Moret, Chairman and CEO</cite></blockquote>
+            <p><b>Why it matters for go-to-market.</b> A quote is a promise. An agent building one needs your pricing rules, your configurations and what delivery can stand behind. A seller with slightly-off information adjusts in the room. An agent sends exactly what it was given. Fast and wrong is worse than slow.</p>
+            <p><b>What I'd ask them.</b> What's quote turnaround now versus last year? Has the win rate moved? Investor Day is in Boston this month. Bring a number.</p>
+            <p class="src"><span>Rockwell Automation Q4 FY2026 earnings call, Nov 5, 2026. <a href="https://www.aol.com/articles/rockwell-rok-q4-2026-earnings-215015000.html">Transcript</a></span><button class="copy" type="button" data-id="rockwell-q4-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+      <li class="item" id="expedia-q3-2026">
+        <p class="meta">NASDAQ: EXPE · Q3 call, Nov 4</p>
+        <h2><a href="#expedia-q3-2026">Expedia says travelers plan with AI agents and still book with brands they trust</a></h2>
+        <div class="lines">
+          <p>When Bank of America&rsquo;s Justin Post asked whether AI agent traffic is new or cannibalizing, CEO Ariane Gorin said it&rsquo;s so small that it&rsquo;s hard to draw any conclusion. She called it high quality, said she doesn&rsquo;t see it hurting direct traffic, and said it&rsquo;s either incremental or coming out of other paid channels. Answering Evercore&rsquo;s Mark Mahaney, she said the economics of the partnerships are still being worked out. Expedia partnered with Google in AI Mode, announced an integration with Meta&rsquo;s Muse, and is participating in OpenAI&rsquo;s ad products.</p>
+          <p>Inside its own products, enhanced recommendations delivered record third-quarter attach rates. Travelers who used a new activity agent were twice as likely to book an activity within seven days. A Vrbo voice agent is resolving more than 15% of inbound contacts. Five of the 10 analysts on the call asked about AI.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> Gorin drew a clear line between finding a trip and booking one:</p>
+            <blockquote>&ldquo;agentic AI&rsquo;s real strength is in discovery&rdquo;<cite>Ariane Gorin, CEO</cite></blockquote>
+            <p>She also said Expedia leads in citation share in the U.S.</p>
+            <p><b>Why it matters for go-to-market.</b> The answer an AI assembles from your public surface is the first version of you a buyer meets. If agents do the discovery, that version decides who makes the shortlist. Citation share tells you how often you show up. The harder question is whether what shows up is right.</p>
+            <p><b>What I&rsquo;d ask them.</b> What do you measure on agent traffic beyond volume? When an agent describes Expedia to a traveler, who checks that it&rsquo;s accurate?</p>
+            <p class="src"><span>Expedia Group Q3 2026 earnings call, Nov 4, 2026. <a href="https://www.tradingkey.com/news/transcripts/262279508-">Transcript</a></span><button class="copy" type="button" data-id="expedia-q3-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+      <li class="item" id="hubspot-q3-2026">
+        <p class="meta">NYSE: HUBS · Q3 call, Nov 4</p>
+        <h2><a href="#hubspot-q3-2026">HubSpot wins nearly three times as often when it engages multiple people on big buying committees</a></h2>
+        <div class="lines">
+          <p>HubSpot CEO Yamini Rangan said customers are navigating a major AI platform shift that&rsquo;s changing how they evaluate software, discover HubSpot and buy. Inbound demand is under pressure as AI changes how buyers find software. Upmarket, CFO Kate Bueker said, there are more decision-makers and longer sales cycles. Down market, she said, there&rsquo;s more price uncertainty and budget tightening. Customers want proof of AI before they buy, so HubSpot added trials and outcome-based pricing.</p>
+          <p>Rangan said win rates are nearly three times higher in deals with five or more buying-committee members when HubSpot engages multiple stakeholders. When Evercore&rsquo;s Kirk Materne asked whether its go-to-market needs to change, she said HubSpot combined sales and customer success under one organization upmarket. Answer engine optimization is one of the new demand channels, and Rangan called them nascent.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> The company that wrote the inbound playbook says its own inbound is under pressure. Rangan on the bigger deals:</p>
+            <blockquote>&ldquo;it&rsquo;s no longer just a technology decision&rdquo;<cite>Yamini Rangan, CEO</cite></blockquote>
+            <p><b>Why it matters for go-to-market.</b> Five people on a buying committee can meet five versions of you. Each one researched you separately, increasingly through AI. The win rate goes to the team that shows up with one answer that holds for all of them.</p>
+            <p><b>What I&rsquo;d ask them.</b> What does a seller bring to a five-person deal that the AI answers didn&rsquo;t? How much of the inbound decline comes back later as AI-referred deals?</p>
+            <p class="src"><span>HubSpot Q3 2026 earnings call, Nov 4, 2026. <a href="https://www.tradingkey.com/news/transcripts/262277357-">Transcript</a></span><button class="copy" type="button" data-id="hubspot-q3-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+      <li class="item" id="legalzoom-q3-2026">
+        <p class="meta">NASDAQ: LZ · Q3 call, Nov 4</p>
+        <h2><a href="#legalzoom-q3-2026">LegalZoom says customers who find it through ChatGPT are worth more than customers from its paid channels</a></h2>
+        <div class="lines">
+          <p>LegalZoom CEO Jeff Stibel said AI referral traffic is still small but growing. Traffic from AI platforms grew almost 50% quarter over quarter. He said those visitors arrive with high intent and convert at meaningfully higher rates than traditional organic search, and early customers from ChatGPT are generating higher lifetime value than its traditional paid channels.</p>
+          <p>Search is the pressure. LegalZoom lowered its profit outlook, and CFO Noel Watson said more than half of the change is investment in channels that reduce its reliance on search: partnerships, affiliates and paid AI placements. About a quarter reflects weaker acquisition economics. The company is also testing ads in Google&rsquo;s AI Mode.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> Stibel credits the brand for the AI traffic:</p>
+            <blockquote>&ldquo;the authority of our brand helps us get discovered&rdquo;<cite>Jeff Stibel, Chairman and CEO</cite></blockquote>
+            <p>My read: an AI recommends the firm it can explain. A clear reason to choose you is what gets repeated.</p>
+            <p><b>Why it matters for go-to-market.</b> AI sends buyers to the firm with the clearest reason to choose it. A model can only repeat what&rsquo;s clear and consistent about you. That&rsquo;s why you start with why you win.</p>
+            <p><b>What I&rsquo;d ask them.</b> What share of new customers come through AI now? Does the higher lifetime value hold as the volume grows?</p>
+            <p class="src"><span>LegalZoom Q3 2026 earnings call, Nov 4, 2026. <a href="https://www.tradingkey.com/news/transcripts/262277395-">Transcript</a></span><button class="copy" type="button" data-id="legalzoom-q3-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+      <li class="item" id="booking-q3-2026">
+        <p class="meta">NASDAQ: BKNG · Q3 call, Nov 3</p>
+        <h2><a href="#booking-q3-2026">Booking says AI assistant users convert at twice the rate while AI referrals are a sliver of Booking.com&rsquo;s room nights</a></h2>
+        <div class="lines">
+          <p>Booking Holdings CFO Ewout Steenbergen said travelers who use the company&rsquo;s AI assistants at Priceline and Agoda convert at about twice the rate of those who don&rsquo;t. Agoda assistant users also have average booking values about 20% higher. CEO Glenn Fogel said Booking recently launched a proactive AI travel agent designed to help travelers from initial planning through booking and beyond.</p>
+          <p>Asked whether newer personal agents send more referrals than the big AI platforms, Steenbergen said the traffic is still very small in aggregate and none is growing noticeably faster. AI referrals are still well under 1% of Booking.com&rsquo;s room nights. OpenTable is the exception so far. Its integration with OpenAI is one of the brand&rsquo;s fastest-growing channels from a small base, and Steenbergen said its work with Muse and other agents has brought in a significant number of new customers. Marketing spend rose 11%, slightly faster than gross bookings, driven mainly by faster growth in affiliate marketing. Fogel also said regulation, including EU rules, could slow personal AI agents.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> Travelers who use AI inside Booking&rsquo;s own apps convert at twice the rate. That compares users with non-users, so it doesn&rsquo;t prove the assistant caused it. AI outside, sending travelers to Booking.com, barely registers. OpenTable is the early exception. Fogel on outside agents:</p>
+            <blockquote>&ldquo;adoption of these horizontal personal agents may be much slower&rdquo;<cite>Glenn Fogel, CEO</cite></blockquote>
+            <p><b>Why it matters for go-to-market.</b> Booking and Expedia are saying the same thing. AI is great at helping someone who already chose you. Getting chosen happens earlier, in whatever an AI says about you before the traveler ever arrives.</p>
+            <p><b>What I&rsquo;d ask them.</b> What share of new customers find you through AI today? What happens to marketing cost if that share grows?</p>
+            <p class="src"><span>Booking Holdings Q3 2026 earnings call, Nov 3, 2026. <a href="https://s25.q4cdn.com/383369491/files/content_files/CORRECTED-TRANSCRIPT-Booking-Holdings-Inc-BKNG-US-Q3-2026-Earnings-Call-3-November2026.pdf">Transcript</a></span><button class="copy" type="button" data-id="booking-q3-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+      <li class="item" id="amazon-q3-2026">
+        <p class="meta">NASDAQ: AMZN · Q3 call, Oct 29</p>
+        <h2><a href="#amazon-q3-2026">Amazon says shoppers who use its AI assistant spend 50% more per order</a></h2>
+        <div class="lines">
+          <p>Amazon CEO Andy Jassy said more than 400 million customers used Alexa for Shopping, its agentic shopping assistant, over the past 12 months. Interactions were up 570% year over year. U.S. customers who use it spend 50% more per order than those who don&rsquo;t.</p>
+          <p>The assistant researches products, compares options, checks a full year of price history, recommends gifts and tracks deals for the shopper. Jassy said Amazon expects to work with outside AI agents, but believes its own will be the main way people shop Amazon. On the advertising side, Amazon launched full-funnel campaigns in its Ads Agent.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> The 50% compares users with non-users. It doesn&rsquo;t say the assistant caused the extra spend. Shoppers who ask for help may be bigger spenders to begin with. The goal behind it is clear, though:</p>
+            <blockquote>&ldquo;the primary shopping agent customers use to shop Amazon&rdquo;<cite>Andy Jassy, President and CEO</cite></blockquote>
+            <p><b>Why it matters for go-to-market.</b> Amazon wants to own the agent between itself and the shopper. For every brand selling there, the product page is now the pitch, and the first reader is a machine that compares, checks prices and recommends. Inconsistency used to cost a sale here and there. Now an agent repeats it at scale.</p>
+            <p><b>What I&rsquo;d ask them.</b> How much of the 50% is the assistant, and how much is who uses it? What do brands get to see about how it recommends them?</p>
+            <p class="src"><span>Amazon Q3 2026 earnings call, Oct 29, 2026. <a href="https://www.aol.com/articles/amazon-amzn-q3-2026-earnings-164601000.html">Transcript</a></span><button class="copy" type="button" data-id="amazon-q3-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+      <li class="item" id="servicenow-q3-2026">
+        <p class="meta">NYSE: NOW · Q3 call, Oct 28</p>
+        <h2><a href="#servicenow-q3-2026">ServiceNow shrank its sales operations team with AI and hired more sellers</a></h2>
+        <div class="lines">
+          <p>ServiceNow&rsquo;s CFO, Gina Mastantuono, told investors the company&rsquo;s own use of AI is now worth more than $1 billion a year. That&rsquo;s more than double where it ended 2025.</p>
+          <p>When Bernstein&rsquo;s Peter Weed asked where that shows up in the front office, the answer was specific. Sales operations is down significantly. Quota-carrying sellers are up by double digits, even as total sales and marketing headcount may fall. CEO Bill McDermott said work that used to keep about 100 people in sales ops busy is now handled by AI, and every seller has an AI coach. The bar for new sellers went up, and total company headcount slightly declined.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> The savings went to people who carry a number. McDermott described the old sales ops job as</p>
+            <blockquote>&ldquo;moving around information on e-mail&rdquo;<cite>Bill McDermott, Chairman and CEO</cite></blockquote>
+            <p>That&rsquo;s the work that went first.</p>
+            <p><b>Why it matters for go-to-market.</b> Sales ops is where what comes back from the market gets routed to the people who act on it. Which lead goes where, when, with what context. AI inherits whatever it&rsquo;s connected to. If the routing rules reflect the wrong criteria, an agent scales the wrong criteria. Faster.</p>
+            <p><b>What I'd ask them.</b> Who owns the rules the agents follow now? When one routes something wrong, who notices?</p>
+            <p class="src"><span>ServiceNow Q3 2026 earnings call, Oct 28, 2026. <a href="https://www.tradingkey.com/news/transcripts/262249602-tradingkey">Transcript</a></span><button class="copy" type="button" data-id="servicenow-q3-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+      <li class="item" id="ch-robinson-q3-2026">
+        <p class="meta">NASDAQ: CHRW · Q3 call, Oct 28</p>
+        <h2><a href="#ch-robinson-q3-2026">C.H. Robinson is automating more of quote-to-cash with an AI token bill under $2 million a year</a></h2>
+        <div class="lines">
+          <p>C.H. Robinson CEO Dave Bozeman said the company expects AI to automate more of the quote-to-cash life cycle of a load. Michael Castagnetto, who runs its North American Surface Transportation business, credited agentic AI with faster, more reliable service for customers. In that business, shipments handled per person per day rose more than 15% year over year. He also said the company repriced its contract portfolio much faster than it has historically, crediting its revenue management discipline and better price and cost discovery. CFO Damon Lee said average headcount fell 10.4%.</p>
+          <p>Arun Rajan, its chief strategy and innovation officer, said the company&rsquo;s annual AI token cost is still less than $2 million on a run-rate basis. He said only a fraction of the hundreds of processes in quote-to-cash are automated so far. When Jefferies&rsquo; Stephanie Benjamin Moore asked how the company would offset inflation, management pointed to more AI agents.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> Robinson is choosing small and cheap on purpose:</p>
+            <blockquote>&ldquo;We do not need the newest or most extensive model for every use case.&rdquo;<cite>Arun Rajan, Chief Strategy and Innovation Officer</cite></blockquote>
+            <p><b>Why it matters for go-to-market.</b> Robinson started with the process. It calls the approach Lean AI: lean methodology first, custom AI on top. AI inherits whatever it&rsquo;s connected to, and here that&rsquo;s a process the company has been tightening for three years. Customers feel it as faster, more reliable service.</p>
+            <p><b>What I&rsquo;d ask them.</b> Which of those hundreds of processes touch the customer directly? What does a shipper notice first?</p>
+            <p class="src"><span>C.H. Robinson Q3 2026 earnings call, Oct 28, 2026. <a href="https://www.webull.com/news/15826824820884480">Transcript</a></span><button class="copy" type="button" data-id="ch-robinson-q3-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+      <li class="item" id="coca-cola-q3-2026">
+        <p class="meta">NYSE: KO · Q3 call, Oct 27</p>
+        <h2><a href="#coca-cola-q3-2026">Coca-Cola is reusing its World Cup AI and data on everyday campaigns</a></h2>
+        <div class="lines">
+          <p>Coca-Cola grew volume 5% and organic revenue 7% in the third quarter. Marketing was a big part of the story. CFO John Murphy said the company has double-digit growth in above-the-line marketing, with programs set up for a strong start to 2027, and expects marketing investment to grow roughly in line with gross margin over time.</p>
+          <p>Asked by Morgan Stanley&rsquo;s Dara Mohsenian about the World Cup&rsquo;s role, CEO Henrique Braun said parts of the tech, data and AI the company used during the tournament are now showing up in campaigns like Fanta Halloween. Connected packaging carries content all the way down to a transaction, and Braun said that lets Coke pressure test ways to drive more engagement through to transactions. No AI-specific numbers.</p>
+        </div>
+        <details>
+          <summary><span class="pm" aria-hidden="true"></span><span class="label-open">My notes</span><span class="label-close">Close</span></summary>
+          <div class="notes">
+            <p><b>The nugget.</b> Coke builds capability for the big moment, then puts it to work every day after. Braun on what carried over:</p>
+            <blockquote>&ldquo;Parts of the tech, data, and AI that we used during the World Cup&rdquo;<cite>Henrique Braun, CEO</cite></blockquote>
+            <p><b>Why it matters for go-to-market.</b> This is the learning loop done right. What worked in a big moment feeds the next campaign. That only works if what you learned gets written down somewhere. The audiences, the creative, what converted. Otherwise every campaign starts from zero.</p>
+            <p><b>What I&rsquo;d ask them.</b> What did the World Cup teach you about the consumer that Fanta is now using? Who owns that knowledge between campaigns?</p>
+            <p class="src"><span>Coca-Cola Q3 2026 earnings call, Oct 27, 2026. <a href="https://investors.coca-colacompany.com/_assets/_1df3df91e6951f35952f0bd0d28b0ece/cocacolacompany/db/881/11142/file/CORRECTED_TRANSCRIPT_The_Coca-Cola_Co.(KO-US)_Q3_2026_Earnings_Call_27-October-2026_8_30_AM_ET.pdf">Transcript</a></span><button class="copy" type="button" data-id="coca-cola-q3-2026">Copy link</button></p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    <div class="morewrap"><button class="morebtn" id="more" type="button" hidden>More stories</button></div>
+  </div>
+
+  <section class="page">
+    <div class="close">
+      <p class="about">Cozelo connects why you win with how you operate. Then we build the business context AI needs to understand your value and put it to work.</p>
+      <p><a class="more" href="/how-we-work/">See how Cozelo works</a></p>
+      <p>Notes on what companies said on their earnings calls. Not investment advice.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="page foot__in"><span>&copy; 2026 Cozelo LLC</span><a href="/">cozelo.co</a></div>
+</footer>
+
+<script>
+(function(){
+  // Masthead date: always today, in the reader's time zone.
+  var t = document.getElementById('today');
+  if(t){
+    var d = new Date();
+    t.textContent = d.toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric', year:'numeric'});
+    t.setAttribute('datetime', d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'));
+  }
+})();
+(function(){
+  var PAGE = 4;
+  var items = Array.prototype.slice.call(document.querySelectorAll('#items > .item'));
+  var btn = document.getElementById('more');
+  var shown = Math.min(PAGE, items.length);
+
+  // Newest calls are first in the markup. Show four, reveal four more per click.
+  function render(){
+    items.forEach(function(el, i){ el.classList.toggle('is-hidden', i >= shown); });
+    btn.hidden = shown >= items.length;
+  }
+  btn.addEventListener('click', function(){
+    var first = items[shown];
+    shown = Math.min(shown + PAGE, items.length);
+    render();
+    if(first){ var h = first.querySelector('h2 a'); if(h) h.focus({preventScroll:true}); }
+  });
+
+  // A deep link reveals and opens its story.
+  function openFromHash(){
+    var id = location.hash.slice(1);
+    if(!id) return;
+    var idx = items.findIndex(function(el){ return el.id === id; });
+    if(idx < 0) return;
+    if(idx >= shown){ shown = Math.ceil((idx + 1) / PAGE) * PAGE; render(); }
+    var d = items[idx].querySelector('details'); if(d) d.open = true;
+    items[idx].scrollIntoView();
+  }
+  render();
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+
+  // Copy a deep link to one story.
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click', function(){
+      var url = location.href.split('#')[0] + '#' + b.getAttribute('data-id');
+      var done = function(){ b.textContent = 'Link copied'; setTimeout(function(){ b.textContent = 'Copy link'; }, 1800); };
+      try{ navigator.clipboard.writeText(url).then(done, function(){ location.hash = b.getAttribute('data-id'); }); }
+      catch(e){ location.hash = b.getAttribute('data-id'); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
