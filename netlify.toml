@@ -18,6 +18,12 @@
   force = true
 
 [[redirects]]
+  from = "/standalone/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
   from = "/scripts/*"
   to = "/404.html"
   status = 404
@@ -26,8 +32,21 @@
 # 29 Sep: AI-readiness direction. Why you win became AI readiness; Industries was retired.
 [[redirects]]
   from = "/why-you-win/*"
-  to = "/ai-readiness/"
+  to = "/ai-enabled-work/"
   status = 301
+
+# 23 Nov: AI readiness became AI-enabled work.
+[[redirects]]
+  from = "/ai-readiness/*"
+  to = "/ai-enabled-work/"
+  status = 301
+
+# 23 Nov: the Digital Analogue page left cozelo.co for its own site (standalone/digital-analogue).
+# It points home until that site's address is set here.
+[[redirects]]
+  from = "/digital-analogue/*"
+  to = "/"
+  status = 302
 
 [[redirects]]
   from = "/industries/*"

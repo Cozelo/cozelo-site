@@ -1,0 +1,17 @@
+# Cozelo Digital Analogue — stand-alone landing page (moved off cozelo.co, Nov 2026).
+# Static: no build step. Deploy this folder as its own Netlify site.
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
