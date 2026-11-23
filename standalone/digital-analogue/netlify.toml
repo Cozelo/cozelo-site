@@ -15,3 +15,5 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    # Public but kept out of search engines: crawlers may fetch pages, but must not index them.
+    X-Robots-Tag = "noindex, nofollow"
