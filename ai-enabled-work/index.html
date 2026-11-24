@@ -72,7 +72,7 @@
 .problem-call{margin-top:clamp(2.25rem,4vw,3rem); max-width:46rem}
 .problem-call .call{margin:0}
 /* What AI changes: context first, then the system */
-#ai{border-top:1px solid var(--rule-light)}
+#foundation{border-top:1px solid var(--rule-light)}
 .ai-copy{max-width:44rem}
 .ai-copy .prose{margin-top:1.25rem}
 .ai-copy .prose p + p{margin-top:1rem}
@@ -149,7 +149,7 @@
 .gap-a{margin:0; font-family:var(--sans); font-weight:700; font-size:clamp(1.35rem,2.3vw,1.8rem); line-height:1.22; letter-spacing:-.02em}
 .gap-b{margin:1.1rem 0 0; padding-top:1.1rem; border-top:1px solid var(--rule-dark); font-family:var(--serif); font-size:clamp(1.1rem,1.6vw,1.3rem); line-height:1.5; color:var(--on-navy-soft)}
 
-/* Ingredients: the layers read 1 to 5 down the left. As each one scrolls past, its tier slides
+/* The shape: the layers read 1 to 5 down the left. As each one scrolls past, its tier slides
    right into a pyramid that stays fixed mid-screen, building from Knowledge up to Judgment. */
 .ing{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:clamp(2rem,4.5vw,4rem); margin-top:clamp(2rem,4vw,3rem)}
 .ing-pyr{position:sticky; top:calc(50vh - 15rem); align-self:start; height:30rem; display:flex; flex-direction:column; justify-content:center}
@@ -244,7 +244,7 @@
 
 
 /* Sections run Problem, Shape, Foundation, Story: the two white bands after the shape are ruled apart. */
-#knowledge{border-top:1px solid var(--rule-light)}
+#story{border-top:1px solid var(--rule-light)}
 .gap-box{max-width:46rem}
 .gap-b+.gap-b{margin-top:.9rem; padding-top:0; border-top:0}
 </style>
@@ -283,9 +283,9 @@
       <li><a class="rail__pg current" href="/ai-enabled-work/" aria-current="page">AI-enabled work</a>
         <ul class="rail__toc">
           <li><a href="#problem">The problem</a></li>
-          <li><a href="#ingredients">The shape</a></li>
-          <li><a href="#ai">The foundation</a></li>
-          <li><a href="#knowledge">The story</a></li>
+          <li><a href="#shape">The shape</a></li>
+          <li><a href="#foundation">The foundation</a></li>
+          <li><a href="#story">The story</a></li>
         </ul>
       </li>
       <li><a class="rail__pg" href="/how-we-work/">How we work</a></li>
@@ -298,9 +298,9 @@
 <header class="band band--light bd-hero" id="top">
   <div class="inner">
     <h1>Being asked to do more with less?</h1>
-    <p class="lede">Every department is being asked to do more without adding headcount. AI can expand what your team is capable of, once it knows your business the way your best people do and is built into how your team works.</p>
+    <p class="lede">Every department is being asked to do more without adding headcount. AI can expand what your team is capable of. But first, it needs to be integrated into how your team works and know your business the way your best people do.</p>
   </div>
-  <!-- Gold: four distinct shapes of different sizes, joined by one drawn line. Four ingredients, one way of working. -->
+  <!-- Gold: four distinct shapes of different sizes, joined by one drawn line. Many parts, one way of working. -->
   <div class="jx jx-hero" data-motif="junctions" data-surface="white" data-seed="31" data-draw="load" data-pop data-narrow-media="(max-width: 900px)"
        data-opts='{"tile":29,"fluid":870,"anchor":"right","shapes":[{"type":"blob","x":11,"y":9,"n":20,"seed":14},{"type":"blob","x":3,"y":3,"n":22,"seed":3},{"type":"blob","x":4,"y":15,"n":16,"seed":11},{"type":"blob","x":13,"y":17,"n":11,"seed":5},{"type":"chain","points":[[18,4],[15,1]]},{"type":"dot","x":8,"y":1},{"type":"dot","x":17,"y":12},{"type":"dot","x":1,"y":9},{"type":"dot","x":8,"y":19}]}'
        data-opts-narrow='{"tile":22,"fluid":0,"anchor":"left","shapes":[{"type":"blob","x":3,"y":3,"n":9,"seed":3},{"type":"blob","x":9,"y":4,"n":10,"seed":8},{"type":"blob","x":14,"y":2,"n":7,"seed":5},{"type":"blob","x":19,"y":4,"n":6,"seed":2},{"type":"dot","x":6,"y":1},{"type":"dot","x":12,"y":6},{"type":"dot","x":1,"y":6}]}'></div>
@@ -313,12 +313,12 @@
     <div class="gap-box">
       <p class="gap-a">For most teams, spending on frontier AI models hasn&rsquo;t delivered frontier results.</p>
       <p class="gap-b">Today&rsquo;s LLMs can do incredible things, but they need the same firm-specific knowledge that makes your best employees&rsquo; work stand out.</p>
-      <p class="gap-b">Imagine a brilliant new hire who gets no background on the firm, no seat in the conversations that matter and no feedback on their drafts. That&rsquo;s how most teams are using AI today.</p>
+      <p class="gap-b">Imagine a brilliant new hire who gets no background on the firm, no updates from the conversations that shape strategy and no view of how their work affects results. That&rsquo;s how most teams are using AI today.</p>
     </div>
   </div>
 </section>
 
-<section class="band band--shade" id="ingredients">
+<section class="band band--shade" id="shape">
   <div class="inner">
     <h2>The shape of AI-enabled work.</h2>
     <div class="prose team-lede"><p>Whatever the work, the same five layers are needed for AI to make an impact. Each builds on the one below it, starting from a foundation of knowledge, with human judgment at the top.</p></div>
@@ -365,7 +365,7 @@
   </div>
 </section>
 
-<section class="band band--light" id="ai">
+<section class="band band--light" id="foundation">
   <div class="inner">
     <div class="ai-copy">
       <h2>AI should work like an expert, not an intern.</h2>
@@ -394,7 +394,7 @@
   </div>
 </section>
 
-<section class="band band--light" id="knowledge">
+<section class="band band--light" id="story">
   <div class="inner">
     <div class="ai-copy">
       <h2>Digitizing to unlock value.</h2>
@@ -591,7 +591,7 @@
 <script>
 document.documentElement.classList.add('js');
 
-/* Ingredients: as each layer's card passes the middle of the screen, its tier slides into the pyramid. */
+/* The shape: as each layer's card passes the middle of the screen, its tier slides into the pyramid. */
 (function(){
   var steps = [].slice.call(document.querySelectorAll('.step')), pyr = document.querySelector('.pyr');
   if (!steps.length || !pyr) return;
