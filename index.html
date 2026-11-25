@@ -16,20 +16,20 @@
 <link rel="canonical" href="https://cozelo.co/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Cozelo">
-<meta property="og:title" content="Cozelo | Your go-to-market, built for AI">
-<meta property="og:description" content="Cozelo connects why you win with how you operate. Then we build the business context AI needs to understand your value and put it to work.">
+<meta property="og:title" content="Cozelo | We do the work that makes AI work">
+<meta property="og:description" content="Cozelo turns your AI into an asset your competitors can&rsquo;t touch: built on what makes your business different, with rules for what it decides and checks before anything reaches a client.">
 <meta property="og:url" content="https://cozelo.co/">
 <meta property="og:image" content="https://cozelo.co/assets/og-card-v4.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cozelo | Your go-to-market, built for AI">
-<meta name="twitter:description" content="Cozelo connects why you win with how you operate. Then we build the business context AI needs to understand your value and put it to work.">
+<meta name="twitter:title" content="Cozelo | We do the work that makes AI work">
+<meta name="twitter:description" content="Cozelo turns your AI into an asset your competitors can&rsquo;t touch: built on what makes your business different, with rules for what it decides and checks before anything reaches a client.">
 <meta name="twitter:image" content="https://cozelo.co/assets/og-card-v4.png">
 <meta name="theme-color" content="#ffffff">
 <link rel="apple-touch-icon" href="/assets/logo-badge-128.png">
-<title>Cozelo | Your go-to-market, built for AI</title>
-<meta name="description" content="Cozelo connects why you win with how you operate. Then we build the business context AI needs to understand your value and put it to work.">
+<title>Cozelo | We do the work that makes AI work</title>
+<meta name="description" content="Cozelo turns your AI into an asset your competitors can&rsquo;t touch: built on what makes your business different, with rules for what it decides and checks before anything reaches a client.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
 .home-hero h1{max-width:20ch}
 .home-hero .lede{margin-top:2rem; max-width:40rem}
 /* Hero: Junctions field beside the headline. The gold shape is irregular, grown corner by corner along a
-   line rising from lower left to upper right, with two gold circles set apart from it: a go-to-market
+   line rising from lower left to upper right, with two gold circles set apart from it: work
    that grew one decision at a time. */
 .home-hero{position:relative; overflow:hidden}
 .home-hero .inner{position:relative; z-index:1}
@@ -56,7 +56,7 @@
     mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.14) 28%, rgba(0,0,0,.45) 48%, #000 70%)}
 }
 @media(max-width:900px){
-  /* small enough that "Your go-to-market" fits on one line on phones, so "Your" never sits alone */
+  /* smaller on phones so the headline sits in three short lines */
   .home-hero h1{font-size:clamp(2.1rem,9vw,2.5rem)}
   /* The field straddles the line between the hero and the next section, half in each one's padding. */
   .home-hero{overflow:visible; padding-bottom:4.25rem}
@@ -83,40 +83,20 @@
     mask-composite:intersect}
 }
 
-#engagement .lay-split .leave{margin-top:0}
-
-/* Why Cozelo: the two of us, beside the copy that names us. */
-.people{display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; max-width:24rem; justify-self:end; width:100%}
-.people figure{margin:0}
-.people img{aspect-ratio:4/5; width:100%; height:auto; display:block; object-fit:cover; border-radius:10px; background:var(--bone)}
-.people figcaption{display:flex; flex-direction:column; gap:.15rem; margin-top:.75rem}
-.people b{font-family:var(--sans); font-size:.875rem; color:var(--navy)}
-.people span{font-family:var(--serif); font-size:.875rem; color:var(--on-light-soft)}
-@media(max-width:900px){.people{justify-self:start}}
-
 .sec-body{margin-top:clamp(1.5rem,3vw,2.25rem)}
-.sec-body .prose{max-width:40rem}
+.sec-body.prose{max-width:40rem}
 
 /* Two or three columns of ruled cards */
 .cols{display:grid; gap:clamp(1.75rem,3.5vw,3rem); margin-top:clamp(2.25rem,4.5vw,3.5rem)}
-.cols--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cols--3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .col{border-top:2px solid var(--navy); padding-top:1.25rem}
 .col h3{font-size:clamp(1.3rem,1.8vw,1.5rem); line-height:1.2; letter-spacing:-.02em}
 .col p{margin:.875rem 0 0; font-family:var(--serif); font-size:1.0625rem; line-height:1.55; color:var(--on-light)}
-@media(max-width:900px){.cols--2{grid-template-columns:1fr}}
+@media(max-width:900px){.cols--3{grid-template-columns:1fr}}
 
-#foundation h2{max-width:26ch}
-.lay-split--people{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr); align-items:center}
-@media(max-width:900px){.lay-split--people{grid-template-columns:1fr}}
-
-/* Engagement: deliverables list */
-.leave{margin-top:clamp(1.75rem,3.5vw,2.5rem); max-width:40rem}
-.leave__h{font-family:var(--sans); font-weight:700; font-size:1.15rem; color:var(--navy); margin:0}
-.leave ul{list-style:none; margin:1rem 0 0; padding:0; border-top:1px solid var(--rule-light)}
-.leave li{font-family:var(--serif); font-size:1.0625rem; line-height:1.5; color:var(--on-light);
-  padding:.8rem 0 .8rem 1.6rem; border-bottom:1px solid var(--rule-light); position:relative}
-.leave li::before{content:""; position:absolute; left:0; top:1.35rem; width:.7rem; height:2px; background:var(--navy)}
-.leave + .prose{margin-top:clamp(1.5rem,3vw,2rem)}
+.prose .call{font-family:var(--sans); font-weight:700; font-size:clamp(1.15rem,1.7vw,1.35rem); line-height:1.35; letter-spacing:-.01em; color:var(--navy)}
+.band--dark .prose .call{color:var(--on-dark)}
+.home-more{display:inline-block; margin-top:clamp(2rem,4vw,2.75rem)}
 
 </style>
 </head>
@@ -136,8 +116,7 @@
 </div>
 <nav class="mmenu" id="mmenu" aria-label="Primary">
   <a class="mlink current" href="/">Home</a>
-  <a class="mlink" href="/ai-readiness/">AI readiness</a>
-  <a class="mlink" href="/digital-analogue/">Digital Analogue</a>
+  <a class="mlink" href="/ai-enabled-work/">AI-enabled work</a>
   <a class="mlink" href="/how-we-work/">How we work</a>
   <a class="mlink" href="/who-we-are/">Who we are</a>
   <div class="mmenu__foot">
@@ -154,14 +133,11 @@
       <li><a class="rail__pg current" href="/" aria-current="page">Home</a>
         <ul class="rail__toc">
           <li><a href="#problem">The problem</a></li>
-          <li><a href="#foundation">The foundation</a></li>
-          <li><a href="#application">The application</a></li>
-          <li><a href="#engagement">The engagement</a></li>
-          <li><a href="#why-cozelo">Why Cozelo</a></li>
+          <li><a href="#approach">Our approach</a></li>
+          <li><a href="#process">How it works</a></li>
         </ul>
       </li>
-      <li><a class="rail__pg" href="/ai-readiness/">AI readiness</a></li>
-      <li><a class="rail__pg" href="/digital-analogue/">Digital Analogue</a></li>
+      <li><a class="rail__pg" href="/ai-enabled-work/">AI-enabled work</a></li>
       <li><a class="rail__pg" href="/how-we-work/">How we work</a></li>
       <li><a class="rail__pg" href="/who-we-are/">Who we are</a></li>
     </ul>
@@ -171,8 +147,8 @@
 
 <header class="band band--light home-hero" id="top">
   <div class="inner">
-    <h1>Your <span class="nb">go-to-market</span> wasn&rsquo;t designed for AI. <span class="h1-accent">It grew one decision at a time.</span></h1>
-    <p class="lede">Cozelo connects why you win with how you operate. Then we build the business context AI needs to understand your value and put it to work.</p>
+    <h1>We do the work that makes AI work.</h1>
+    <p class="lede">Cozelo turns your AI into an asset your competitors can&rsquo;t touch.</p>
   </div>
   <div class="jx jx-hero" data-motif="junctions" data-surface="white" data-seed="23" data-narrow-media="(max-width: 900px)"
        data-opts='{"tile":29,"fluid":870,"anchor":"right","shapes":[{"type":"chain","points":[[13,14],[9,10],[8,7],[4,5]]},{"type":"blob","x":11,"y":12,"n":6,"seed":3},{"type":"blob","x":6,"y":6,"n":6,"seed":5},{"type":"dot","x":13,"y":4},{"type":"dot","x":4,"y":12}]}'
@@ -181,96 +157,48 @@
 
 <section class="band band--light" id="problem">
   <div class="inner">
-    <h2>AI needs a clear picture of your business. Your whole business.</h2>
+    <h2>Don&rsquo;t scale mediocrity.</h2>
     <div class="sec-body prose">
-      <p>Your positioning lives in a presentation. Your customer knowledge is in your best minds. Your processes span systems and teams, guided by unwritten rules.</p>
-      <p>That makes it harder to explain why buyers should choose you and impossible to consistently put AI to work.</p>
-      <p>Before adding more tools and agents, you need agreement on what matters, how the work happens, and what information it depends on.</p>
+      <p>The tools are smart. They&rsquo;re also trained to be confident about everything.</p>
+      <p>When they don&rsquo;t know something about your business, they fill the gap with something generic and hand it back like it&rsquo;s finished: the answer, the proposal, the deck, the campaign, the app. Give everyone the tools, say &ldquo;go crazy,&rdquo; and you&rsquo;ve spread mediocrity across the whole company.</p>
+      <p class="call">Your business wasn&rsquo;t built on good enough. Your AI shouldn&rsquo;t be either.</p>
     </div>
   </div>
 </section>
 
-<section class="band band--dark" id="foundation">
+<section class="band band--dark" id="approach">
   <div class="inner">
     <div class="jx-head">
-      <h2>Three connected pillars. One <span class="nb">go-to-market</span> operating model.</h2>
+      <h2>Less guessing. Fewer surprises.</h2>
       <div class="jx jx-pillars" data-motif="junctions" data-surface="navy" data-seed="5" data-draw="scroll"
            data-opts='{"tile":21,"anchor":"right","thin":0.07,"thick":0.15,"shapes":[{"type":"rect","x":3,"y":1,"w":2,"h":6},{"type":"rect","x":7,"y":1,"w":2,"h":6},{"type":"rect","x":11,"y":1,"w":2,"h":6},{"type":"rect","x":3,"y":7,"w":10,"h":2}]}'
            data-opts-narrow='{"tile":13,"fit":true,"thick":0.17,"shapes":[{"type":"rect","x":2,"y":2,"w":2,"h":6},{"type":"rect","x":6,"y":2,"w":2,"h":6},{"type":"rect","x":10,"y":2,"w":2,"h":6},{"type":"rect","x":2,"y":8,"w":10,"h":2}]}'></div>
     </div>
-    <dl class="dl">
-      <div class="dl__row">
-        <dt>Why you win</dt>
-        <dd>Define your target buyers, the problems you solve, and the reasons to choose you over the competition. Turn that into evidence-backed messaging ready for real-world use.</dd>
-      </div>
-      <div class="dl__row">
-        <dt>How you operate</dt>
-        <dd>Connect the people, processes, data, and systems behind your go-to-market. Integrate AI to improve how you work rather than to automate old inefficiencies.</dd>
-      </div>
-      <div class="dl__row">
-        <dt>The context AI needs to thrive</dt>
-        <dd>Build an organized context foundation covering your business, buyers, offerings, messaging, and operating knowledge. Give your team a single consistent reference for AI-assisted work.</dd>
-      </div>
-    </dl>
-  </div>
-</section>
-
-<section class="band band--light" id="application">
-  <div class="inner">
-    <h2>Help buyers understand you. Help agents work with you.</h2>
-    <div class="cols cols--2">
-      <div class="col">
-        <h3>When buyers use AI</h3>
-        <p>Make your expertise, offerings, and evidence clear and accessible across your website and content, so AI-assisted research more accurately represents what you do and what makes you different.</p>
-      </div>
-      <div class="col">
-        <h3>When your team uses AI</h3>
-        <p>Give AI tools and agents the context, workflow requirements, and boundaries they need to support marketing and sales. Define where people review the work and how you&rsquo;ll judge whether it&rsquo;s useful.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="band band--shade" id="engagement">
-  <div class="inner lay-split">
-    <h2>In ten weeks, build the foundation.</h2>
-    <div>
-    <div class="leave">
-      <p class="leave__h">You receive:</p>
-      <ul>
-        <li>A clear why you win strategy</li>
-        <li>A practical messaging framework for your buyers and offerings</li>
-        <li>An evaluation of your go-to-market operating model</li>
-        <li>An AI context foundation organized for use by your team</li>
-        <li>Prioritized recommendations for further action</li>
-      </ul>
-    </div>
-    <div class="prose">
-      <p>From there, we help put the model into practice through content, integrated workflows, and agent-enabled operations.</p>
-    </div>
-    </div>
-  </div>
-</section>
-
-<section class="band band--light" id="why-cozelo">
-  <div class="inner lay-split lay-split--people">
-    <div>
-    <h2>Senior practitioners. Strategy through implementation.</h2>
     <div class="sec-body prose">
-      <p>You work directly with Chris DiPierro and Teague Duncan, the people defining the approach and helping put it to work.</p>
-      <p>Our experience spans go-to-market strategy, positioning, messaging, and operational implementation. We bring those disciplines together to help businesses make practical decisions about AI and build the foundations for a go-to-market operating model built with AI at its core.</p>
+      <p>We build what AI needs to know about your business, set the rules for what it can decide on its own, and add checks before anything reaches a client. It guesses less, and when it does, it gets caught.</p>
+      <p class="call">It&rsquo;s built on what makes you different, so the work comes out that way too.</p>
     </div>
+  </div>
+</section>
+
+<section class="band band--shade" id="process">
+  <div class="inner">
+    <h2>Start with the work that matters most.</h2>
+    <div class="cols cols--3">
+      <div class="col">
+        <h3>Map it</h3>
+        <p>We start where you want AI to do more, and look at how that work gets done today.</p>
+      </div>
+      <div class="col">
+        <h3>Build it</h3>
+        <p>We put the knowledge, rules and checks in place, inside the tools your team already uses.</p>
+      </div>
+      <div class="col">
+        <h3>Keep it sharp</h3>
+        <p>We measure what changes and keep it current as your business moves.</p>
+      </div>
     </div>
-    <div class="people">
-      <figure>
-        <img src="/assets/chris.jpg" alt="Chris DiPierro" width="672" height="840" loading="lazy" decoding="async">
-        <figcaption><b>Chris DiPierro</b><span>Founder &amp; CEO</span></figcaption>
-      </figure>
-      <figure>
-        <img src="/assets/teague.jpg" alt="Teague Duncan" width="672" height="840" loading="lazy" decoding="async">
-        <figcaption><b>Teague Duncan</b><span>VP of Strategy</span></figcaption>
-      </figure>
-    </div>
+    <a class="textlink home-more" href="/how-we-work/">How we work &rarr;</a>
   </div>
 </section>
 
@@ -280,7 +208,7 @@
        data-opts-narrow='{"tile":30}'></div>
   <div class="inner close-wrap">
     <div>
-      <h2 class="close__h">Where can AI make a difference in your <span class="nb">go-to-market</span>?</h2>
+      <h2 class="close__h">What problem do you want AI to help solve?</h2>
       <p class="lede close__lede">Let&rsquo;s talk about what you&rsquo;re trying to improve, what&rsquo;s getting in the way, and where to start.</p>
     </div>
     <form class="cform" name="contact" method="POST" action="/thanks/"
@@ -301,7 +229,7 @@
           <input id="f-company" name="company" type="text" autocomplete="organization">
         </div>
         <div class="full">
-          <label for="f-msg">What do you want AI to do for your go-to-market?</label>
+          <label for="f-msg">Where do you want AI to do more?</label>
           <textarea id="f-msg" name="message" required></textarea>
         </div>
       </div>
@@ -323,8 +251,7 @@
     </div>
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="/ai-readiness/">AI readiness</a></li>
-      <li><a href="/digital-analogue/">Digital Analogue</a></li>
+      <li><a href="/ai-enabled-work/">AI-enabled work</a></li>
       <li><a href="/how-we-work/">How we work</a></li>
       <li><a href="/who-we-are/">Who we are</a></li>
     </ul>
